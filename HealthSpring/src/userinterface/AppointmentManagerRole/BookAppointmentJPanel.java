@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.PatientRole;
+package userinterface.AppointmentManagerRole;
 
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
+import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -21,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nikhi
  */
-public class BookAppoinmentJPanel extends javax.swing.JPanel {
+public class BookAppointmentJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form BookAppoinmentJPanel
+     * Creates new form BookAppointmentJPanel
      */
     
     private JPanel userProcessContainer;
-    private DoctorOrganization organization;
+    private PatientOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
     /**
@@ -38,7 +39,7 @@ public class BookAppoinmentJPanel extends javax.swing.JPanel {
     
     
    
-    public BookAppoinmentJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
+    public BookAppointmentJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -86,7 +87,7 @@ public class BookAppoinmentJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "HEALTHSPRING CENTRE", "CATEGORY", "DOCTOR", "DATE", "TIME"
+                "HEALTH CENTRE", "CATEGORY", "DOCTOR NAME", "DATE", "AVAILABLE SLOT"
             }
         ) {
             Class[] types = new Class [] {
@@ -130,32 +131,32 @@ public class BookAppoinmentJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refreshTestJButton)
+                .addGap(116, 116, 116))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(bookAppJButton)
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BookCnfrmlbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(BookCnfrmlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(BookCnfrmlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshTestJButton)
-                .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(refreshTestJButton)
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(BookCnfrmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,7 +186,7 @@ public class BookAppoinmentJPanel extends javax.swing.JPanel {
            // code for timer
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("PatientWorkAreaJPanel", new PatientWorkAreaJPanel(userProcessContainer, userAccount, organization,enterprise));
+        userProcessContainer.add("AppointmentManagerWorkAreaJPanel", new AppointmentManagerWorkAreaJPanel(userProcessContainer, userAccount, organization,enterprise));
         layout.next(userProcessContainer);
       //  JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise
 

@@ -2,12 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.PatientRole;
+package userinterface.AppointmentManagerRole;
 
 import userinterface.DoctorRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
+import Business.Organization.PatientOrganization;
+import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -19,16 +24,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class PatientWorkAreaJPanel extends javax.swing.JPanel {
+public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private DoctorOrganization organization;
+    private PatientOrganization organization;
+     private OrganizationDirectory organizationDir;
     private Enterprise enterprise;
     private UserAccount userAccount;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
+    public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -39,20 +45,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         populateRequestTable();
     }
     
+    public void populateOrganizationComboBox(){
+        PatientjComboBox1.removeAllItems();
+        
+        for (Patient patient : organization.getPatientDirectory().getpatientList()) {
+            PatientjComboBox1.addItem(patient);
+        }
+    }
+    
     public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) patientAppHistoryJTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
+        
+        for (AppHistory employee : organization.getAppHistoryDirectory().getEmployeeList()){
+            Object[] row = new Object[2];
+            row[0] = employee.getId();
+            row[1] = employee.getName();
             model.addRow(row);
-        }
+    }
     }
 
     
@@ -66,32 +78,36 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        patientAppHistoryJTable = new javax.swing.JTable();
         requestTestJButton = new javax.swing.JButton();
         refreshTestJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        PatientjComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        patientAppHistoryJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "APPOINTMENT DATE", "CATEGORY", "DOCTOR NAME", "TIME", "STATUS"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -102,23 +118,24 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
-        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
-            workRequestJTable.getColumnModel().getColumn(0).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(patientAppHistoryJTable);
+        if (patientAppHistoryJTable.getColumnModel().getColumnCount() > 0) {
+            patientAppHistoryJTable.getColumnModel().getColumn(0).setResizable(false);
+            patientAppHistoryJTable.getColumnModel().getColumn(1).setResizable(false);
+            patientAppHistoryJTable.getColumnModel().getColumn(2).setResizable(false);
+            patientAppHistoryJTable.getColumnModel().getColumn(3).setResizable(false);
+            patientAppHistoryJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 87, 346, 97));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 560, 120));
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("CREATE NEW PATIENT");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(529, 87, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
         refreshTestJButton.setText("Refresh");
         refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +143,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
                 refreshTestJButtonActionPerformed(evt);
             }
         });
-        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(529, 34, -1, -1));
+        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -135,22 +152,36 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
 
-        jButton1.setText("SCHEDULE APPOINTMENT");
+        jButton1.setText("SCHEDULE NEW APPOINTMENT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
-        jButton2.setText("VIEW TEST HISTORY");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
+        PatientjComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PatientjComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientjComboBox1ActionPerformed(evt);
+            }
+        });
+        add(PatientjComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+
+        jLabel1.setText("Select Patient");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 120, 30));
+
+        jLabel2.setText("APPOINTMENT HISTORY");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 140, 30));
+
+        jButton4.setText("CANCEL APPOINTMENT");
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer, enterprise));
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
@@ -161,6 +192,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
+             
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -169,14 +202,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void PatientjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientjComboBox1ActionPerformed
+
+   Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+        if (organization != null){
+            populateTable(organization);
+        }
+
+    }//GEN-LAST:event_PatientjComboBox1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox PatientjComboBox1;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable patientAppHistoryJTable;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel;
-    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

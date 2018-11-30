@@ -8,10 +8,7 @@ package Business.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 
-/**
- *
- * @author MyPC1
- */
+
 public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
@@ -22,7 +19,9 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital");
+        HealthCentre("HealthCentre"),
+        VaccinationCentre("VaccinationCentre"),
+        SocialCrowdFundingZone("SocialCrowdFundingZone");
         
         private String value;
         
