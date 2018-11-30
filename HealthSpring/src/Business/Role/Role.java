@@ -20,6 +20,7 @@ public abstract class Role {
         Admin("Admin"),
         Doctor("Doctor"),
         LabAssistant("Lab Assistant"),
+        BloodBankStaff("BloodBankStaff"),
         AppointmentManager("Appointment Manager"),
         VaccineManager("Vaccine Manager");
         

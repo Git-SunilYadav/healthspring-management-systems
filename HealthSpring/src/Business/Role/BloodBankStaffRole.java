@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Role.SocialCrowdFunding;
+package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
-import userinterface.CampaignOrganizerRole.CampaignOrganizerWorkAreaJPanel;
+import userinterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
+import userinterface.bloodbankAdminRole.BloodBankMain;
+import userinterface.bloodbankAdminRole.BloodbankadminWorkArea;
 
 /**
  *
- * @author nikhi
+ * @author mihir
  */
-public class CampaignOrganizerRole extends Role{
+public class BloodBankStaffRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CampaignOrganizerWorkAreaJPanel(userProcessContainer, enterprise);
+        return new BloodBankMain(userProcessContainer, account, organization, business);
     }
+    
 }
+

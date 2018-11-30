@@ -28,7 +28,7 @@ public abstract class Organization {
 
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Patient("Patient Organization"), VaccineAdmin("Vaccine Centre Admin"),
+        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Patient("Patient Organization"), VaccineAdmin("Vaccine Centre Admin"),BloodBankStaff("BloodBankStaff"),
         VaccineManager("Vaccine Organization"),CFRAdmin("CFR Admin Organization"), CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), TerminalCasesManager("Terminal Cases Organization");
         private String value;

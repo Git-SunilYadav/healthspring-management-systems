@@ -94,9 +94,9 @@ public class SearchAppointmentJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
                 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      /*  CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         userProcessContainer.add("BookAppointmentJPanel", new BookAppointmentJPanel(userProcessContainer, userAccount , organization, enterprise));
-        layout.next(userProcessContainer);
+        layout.next(userProcessContainer*/
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

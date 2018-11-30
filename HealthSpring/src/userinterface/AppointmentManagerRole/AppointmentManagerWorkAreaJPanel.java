@@ -55,16 +55,16 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) patientAppHistoryJTable.getModel();
-            DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        //DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
         
-        for (AppHistory employee : organization.getAppHistoryDirectory().getEmployeeList()){
-            Object[] row = new Object[2];
-            row[0] = employee.getId();
-            row[1] = employee.getName();
-            model.addRow(row);
-    }
+//        for (AppHistory employee : organization.getAppHistoryDirectory().getEmployeeList()){
+//            Object[] row = new Object[2];
+//            row[0] = employee.getId();
+//            row[1] = employee.getName();
+//            model.addRow(row);
+//    }
     }
 
     
@@ -204,10 +204,10 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void PatientjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientjComboBox1ActionPerformed
 
-   Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
-            populateTable(organization);
-        }
+//   Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+//        if (organization != null){
+//            populateTable(organization);
+//        }
 
     }//GEN-LAST:event_PatientjComboBox1ActionPerformed
 

@@ -31,7 +31,7 @@ public class AppHistoryDirectory {
     
     public AppointmentHistory createPatient(String name){
         AppointmentHistory appHistory = new AppointmentHistory();
-        appHistory.setName(name);
+        // appHistory.setName(name);
         AppHistoryList.add(appHistory);
         return appHistory;
     }

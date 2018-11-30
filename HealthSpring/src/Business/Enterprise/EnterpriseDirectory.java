@@ -36,11 +36,15 @@ public class EnterpriseDirectory {
             enterprise=new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
         }
+        else if (type==Enterprise.EnterpriseType.BloodBank){
+            enterprise=new BloodBankEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
         else if(type==Enterprise.EnterpriseType.VaccinationCentre){
             enterprise=new VaccinationCentreEnterprise(name);
             enterpriseList.add(enterprise);
+        }
         
-    }
         else if(type==Enterprise.EnterpriseType.SocialCrowdFundingZone){
             enterprise=new VaccinationCentreEnterprise(name);
             enterpriseList.add(enterprise);
