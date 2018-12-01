@@ -5,6 +5,10 @@
 package Business.Organization;
 
 import Business.Organization.Organization.Type;
+import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;
+import Business.Organization.SocialCrowdFunding.CampaignOrganization;
+import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
+import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import java.util.ArrayList;
 
 public class OrganizationDirectory {
@@ -35,6 +39,26 @@ public class OrganizationDirectory {
         }
          else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
             organization = new BloodBankStaffOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.CFRStrategist.getValue())){
+            organization = new CFRStrategistOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.CampaignOrganizer.getValue())){
+            organization = new CampaignOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.FinanceFellow.getValue())){
+            organization = new FinanceFellowOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.TerminalCasesManager.getValue())){
+            organization = new TerminalCasesOrganization();
+            organizationList.add(organization);
+        }
+         else if (type.getValue().equals(Type.MakeADifference.getValue())){
+            organization = new MakeADiffOrganization();
             organizationList.add(organization);
         }
         // create Appointment manager 

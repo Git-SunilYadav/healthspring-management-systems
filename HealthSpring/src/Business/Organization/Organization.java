@@ -40,7 +40,9 @@ public abstract class Organization {
         CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), 
         TerminalCasesManager("Terminal Cases Organization"),
-        AppointmentManager("Manage Patient Appointments ");
+        AppointmentManager("Manage Patient Appointments "),
+        CFRStrategist("CFR Strategist Organization"),
+        MakeADifference("Make A Diff Organization");
         
         private String value;
         private Type(String value) {

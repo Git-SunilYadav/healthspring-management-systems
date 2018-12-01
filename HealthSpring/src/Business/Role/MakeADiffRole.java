@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Role.SocialCrowdFunding;
+package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.MakeADiffOrganization;
 import Business.Organization.Organization;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
-import userinterface.CFRAdminRole.CFRAdminWorkAreaJPanel;
+import userinterface.DoctorRole.DoctorWorkAreaJPanel;
+import userinterface.MakeADiffRole.MakeADiffWorkAreaJPanel;
 
 /**
  *
  * @author nikhi
  */
-public class CFRAdminRole extends Role{
+public class MakeADiffRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CFRAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        return new MakeADiffWorkAreaJPanel(userProcessContainer, account, (MakeADiffOrganization)organization, enterprise,business);
     }
+    
 }

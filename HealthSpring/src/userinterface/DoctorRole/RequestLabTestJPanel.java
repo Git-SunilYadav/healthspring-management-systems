@@ -4,10 +4,13 @@
  */
 package userinterface.DoctorRole;
 
+import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
+import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
@@ -25,15 +28,17 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem business;
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.business = business;
         valueLabel.setText(enterprise.getName());
     }
 
@@ -52,6 +57,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -81,6 +87,14 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+
+        jButton1.setText("DEMO CFR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -93,12 +107,18 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         request.setStatus("Sent");
         
         Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+      //  for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            
+                    for (Network network: business.getNetworkList()){
+                        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+                            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+                               
             if (organization instanceof LabOrganization){
                 org = organization;
                 break;
             }
-        }
+        }}}
+                    
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
@@ -118,9 +138,43 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String message = messageJTextField.getText();
+        
+        CFRCaseWorkRequest request = new CFRCaseWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+        
+        Organization org = null;
+       /*for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof TerminalCasesOrganization){
+                org = organization;
+                break;
+            }
+        }*/
+                for (Network network: business.getNetworkList()){
+                        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+                            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+                               
+            if (organization instanceof TerminalCasesOrganization){
+                org = organization;
+                break;
+            }
+        }}}
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JButton requestTestJButton;
