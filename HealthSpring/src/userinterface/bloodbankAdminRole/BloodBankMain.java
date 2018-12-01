@@ -5,9 +5,13 @@
  */
 package userinterface.bloodbankAdminRole;
 
+import Business.Blood.BloodDirectory;
+import Business.Blood.BloodGroup;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -15,12 +19,19 @@ import javax.swing.JPanel;
  * @author mihir
  */
 public class BloodBankMain extends javax.swing.JPanel {
-
+    private  JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private BloodDirectory blooddir;
+    private BloodGroup bg;
     /**
      * Creates new form BloodBankMain
      */
-    public BloodBankMain(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodBankMain(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+       this.blooddir=new BloodDirectory();
+       this.bg=new BloodGroup();
     }
 
     /**
@@ -33,17 +44,40 @@ public class BloodBankMain extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addDonation = new javax.swing.JButton();
+        reserves = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        donorRecords = new javax.swing.JButton();
 
         jLabel1.setText("Blood Bank");
 
-        jButton1.setText("Add Blood Donation");
+        addDonation.setText("Add Blood Donation");
+        addDonation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDonationActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Blood Bank Reserves");
+        reserves.setText("Blood Bank Reserves");
+        reserves.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservesActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Blood Bank Work Request");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        donorRecords.setText("Donor Records");
+        donorRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donorRecordsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,11 +91,14 @@ public class BloodBankMain extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
+                            .addComponent(reserves)
+                            .addComponent(addDonation)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(donorRecords)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,20 +107,48 @@ public class BloodBankMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55)
-                .addComponent(jButton1)
+                .addComponent(addDonation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(reserves)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(donorRecords)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonationActionPerformed
+          CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("BloodDonation", new BloodDonation(userProcessContainer,blooddir,bg));
+        layout.next(userProcessContainer);        // TODO add your handling code here:
+    }//GEN-LAST:event_addDonationActionPerformed
+
+    private void reservesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservesActionPerformed
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("Stock", new Stock(userProcessContainer,bg));
+        layout.next(userProcessContainer);     // TODO add your handling code here:
+    }//GEN-LAST:event_reservesActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea(userProcessContainer));
+        layout.next(userProcessContainer);    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void donorRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donorRecordsActionPerformed
+         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("DonorRecords", new DonorRecords(userProcessContainer,blooddir));
+        layout.next(userProcessContainer);  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_donorRecordsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addDonation;
+    private javax.swing.JButton donorRecords;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton reserves;
     // End of variables declaration//GEN-END:variables
 }

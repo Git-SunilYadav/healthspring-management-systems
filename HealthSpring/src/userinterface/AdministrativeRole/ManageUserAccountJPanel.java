@@ -131,14 +131,21 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(userJTable);
-        userJTable.getColumnModel().getColumn(0).setResizable(false);
-        userJTable.getColumnModel().getColumn(1).setResizable(false);
+        if (userJTable.getColumnModel().getColumnCount() > 0) {
+            userJTable.getColumnModel().getColumn(0).setResizable(false);
+            userJTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jLabel2.setText("Password");
 
         jLabel3.setText("Employee");
 
         employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        employeeJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeJComboBoxActionPerformed(evt);
+            }
+        });
 
         backjButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backjButton1.setText("<< Back");
@@ -267,6 +274,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             populateRoleComboBox(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
+    private void employeeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeJComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;

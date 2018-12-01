@@ -28,13 +28,13 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form BloodbankadminWorkArea
      */
-    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodbankadminWorkArea( JPanel userProcessContainer) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
-        this.BloodBankStaffOrganization = (BloodBankStaffOrganization)organization;
+        
         this.business = business;
-        this.userAccount = account;
-        valueLabel.setText(business.getName());
+       
+     
     }
 
     /**
@@ -51,6 +51,8 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
         valueLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        request = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
@@ -81,6 +83,15 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        request.setText("Respond to request");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,7 +108,12 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jButton1)
+                        .addGap(179, 179, 179)
+                        .addComponent(request)))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,16 +127,28 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
                     .addComponent(valueLabel))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(request))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton request;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

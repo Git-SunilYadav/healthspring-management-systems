@@ -33,10 +33,10 @@ public class OrganizationDirectory {
             organization = new LabOrganization();
             organizationList.add(organization);
         }
-        /* else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
+       else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
             organization = new BloodBankStaffOrganization();
             organizationList.add(organization);
-        }*/
+        }
         return organization;
     }
     
