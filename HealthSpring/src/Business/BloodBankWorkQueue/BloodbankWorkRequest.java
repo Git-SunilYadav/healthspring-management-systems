@@ -5,24 +5,17 @@
  */
 package Business.BloodBankWorkQueue;
 
+import Business.WorkQueue.WorkRequest;
 import java.util.Date;
 
 /**
  *
  * @author mihir
  */
-public abstract class BloodbankWorkRequest {
+public  class BloodbankWorkRequest extends WorkRequest {
     
     private String BloodGroup;
     private int  Volume;
-    private String Status;
-    private String Messege;
-    private Date requestDate;
-    private Date resolveDate;
-    
-    public BloodbankWorkRequest(){
-        requestDate = new Date();
-    }
 
     public String getBloodGroup() {
         return BloodGroup;
@@ -39,37 +32,12 @@ public abstract class BloodbankWorkRequest {
     public void setVolume(int Volume) {
         this.Volume = Volume;
     }
-
-    public String getStatus() {
-        return Status;
+     @Override
+    public String toString() {
+        return BloodGroup;
     }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-
-    public String getMessege() {
-        return Messege;
-    }
-
-    public void setMessege(String Messege) {
-        this.Messege = Messege;
-    }
-
-    public Date getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public Date getResolveDate() {
-        return resolveDate;
-    }
-
-    public void setResolveDate(Date resolveDate) {
-        this.resolveDate = resolveDate;
-    }
+  
+    
+   
     
 }

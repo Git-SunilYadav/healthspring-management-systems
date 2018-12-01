@@ -10,17 +10,15 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
-/**
- *
- * @author raunak
- */
 public abstract class Role {
     
     public enum RoleType{
         Admin("Admin"),
         Doctor("Doctor"),
         LabAssistant("Lab Assistant"),
-        BloodBankStaff("BloodBankStaff");
+        BloodBankStaff("BloodBankStaff"),
+        AppointmentManager("Appointment Manager"),
+        VaccineManager("Vaccine Manager");
         
         private String value;
         private RoleType(String value){

@@ -5,6 +5,8 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Patient.PatientDirectory;
+import Business.Role.AppointmentManagerRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -20,11 +22,26 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private PatientDirectory patientDirectory;
+    
     private int organizationID;
     private static int counter=0;
+
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"), BloodBankStaff("BloodBankStaff");
+        Admin("Admin Organization"), 
+        Doctor("Doctor Organization"), 
+        Lab("Lab Organization"),
+        Patient("Patient Organization"), 
+        VaccineAdmin("Vaccine Centre Admin"),
+        BloodBankStaff("BloodBankStaff"),
+        VaccineManager("Vaccine Organization"),
+        CFRAdmin("CFR Admin Organization"), 
+        CampaignOrganizer("Campaign Organization"),
+        FinanceFellow("Finance Fellow Organization"), 
+        TerminalCasesManager("Terminal Cases Organization"),
+        AppointmentManager("Manage Patient Appointments ");
+        
         private String value;
         private Type(String value) {
             this.value = value;
@@ -39,6 +56,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        patientDirectory = new PatientDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -47,7 +65,12 @@ public abstract class Organization {
     
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
+    
     }
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+    }
+    
 
     public int getOrganizationID() {
         return organizationID;

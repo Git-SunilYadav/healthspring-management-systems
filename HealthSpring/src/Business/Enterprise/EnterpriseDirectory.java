@@ -12,8 +12,9 @@ import java.util.ArrayList;
  *
  * @author MyPC1
  */
+
 public class EnterpriseDirectory {
-    private ArrayList<Enterprise> enterpriseList;
+    private ArrayList<Enterprise> enterpriseList; 
    
 
     public ArrayList<Enterprise> getEnterpriseList() {
@@ -31,7 +32,7 @@ public class EnterpriseDirectory {
     //Create enterprise
     public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
         Enterprise enterprise=null;
-        if(type==Enterprise.EnterpriseType.Hospital){
+        if(type==Enterprise.EnterpriseType.HealthCentre){
             enterprise=new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
         }
@@ -39,6 +40,15 @@ public class EnterpriseDirectory {
             enterprise=new BloodBankEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        return enterprise;
+        else if(type==Enterprise.EnterpriseType.VaccinationCentre){
+            enterprise=new VaccinationCentreEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        
+        else if(type==Enterprise.EnterpriseType.SocialCrowdFundingZone){
+            enterprise=new VaccinationCentreEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+           return enterprise;
     }
 }

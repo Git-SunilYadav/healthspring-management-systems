@@ -25,9 +25,6 @@ public class BloodBankStaffOrganization extends Organization{
         ArrayList<Role> roles = new ArrayList();
         roles.add(new BloodBankStaffRole());
         return roles;
-    }
-     
-   
-    
+    } 
     
 }

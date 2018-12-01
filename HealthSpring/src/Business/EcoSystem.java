@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
+    
     private ArrayList<Network> networkList;
     public static EcoSystem getInstance(){
         if(business==null){

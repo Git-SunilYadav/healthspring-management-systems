@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.PatientRole;
+package userinterface.AppointmentManagerRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.PatientOrganization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JPanel;
 import userinterface.DoctorRole.RequestLabTestJPanel;
 
 /**
@@ -17,8 +22,21 @@ public class SearchAppointmentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SearchAppointmentJPanel
      */
-    public SearchAppointmentJPanel() {
+    
+     private JPanel userProcessContainer;
+    private PatientOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+ 
+    public SearchAppointmentJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
         initComponents();
+         this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.userAccount = account;
+       // valueLabel.setText(enterprise.getName());
+ //       populateRequestTable();
+ 
     }
 
     /**
@@ -37,18 +55,19 @@ public class SearchAppointmentJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(0, 0, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("SCHEDULE APPOINMENT");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 35, 211, 32));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 211, 32));
 
         hsCentreJCombobox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(hsCentreJCombobox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 128, 117, -1));
 
-        jLabel2.setText("SELECT HEALTH CENTRE");
+        jLabel2.setText("DOCTOR TYPE");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 131, 130, -1));
 
         jLabel3.setText("APPOINMENT DATE");
@@ -67,13 +86,16 @@ public class SearchAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
+
+        jTextField2.setText("jTextField2");
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 120, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
                 
       /*  CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BookAppoinmentJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("BookAppointmentJPanel", new BookAppointmentJPanel(userProcessContainer, userAccount , organization, enterprise));
         layout.next(userProcessContainer*/
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -87,5 +109,6 @@ public class SearchAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

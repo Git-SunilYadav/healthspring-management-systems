@@ -9,6 +9,7 @@ import Business.Blood.BloodDirectory;
 import Business.Blood.BloodGroup;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.BloodBankStaffOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -20,16 +21,23 @@ import javax.swing.JPanel;
  */
 public class BloodBankMain extends javax.swing.JPanel {
     private  JPanel userProcessContainer;
-    private Enterprise enterprise;
+ 
     private BloodDirectory blooddir;
     private BloodGroup bg;
+    private BloodBankStaffOrganization BloodOrg;
+    private UserAccount account;
+    private Organization organization;
+    private EcoSystem business;
     /**
      * Creates new form BloodBankMain
      */
-    public BloodBankMain(JPanel userProcessContainer, Enterprise enterprise) {
+    public BloodBankMain(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.BloodOrg=(BloodBankStaffOrganization)organization;
+        this.account=account;
+        this.organization=organization;
+        this.business=business;
        this.blooddir=new BloodDirectory();
        this.bg=new BloodGroup();
     }
@@ -118,6 +126,10 @@ public class BloodBankMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void addDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonationActionPerformed
           CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         userProcessContainer.add("BloodDonation", new BloodDonation(userProcessContainer,blooddir,bg));
@@ -132,7 +144,7 @@ public class BloodBankMain extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea(userProcessContainer));
+        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,organization,business));
         layout.next(userProcessContainer);    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

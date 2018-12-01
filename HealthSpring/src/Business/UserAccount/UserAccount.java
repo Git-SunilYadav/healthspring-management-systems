@@ -8,10 +8,6 @@ import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author raunak
- */
 public class UserAccount {
     
     private String username;
@@ -23,7 +19,6 @@ public class UserAccount {
     public UserAccount() {
         workQueue = new WorkQueue();
     }
-    
     
     
     public String getUsername() {
