@@ -8,7 +8,10 @@ package userinterface.AppointmentManagerRole;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Organization.AppointmentManager;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -26,13 +29,13 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private AppointmentManager organization;
     private OrganizationDirectory organizationDir;
-    private Enterprise enterprise;
+    private HospitalEnterprise enterprise;
     private UserAccount userAccount;
     public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AppointmentManager organization, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
-        this.enterprise = enterprise;
+        this.enterprise = (HospitalEnterprise)enterprise;
         this.userAccount = account;
         valueLabel.setText(enterprise.getName());
     }
@@ -64,6 +67,11 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnBookAppointment.setText("Book Appointment");
+        btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookAppointmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,9 +107,22 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer , (HospitalEnterprise)enterprise));
+        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer , enterprise));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManagePatientActionPerformed
+
+    private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
+        DoctorOrganization doctorOrganization = new DoctorOrganization();
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if(org instanceof  DoctorOrganization) {
+                doctorOrganization = (DoctorOrganization)org;
+                break;
+            }
+        }
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("BookAppointmentJPanel", new BookAppointmentJPanel(userProcessContainer, userAccount , doctorOrganization,enterprise));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
