@@ -7,12 +7,16 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.WorkQueue.WorkQueue;
 
 
 public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    
+    // private WorkQueue workQueue;
+   
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
@@ -22,7 +26,7 @@ public abstract class Enterprise extends Organization{
         HealthCentre("HealthCentre"),
         VaccinationCentre("VaccinationCentre"),
         SocialCrowdFundingZone("SocialCrowdFundingZone"),
-        Hospital("Hospital"),
+        //Hospital("Hospital"),
         BloodBank ("BloodBank");
         
         private String value;

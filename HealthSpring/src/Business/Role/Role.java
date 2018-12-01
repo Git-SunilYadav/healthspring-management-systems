@@ -22,7 +22,11 @@ public abstract class Role {
         LabAssistant("Lab Assistant"),
         BloodBankStaff("BloodBankStaff"),
         AppointmentManager("Appointment Manager"),
-        VaccineManager("Vaccine Manager");
+        VaccineManager("Vaccine Manager"),
+        CFRStrategist("CFR Strategist"),
+        CampaignOrganizer("Campaign Organizer"),
+        FinanceFellow("Finance Fellow"),
+        CaseManager("Case Manager");
         
         private String value;
         private RoleType(String value){

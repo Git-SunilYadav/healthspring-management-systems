@@ -197,7 +197,7 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("SearchAppointmentJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
+       // userProcessContainer.add("SearchAppointmentJPanel", new SearchAppointmentJPanel(userProcessContainer, userAccount, enterprise));
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_jButton1ActionPerformed

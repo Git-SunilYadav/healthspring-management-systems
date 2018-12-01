@@ -29,8 +29,8 @@ public abstract class Organization {
     
     public enum Type{
         Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Patient("Patient Organization"), VaccineAdmin("Vaccine Centre Admin"),BloodBankStaff("BloodBankStaff"),
-        VaccineManager("Vaccine Organization"),CFRAdmin("CFR Admin Organization"), CampaignOrganizer("Campaign Organization"),
-        FinanceFellow("Finance Fellow Organization"), TerminalCasesManager("Terminal Cases Organization");
+        VaccineManager("Vaccine Organization"),CFRStrategist("CFR Strategist Organization"), CampaignOrganizer("Campaign Organization"),
+        FinanceFellow("Finance Fellow Organization"), TerminalCasesManager("Terminal Cases Organization"),MakeADifference("Make A Diff Organization");
         private String value;
         private Type(String value) {
             this.value = value;
