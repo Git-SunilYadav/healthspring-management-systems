@@ -37,6 +37,11 @@ public class OrganizationDirectory {
             organization = new BloodBankStaffOrganization();
             organizationList.add(organization);
         }
+        // create Appointment manager 
+        else if (type.getValue().equals(Type.AppointmentManager.getValue())){
+            organization = new AppointmentManager();
+            organizationList.add(organization);
+        }
         return organization;
     }
     

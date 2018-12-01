@@ -5,6 +5,7 @@
  */
 package Business.Enterprise;
 
+import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -13,13 +14,23 @@ import java.util.ArrayList;
  * @author MyPC1
  */
 public class HospitalEnterprise extends Enterprise {
-    
+    private PatientDirectory objPatientDirectory;
+
     public HospitalEnterprise(String name){
         super(name,EnterpriseType.HealthCentre);
+        this.objPatientDirectory = new PatientDirectory();
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
+    }
+    
+    public PatientDirectory getObjPatientDirectory() {
+        return objPatientDirectory;
+    }
+
+    public void setObjPatientDirectory(PatientDirectory objPatientDirectory) {
+        this.objPatientDirectory = objPatientDirectory;
     }
     
 }

@@ -234,8 +234,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         if (network != null){
             populateEnterpriseComboBox(network);
         }
-        
-        
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed

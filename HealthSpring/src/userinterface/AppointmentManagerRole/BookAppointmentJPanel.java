@@ -186,7 +186,7 @@ public class BookAppointmentJPanel extends javax.swing.JPanel {
            // code for timer
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("AppointmentManagerWorkAreaJPanel", new AppointmentManagerWorkAreaJPanel(userProcessContainer, userAccount, organization,enterprise));
+       // userProcessContainer.add("AppointmentManagerWorkAreaJPanel", new AppointmentManagerWorkAreaJPanel(userProcessContainer, userAccount, organization,enterprise));
         layout.next(userProcessContainer);
       //  JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise
 

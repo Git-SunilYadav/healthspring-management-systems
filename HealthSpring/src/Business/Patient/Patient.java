@@ -16,13 +16,21 @@ public class Patient {
     private static int count = 1;
     private String email;
     private int age;
-    private long mobile_num;
+    private String mobile_num;
     
     
 
     public Patient() {
         id = count;
         count++;
+    }
+
+    public String getMobile_num() {
+        return mobile_num;
+    }
+
+    public void setMobile_num(String mobile_num) {
+        this.mobile_num = mobile_num;
     }
 
     public int getId() {
@@ -53,17 +61,8 @@ public class Patient {
         this.age = age;
     }
 
-    public long getMobile_num() {
-        return mobile_num;
-    }
-
-    public void setMobile_num(long mobile_num) {
-        this.mobile_num = mobile_num;
-    }
-
-    
-    
-    
+  
+ 
 }
 
 

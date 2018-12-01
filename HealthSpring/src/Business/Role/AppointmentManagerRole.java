@@ -7,8 +7,10 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.AppointmentManager;
 //import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import static Business.Organization.Organization.Type.AppointmentManager;
 import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -28,7 +30,7 @@ public class AppointmentManagerRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new AppointmentManagerWorkAreaJPanel(userProcessContainer, account, (PatientOrganization) organization, enterprise);
+        return new AppointmentManagerWorkAreaJPanel(userProcessContainer, account, (AppointmentManager) organization, enterprise);
     }
     
     

@@ -18,16 +18,19 @@ public class PatientDirectory {
     private ArrayList<Patient> patientList;
 
     public PatientDirectory() {
-        patientList = new ArrayList();
+        patientList = new ArrayList<Patient>();
     }
 
     public ArrayList<Patient> getpatientList() {
         return patientList;
     }
     
-    public Patient createPatient(String name){
+    public Patient createPatient(String name, int age, String email, String MobileNo){
         Patient patient = new Patient();
         patient.setName(name);
+        patient.setAge(age);
+        patient.setEmail(email);
+        patient.setMobile_num(MobileNo);
         patientList.add(patient);
         return patient;
     }

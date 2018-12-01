@@ -17,9 +17,5 @@ public class AppointmentHistory {
     private String doctorName;
     private String Date;
     private String time;
-    private long mobile_num;
-    
-    
-    
-    
+    private long mobile_num;    
 }

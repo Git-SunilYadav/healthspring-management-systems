@@ -14,10 +14,6 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author raunak
- */
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
@@ -174,7 +170,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
 
         populateRequestTable();
-        
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

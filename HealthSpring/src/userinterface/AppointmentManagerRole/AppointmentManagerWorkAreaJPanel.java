@@ -1,73 +1,42 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package userinterface.AppointmentManagerRole;
 
-import userinterface.DoctorRole.*;
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.Organization;
+import Business.Enterprise.HospitalEnterprise;
+import Business.Organization.AppointmentManager;
 import Business.Organization.OrganizationDirectory;
-import Business.Organization.PatientOrganization;
-import Business.Patient.Patient;
-import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestWorkRequest;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+import userinterface.DoctorRole.RequestLabTestJPanel;
 
 /**
  *
- * @author raunak
+ * @author yadav
  */
 public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
 
+    /**
+     * Creates new form AppointmentManagerWorkAreaJPanel
+     */
     private JPanel userProcessContainer;
-    private PatientOrganization organization;
-     private OrganizationDirectory organizationDir;
+    private AppointmentManager organization;
+    private OrganizationDirectory organizationDir;
     private Enterprise enterprise;
     private UserAccount userAccount;
-    /**
-     * Creates new form DoctorWorkAreaJPanel
-     */
-    public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
+    public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AppointmentManager organization, Enterprise enterprise) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
         valueLabel.setText(enterprise.getName());
-        populateRequestTable();
-    }
-    
-    public void populateOrganizationComboBox(){
-        PatientjComboBox1.removeAllItems();
-        
-        for (Patient patient : organization.getPatientDirectory().getpatientList()) {
-            PatientjComboBox1.addItem(patient);
-        }
-    }
-    
-    public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) patientAppHistoryJTable.getModel();
-        //DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
-        model.setRowCount(0);
-        
-//        for (AppHistory employee : organization.getAppHistoryDirectory().getEmployeeList()){
-//            Object[] row = new Object[2];
-//            row[0] = employee.getId();
-//            row[1] = employee.getName();
-//            model.addRow(row);
-//    }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,151 +46,68 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        patientAppHistoryJTable = new javax.swing.JTable();
-        requestTestJButton = new javax.swing.JButton();
-        refreshTestJButton = new javax.swing.JButton();
-        enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        PatientjComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnManagePatient = new javax.swing.JButton();
+        btnBookAppointment = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        valueLabel.setText("<Value>");
 
-        patientAppHistoryJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "APPOINTMENT DATE", "CATEGORY", "DOCTOR NAME", "TIME", "STATUS"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setText("Organization:");
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(patientAppHistoryJTable);
-        if (patientAppHistoryJTable.getColumnModel().getColumnCount() > 0) {
-            patientAppHistoryJTable.getColumnModel().getColumn(0).setResizable(false);
-            patientAppHistoryJTable.getColumnModel().getColumn(1).setResizable(false);
-            patientAppHistoryJTable.getColumnModel().getColumn(2).setResizable(false);
-            patientAppHistoryJTable.getColumnModel().getColumn(3).setResizable(false);
-            patientAppHistoryJTable.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 560, 120));
-
-        requestTestJButton.setText("CREATE NEW PATIENT");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnManagePatient.setText("Manage Patient");
+        btnManagePatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
+                btnManagePatientActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
-        refreshTestJButton.setText("Refresh");
-        refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshTestJButtonActionPerformed(evt);
-            }
-        });
-        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
+        btnBookAppointment.setText("Book Appointment");
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
-
-        jButton1.setText("SCHEDULE NEW APPOINTMENT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
-
-        PatientjComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        PatientjComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PatientjComboBox1ActionPerformed(evt);
-            }
-        });
-        add(PatientjComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
-
-        jLabel1.setText("Select Patient");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 120, 30));
-
-        jLabel2.setText("APPOINTMENT HISTORY");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 140, 30));
-
-        jButton4.setText("CANCEL APPOINTMENT");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnBookAppointment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                        .addComponent(btnManagePatient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(376, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valueLabel)
+                    .addComponent(jLabel1))
+                .addGap(75, 75, 75)
+                .addComponent(btnManagePatient)
+                .addGap(39, 39, 39)
+                .addComponent(btnBookAppointment)
+                .addContainerGap(411, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
+    private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer, enterprise));
+        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer , (HospitalEnterprise)enterprise));
         layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_requestTestJButtonActionPerformed
+    }//GEN-LAST:event_btnManagePatientActionPerformed
 
-    private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
-
-        populateRequestTable();
-        
-    }//GEN-LAST:event_refreshTestJButtonActionPerformed
-
-             
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("SearchAppointmentJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void PatientjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientjComboBox1ActionPerformed
-
-//   Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-//        if (organization != null){
-//            populateTable(organization);
-//        }
-
-    }//GEN-LAST:event_PatientjComboBox1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox PatientjComboBox1;
-    private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnBookAppointment;
+    private javax.swing.JButton btnManagePatient;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable patientAppHistoryJTable;
-    private javax.swing.JButton refreshTestJButton;
-    private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }
