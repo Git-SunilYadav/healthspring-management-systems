@@ -30,11 +30,13 @@ public class CreateNewPatientJPanel extends javax.swing.JPanel {
      */
     private PatientDirectory objPatientDirectory;
     private JPanel userProcessContainer;
+    private HospitalEnterprise hospitalEnterprise;
     
     public CreateNewPatientJPanel(JPanel userProcessContainer, HospitalEnterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.objPatientDirectory = enterprise.getObjPatientDirectory();
+        this.hospitalEnterprise = enterprise;
+        this.objPatientDirectory = hospitalEnterprise.getObjPatientDirectory();
         populatePatientTable();
     }
     /**

@@ -6,7 +6,9 @@ package Business.UserAccount;
 
 import Business.Employee.Employee;
 import Business.Role.Role;
+import Business.WorkQueue.Appointment;
 import Business.WorkQueue.WorkQueue;
+import java.util.ArrayList;
 
 public class UserAccount {
     
@@ -16,10 +18,20 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
 
-    public UserAccount() {
-        workQueue = new WorkQueue();
+    private ArrayList<Appointment> appointmentList;
+
+    public ArrayList<Appointment> getAppointmentList() {
+        return appointmentList;
+    }
+
+    public void setAppointmentList(ArrayList<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
     }
     
+    public UserAccount() {
+        workQueue = new WorkQueue();
+        this.appointmentList = new ArrayList<>();
+    }
     
     public String getUsername() {
         return username;
