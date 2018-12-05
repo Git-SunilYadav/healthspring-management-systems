@@ -26,18 +26,18 @@ public class BloodBankMain extends javax.swing.JPanel {
     private BloodGroup bg;
     private BloodBankStaffOrganization BloodOrg;
     private UserAccount account;
-    private Organization organization;
+    
     private EcoSystem business;
     /**
      * Creates new form BloodBankMain
      */
-    public BloodBankMain(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodBankMain(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.BloodOrg=(BloodBankStaffOrganization)organization;
+        this.BloodOrg=organization;
         this.account=account;
-        this.organization=organization;
-        this.business=business;
+       
+       this.business=business;
        this.blooddir=new BloodDirectory();
        this.bg=new BloodGroup();
     }
@@ -148,7 +148,7 @@ public class BloodBankMain extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,organization,business));
+        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,BloodOrg,business));
         layout.next(userProcessContainer);    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

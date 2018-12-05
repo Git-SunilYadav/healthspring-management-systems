@@ -102,6 +102,10 @@ public class CFRFinanceFellowWorkRequest extends WorkRequest {
         this.acc_num = acc_num;
     }
 
+     @Override
+    public String toString() {
+        return String.valueOf(caseId);
+    }
     
     
 }

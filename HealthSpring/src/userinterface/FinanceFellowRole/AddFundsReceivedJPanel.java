@@ -6,7 +6,12 @@
 package userinterface.FinanceFellowRole;
 
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
+import Business.EcoSystem;
+import Business.EmailNotify.EmailSender;
+import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 
 /**
@@ -18,15 +23,31 @@ public class AddFundsReceivedJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddFundsReceivedJPanel
      */
-    JPanel userProcessContainer;
-    CFRFinanceFellowWorkRequest request;
+    private JPanel userProcessContainer;
+    //CFRFinanceFellowWorkRequest request;
+    private CFRFinanceFellowWorkRequest request;
+    private ButtonGroup bg1= new ButtonGroup();
+    //private EmailSender emailSender;
+    private EcoSystem business;
+    private UserAccount userAccount;
+    private FinanceFellowOrganization FinanceFellowOrganization;
+   
     
-    public AddFundsReceivedJPanel(JPanel userProcessContainer, CFRFinanceFellowWorkRequest request) {
+    public AddFundsReceivedJPanel(JPanel userProcessContainer, UserAccount account, FinanceFellowOrganization organization, EcoSystem business, CFRFinanceFellowWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
+       // this.userProcessContainer = userProcessContainer;
+        //this.request = request;
+        this.business = business;
+        this.FinanceFellowOrganization = organization;
         Patienttxt.setText(request.getPatient());
-        amounttxt.setText(String.valueOf(request.getCost()));
+        caseidtxt.setText(String.valueOf(request.getCost()));
+        request.getAcc_num();
+        request.getB_name();
+        request.getCaseId();
+        request.getCategory();
+       
         
     }
 
@@ -44,24 +65,69 @@ public class AddFundsReceivedJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         Patienttxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        fundingOrgtxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        caseidtxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        categorytxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         amounttxt = new javax.swing.JTextField();
+        fundingorgJCombo = new javax.swing.JComboBox();
+        jLabel10 = new javax.swing.JLabel();
+        forgidtxt = new javax.swing.JTextField();
+        forgemailtxt = new javax.swing.JTextField();
+        banktxt = new javax.swing.JTextField();
+        accnumtxt = new javax.swing.JTextField();
+        refnumlbl = new javax.swing.JLabel();
+        refnumtxt = new javax.swing.JTextField();
 
-        submitJButton.setText("Submit Result");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        submitJButton.setBackground(new java.awt.Color(255, 102, 102));
+        submitJButton.setText("ADD FUNDS");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("ADD RECEIVED FUND DETAILS");
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("PATIENT");
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("SELECT FUNDING ORG");
 
-        jLabel4.setText("FUNDS RAISED");
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel4.setText("CASE ID");
+
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel5.setText("AMOUNT RECEIVED");
+
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel6.setText("BANK NAME");
+
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel7.setText("CATEGORY");
+
+        jLabel8.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel8.setText("FUNDING ORG ID");
+
+        jLabel9.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel9.setText("ACCOUNT NUMBER");
+
+        fundingorgJCombo.setForeground(new java.awt.Color(255, 102, 102));
+        fundingorgJCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel10.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel10.setText("FUNDING ORG EMAIL");
+
+        refnumlbl.setForeground(new java.awt.Color(255, 153, 153));
+        refnumlbl.setText("REFERENCE NUMBER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,60 +139,109 @@ public class AddFundsReceivedJPanel extends javax.swing.JPanel {
                         .addGap(287, 287, 287)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(335, 335, 335)
-                                .addComponent(submitJButton))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(amounttxt, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                    .addComponent(Patienttxt))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addComponent(fundingOrgtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addGap(328, 328, 328)
+                        .addComponent(submitJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(caseidtxt)
+                            .addComponent(Patienttxt)
+                            .addComponent(amounttxt)
+                            .addComponent(banktxt)
+                            .addComponent(accnumtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10)
+                            .addComponent(refnumlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(categorytxt)
+                            .addComponent(fundingorgJCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(forgidtxt)
+                            .addComponent(forgemailtxt)
+                            .addComponent(refnumtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(Patienttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fundingOrgtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                    .addComponent(jLabel7)
+                    .addComponent(categorytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(amounttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                    .addComponent(caseidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fundingorgJCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(amounttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(forgidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel10)
+                    .addComponent(forgemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(banktxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(accnumtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refnumlbl)
+                    .addComponent(refnumtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
                 .addComponent(submitJButton)
-                .addGap(118, 118, 118))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        request.setFund_org_name(fundingOrgtxt.getText());
+        request.setFund_org_name(String.valueOf(fundingorgJCombo.getSelectedItem()));
         request.setStatus("Funding Received");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Patienttxt;
+    private javax.swing.JTextField accnumtxt;
     private javax.swing.JTextField amounttxt;
-    private javax.swing.JTextField fundingOrgtxt;
+    private javax.swing.JTextField banktxt;
+    private javax.swing.JTextField caseidtxt;
+    private javax.swing.JTextField categorytxt;
+    private javax.swing.JTextField forgemailtxt;
+    private javax.swing.JTextField forgidtxt;
+    private javax.swing.JComboBox fundingorgJCombo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel refnumlbl;
+    private javax.swing.JTextField refnumtxt;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }

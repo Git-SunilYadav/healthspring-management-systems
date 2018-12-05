@@ -12,6 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
+import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
@@ -40,6 +41,8 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
+        this.enterprise = enterprise;
+        this.userAccount = account;
         this.cfrCaseDir = cfrCaseDir;
         patienttxt.setText(request.getPatient());
         categorytxt.setText(request.getCategory());
@@ -73,8 +76,10 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         bnametxt = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        submitbtn.setBackground(new java.awt.Color(255, 102, 102));
         submitbtn.setText("CREATE CFR CASE & SEND REQUEST");
         submitbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +88,7 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         });
         add(submitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,18 +102,23 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         jLabel1.setText("ADD CASE DETAILS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 190, 30));
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("PATIENT NAME");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 90, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("CATEGORY");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 145, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("COST OF TREATMENT");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("BANK NAME");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 100, 20));
 
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
         jLabel6.setText("BANK ACC NUMBER");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
         add(caseidtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 160, 20));
@@ -116,6 +127,7 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         add(patienttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 140, 20));
         add(categorytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 140, 20));
 
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
         jLabel7.setText("CASE ID");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 90, 20));
         add(bnametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 160, 20));
@@ -133,8 +145,8 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         
        int caseid =  Integer.parseInt(caseidtxt.getText());
        String Patient_name = patienttxt.getText();
-        String  category = categorytxt.getText();
-        String bName = bnametxt.getText();
+       String  category = categorytxt.getText();
+       String bName = bnametxt.getText();
          int cost = Integer.parseInt(costtxt.getText());
          long acc_num = Long.parseLong(acctxt.getText());
       //  String message = messageJTextField.getText();
@@ -162,8 +174,8 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
             }
         }
         if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request_sec);
-            userAccount.getWorkQueue().getWorkRequestList().add(request_sec);
+            org.getWorkQueue().getCFRFinFellowWorkRequestList().add(request_sec);
+            userAccount.getWorkQueue().getCFRFinFellowWorkRequestList().add(request_sec);
         }
      
             }//GEN-LAST:event_submitbtnActionPerformed
@@ -173,6 +185,7 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CaseManagerWorkAreaJPanel cmwjp = (CaseManagerWorkAreaJPanel) component;
+        cmwjp.populateTable();
         cmwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.CrowdFunding.CFRFundingOrgsDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
 import Business.Role.AppointmentManagerRole;
@@ -23,6 +24,8 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private PatientDirectory patientDirectory;
+   // added for Funding Orgs data
+    private CFRFundingOrgsDirectory cfrFundingDir;
     
     private int organizationID;
     private static int counter=0;
@@ -36,11 +39,11 @@ public abstract class Organization {
         VaccineAdmin("Vaccine Centre Admin"),
         BloodBankStaff("BloodBankStaff"),
         VaccineManager("Vaccine Organization"),
-        CFRAdmin("CFR Admin Organization"), 
+       // CFRAdmin("CFR Admin Organization"), 
         CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), 
         TerminalCasesManager("Terminal Cases Organization"),
-        AppointmentManager("Manage Patient Appointments "),
+        AppointmentManager("Manage Patient Appointments"),
         CFRStrategist("CFR Strategist Organization"),
         MakeADifference("Make A Diff Organization");
         
@@ -59,6 +62,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         patientDirectory = new PatientDirectory();
+         cfrFundingDir = new CFRFundingOrgsDirectory ();
         organizationID = counter;
         ++counter;
     }
@@ -72,6 +76,11 @@ public abstract class Organization {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
+
+    public CFRFundingOrgsDirectory getCfrFundingDir() {
+        return cfrFundingDir;
+    }
+    
     
 
     public int getOrganizationID() {

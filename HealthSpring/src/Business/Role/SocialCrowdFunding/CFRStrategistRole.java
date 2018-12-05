@@ -22,6 +22,6 @@ public class CFRStrategistRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CFRStrategistWorkAreaJPanel(userProcessContainer, enterprise, organization);
+        return new CFRStrategistWorkAreaJPanel(userProcessContainer, enterprise, organization, business);
     }
 }

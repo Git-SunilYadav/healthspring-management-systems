@@ -60,9 +60,12 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setText("<Value>");
 
+        jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("Organization:");
 
+        btnManagePatient.setBackground(new java.awt.Color(255, 102, 102));
         btnManagePatient.setText("Manage Patient");
         btnManagePatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +73,7 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setText("Request Blood");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +81,7 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBookAppointment.setBackground(new java.awt.Color(255, 102, 102));
         btnBookAppointment.setText("Book Appointment");
         btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +119,7 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnBookAppointment)
                 .addGap(38, 38, 38)
                 .addComponent(jButton1)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -32,10 +32,10 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form BloodbankadminWorkArea
      */
-    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
-        this.bldorg=(BloodBankStaffOrganization)organization;
+        this.bldorg=organization;
         this.business = business;
         this.userAccount=account;
        populateTable();

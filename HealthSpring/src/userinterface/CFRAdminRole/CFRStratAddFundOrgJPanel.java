@@ -27,12 +27,12 @@ public class CFRStratAddFundOrgJPanel extends javax.swing.JPanel {
     Organization organization;
     private CFRFundingOrgsDirectory fundorgDir;
     
-    public CFRStratAddFundOrgJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization) {
+    public CFRStratAddFundOrgJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, CFRFundingOrgsDirectory orgDir) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.organization = organization;
-        this.fundorgDir = new CFRFundingOrgsDirectory();
+        this.fundorgDir = orgDir;
     
     }
 
@@ -59,18 +59,23 @@ public class CFRStratAddFundOrgJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("ADD FUNDING ORGS'");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 23, 150, 23));
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("ORGANIZATION NAME");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 76, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("CATEGORY");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 148, 80, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("EMAIL ID");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 76, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("TELEPHONE");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 148, -1, -1));
         add(fundOrgtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 73, 100, -1));
@@ -78,30 +83,33 @@ public class CFRStratAddFundOrgJPanel extends javax.swing.JPanel {
         add(categorytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 145, 100, -1));
         add(mbtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 136, 110, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 80, -1));
 
-        jButton2.setText("BACK'");
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
+        jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-String fund_org_name = fundOrgtxt.getText();
+ String fund_org_name = fundOrgtxt.getText();
  String Category = categorytxt.getText();
-  String email = emailtxt.getText();
-  Long mb_num = Long.parseLong(mbtxt.getText());
+ String email = emailtxt.getText();
+ Long mb_num = Long.parseLong(mbtxt.getText());
         
 fundorgDir.CreateFundingOrg(fund_org_name, Category, email, mb_num);
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -112,7 +120,7 @@ fundorgDir.CreateFundingOrg(fund_org_name, Category, email, mb_num);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CFRStrategistWorkAreaJPanel cfrsjp = (CFRStrategistWorkAreaJPanel) component;
-       // cfrsjp.populateRequestTable();
+        cfrsjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
        

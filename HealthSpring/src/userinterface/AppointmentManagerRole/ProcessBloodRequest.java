@@ -61,12 +61,14 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
         _OjRadioButton5 = new javax.swing.JRadioButton();
         OjRadioButton6 = new javax.swing.JRadioButton();
 
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Volume:");
 
         ABjRadioButton8.setText("+AB");
 
         _ABjRadioButton7.setText("-AB");
 
+        submitBtn.setForeground(new java.awt.Color(255, 102, 102));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(255, 102, 102));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +84,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Select Blood Group:");
 
         _AjRadioButton1.setText("-A");

@@ -59,6 +59,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestTestJButton.setText("Request Test");
@@ -67,7 +68,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         jLabel1.setText("Message");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
@@ -94,7 +95,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 100, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -105,6 +106,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         request.setMessage(message);
         request.setSender(userAccount);
         request.setStatus("Sent");
+        
         
         Organization org = null;
       //  for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){

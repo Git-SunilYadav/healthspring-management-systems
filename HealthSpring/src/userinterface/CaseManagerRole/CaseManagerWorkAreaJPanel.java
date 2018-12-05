@@ -7,6 +7,7 @@ package userinterface.CaseManagerRole;
 
 import Business.CrowdFunding.CFRCaseDirectory;
 import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
+import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.LabOrganization;
@@ -64,6 +65,45 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
+        //for(WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()){
+         for(CFRCaseWorkRequest request : CaseOrganization.getWorkQueue().getCFRCaseWorkRequestList()){
+            Object[] row = new Object[7];
+            row[0] = request;
+            row[4] = request.getSender().getEmployee().getName();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
+            row[2] = request.getCategory();
+            row[1] = request.getPatient();
+            row[3] = request.getCost();
+            
+            model.addRow(row);
+        }
+    }
+   
+ 
+   public void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) CFRFinanceWorkReqJTable1.getModel();
+        
+        model.setRowCount(0);
+        for (CFRFinanceFellowWorkRequest request : userAccount.getWorkQueue().getCFRFinFellowWorkRequestList()){
+          Object[] row = new Object[7];
+            row[0] = request;
+            row[4] = request.getSender().getEmployee().getName();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
+            row[2] = request.getCategory();
+            row[1] = request.getPatient();
+            row[3] = request.getCost();
+            
+            model.addRow(row);
+        }
+    }
+
+   /*
+         DefaultTableModel model = (DefaultTableModel)CFRCaseWorkQueueJTable1.getModel();
+        
+        model.setRowCount(0);
+        
        // for(WorkRequest request : enterprise.getWorkQueue().getWorkRequestList()){
          for(WorkRequest request : CaseOrganization.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
@@ -73,40 +113,8 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
             row[3] = request.getStatus();
             
             model.addRow(row);
-        }
-    }
-   
-  /*   public void populateSecTable(){
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
-        
-        model.setRowCount(0);
-        
-        for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
-            
-            model.addRow(row);
-        }
-    }*/
-   public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) CFRFinanceWorkReqJTable1.getModel();
-        
-        model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-          //  String result = ((LabTestWorkRequest) request).getTestResult();
-           // row[3] = result == null ? "Waiting" : result;
-            
-            model.addRow(row);
-        }
-    }
-
+  
+   */
 
 
     
@@ -133,8 +141,9 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("CASE MANAGER WORK AREA");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 20, 204, 26));
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("WORK QUEUE (NEW CASES)");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 78, 156, 24));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 78, 200, 24));
 
         CFRFinanceWorkReqJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,8 +173,9 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(CFRFinanceWorkReqJTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 636, 125));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 636, 110));
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setText("ADD CASE DETAILS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +184,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 204, -1));
 
+        assignJButton.setBackground(new java.awt.Color(255, 102, 102));
         assignJButton.setText("ASSIGN TO ME");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +193,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
+        refreshJButton.setBackground(new java.awt.Color(255, 102, 102));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,20 +204,20 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         CFRCaseWorkQueueJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "PATIENT", "CATEGORY", "AMOUNT REQD", "REQUESTED BY", "FULFILLED BY", "STATUS"
+                "CASE ID", "PATIENT", "CATEGORY", "AMOUNT REQD", "REQUESTED BY", "FULFILLED BY", "STATUS"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -218,10 +230,11 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(CFRCaseWorkQueueJTable1);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 120, 636, 125));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 636, 125));
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("WORK REQUEST (FINANCE FELLOW)");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 200, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 300, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -241,13 +254,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
-         
-        
-      /*  AddCasedetailsJPanel AddCasedetailsJPanel = new AddCasedetailsJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("AddCasedetailsJPanel", AddCasedetailsJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-*/
+       
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

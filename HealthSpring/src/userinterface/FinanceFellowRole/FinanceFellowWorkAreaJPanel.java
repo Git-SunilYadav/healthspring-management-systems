@@ -50,8 +50,11 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         CFRFinanceWorkQueueJTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        sendReqJBtn = new javax.swing.JButton();
+        addfundsbtn = new javax.swing.JButton();
+        assignJButton = new javax.swing.JButton();
+        pcCheckBox1 = new javax.swing.JCheckBox();
+        afcheckbox2 = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -83,19 +86,51 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(CFRFinanceWorkQueueJTable1);
 
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("WORK QUEUE (CASES PENDING FUNDING)");
 
-        jButton1.setText("SEND REQUEST FOR FUNDING");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendReqJBtn.setBackground(new java.awt.Color(255, 102, 102));
+        sendReqJBtn.setForeground(new java.awt.Color(255, 255, 255));
+        sendReqJBtn.setText("SEND REQUEST FOR FUNDING");
+        sendReqJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sendReqJBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("FUNDS RECEIVED");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addfundsbtn.setBackground(new java.awt.Color(255, 102, 102));
+        addfundsbtn.setForeground(new java.awt.Color(255, 255, 255));
+        addfundsbtn.setText("ADD FUNDS RECEIVED");
+        addfundsbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addfundsbtnActionPerformed(evt);
+            }
+        });
+
+        assignJButton.setBackground(new java.awt.Color(255, 102, 102));
+        assignJButton.setForeground(new java.awt.Color(255, 255, 255));
+        assignJButton.setText("ASSIGN TO ME");
+        assignJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignJButtonActionPerformed(evt);
+            }
+        });
+
+        pcCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        pcCheckBox1.setForeground(new java.awt.Color(255, 102, 102));
+        pcCheckBox1.setText("PENDING CASES");
+        pcCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pcCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        afcheckbox2.setBackground(new java.awt.Color(255, 255, 255));
+        afcheckbox2.setForeground(new java.awt.Color(255, 102, 102));
+        afcheckbox2.setText("AWAITING FUNDING");
+        afcheckbox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afcheckbox2ActionPerformed(evt);
             }
         });
 
@@ -104,35 +139,50 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(87, 87, 87))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pcCheckBox1)
+                                .addGap(18, 18, 18)
+                                .addComponent(afcheckbox2))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(74, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(assignJButton)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addfundsbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sendReqJBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(94, 94, 94))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcCheckBox1)
+                    .addComponent(afcheckbox2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(234, Short.MAX_VALUE))
+                    .addComponent(sendReqJBtn)
+                    .addComponent(assignJButton))
+                .addGap(18, 18, 18)
+                .addComponent(addfundsbtn)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sendReqJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendReqJBtnActionPerformed
    int selectedRow = CFRFinanceWorkQueueJTable1.getSelectedRow();
         
         if (selectedRow < 0){
@@ -140,16 +190,24 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable1.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
-        request.setStatus("Notification Sent for Fundraising");
-        populateTable();
-    
         
+        // code for selecting the Funding Orgs
+        
+        SelectFundingOrgsJPanel SelectFundingOrgsJPanel = new SelectFundingOrgsJPanel( userProcessContainer,  userAccount,  FinanceFellowOrganization, business, request);
+        userProcessContainer.add("SelectFundingOrgsJPanel", SelectFundingOrgsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 
-// Code for Email 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+       // request.setReceiver(userAccount);
+        //request.setStatus("Email Sent for Funds");
+        //populateTable();
+    
+        // Code for Email 
+        
+    }//GEN-LAST:event_sendReqJBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addfundsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addfundsbtnActionPerformed
 
            int selectedRow = CFRFinanceWorkQueueJTable1.getSelectedRow();
         
@@ -160,37 +218,112 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable1.getValueAt(selectedRow, 0);
         request.setStatus("Funding Locked");
 
-        AddFundsReceivedJPanel AddFundsReceivedJPanel = new AddFundsReceivedJPanel(userProcessContainer, request);
+        AddFundsReceivedJPanel AddFundsReceivedJPanel = new AddFundsReceivedJPanel(userProcessContainer,  userAccount,  FinanceFellowOrganization, business, request);
         userProcessContainer.add("AddFundsReceivedJPanel", AddFundsReceivedJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
+    }//GEN-LAST:event_addfundsbtnActionPerformed
 
+    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+        int selectedRow = CFRFinanceWorkQueueJTable1.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+
+        CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable1.getValueAt(selectedRow, 0);
+        request.setReceiver(userAccount);
+        request.setStatus("Finance Case Assigned");
+        populateTable();
+    }//GEN-LAST:event_assignJButtonActionPerformed
+
+    private void pcCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcCheckBox1ActionPerformed
+
+       populateTable();
+        
+        
+    }//GEN-LAST:event_pcCheckBox1ActionPerformed
+
+    private void afcheckbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afcheckbox2ActionPerformed
+populateTable();
+    }//GEN-LAST:event_afcheckbox2ActionPerformed
  public void populateTable(){
         DefaultTableModel model = (DefaultTableModel)CFRFinanceWorkQueueJTable1.getModel();
         
         model.setRowCount(0);
         
-        for(WorkRequest request : FinanceFellowOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+           Object[] row = new Object[7];
+        if (pcCheckBox1.isSelected() == true){
+            
+        for(CFRFinanceFellowWorkRequest request : FinanceFellowOrganization.getWorkQueue().getCFRFinFellowWorkRequestList()){
+            if (request.getStatus() == "Finance Case Assigned") {
+                
+            
+             
             row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
+            row[4] = request.getSender().getEmployee().getName();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
+            row[2] = request.getCategory();
+            row[1] = request.getPatient();
+            row[3] = request.getCost();
             
             model.addRow(row);
+            }
+                }
+             }
+          if (afcheckbox2.isSelected() == true){
+            
+        for(CFRFinanceFellowWorkRequest request : FinanceFellowOrganization.getWorkQueue().getCFRFinFellowWorkRequestList()){
+            if (request.getStatus() == "Email Sent for Funds") {
+            
+               // Object[] row = new Object[7];
+            row[0] = request;
+            row[4] = request.getSender().getEmployee().getName();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
+            row[2] = request.getCategory();
+            row[1] = request.getPatient();
+            row[3] = request.getCost();
+            
+            model.addRow(row);
+            }
+                }
+             }
+        if  (afcheckbox2.isSelected() == false && pcCheckBox1.isSelected() == false)
+        {
+         for(CFRFinanceFellowWorkRequest request : FinanceFellowOrganization.getWorkQueue().getCFRFinFellowWorkRequestList()){
+            
+                //Object[] row = new Object[7];
+            row[0] = request;
+            row[4] = request.getSender().getEmployee().getName();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
+            row[2] = request.getCategory();
+            row[1] = request.getPatient();
+            row[3] = request.getCost();
+            
+            model.addRow(row);
+            }
+       
         }
+       
+        
     }
     
+ 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable CFRFinanceWorkQueueJTable1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addfundsbtn;
+    private javax.swing.JCheckBox afcheckbox2;
+    private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JCheckBox pcCheckBox1;
+    private javax.swing.JButton sendReqJBtn;
     // End of variables declaration//GEN-END:variables
 }

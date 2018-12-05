@@ -18,6 +18,11 @@ public class CFRCaseDirectory {
     public CFRCaseDirectory() {
         caseList =  new ArrayList();
     }
+
+    public ArrayList<CFRCaseSpecs> getCaseList() {
+        return caseList;
+    }
+    
     
       public CFRCaseSpecs CreateCaseSpec(int case_id, String Patient_name, String Category, String bName, int cost, long acc_num){
         CFRCaseSpecs Cfrcase = new CFRCaseSpecs();
