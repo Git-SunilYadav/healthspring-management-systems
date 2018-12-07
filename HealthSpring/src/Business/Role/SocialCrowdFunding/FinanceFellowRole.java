@@ -12,6 +12,7 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
+import userinterface.FinanceFellowRole.FinanceFellowWorkAreaJPanel;
 
 /**
  *
@@ -21,6 +22,6 @@ public class FinanceFellowRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new AdminWorkAreaJPanel(userProcessContainer, enterprise);
+        return new FinanceFellowWorkAreaJPanel(userProcessContainer, account, organization, business);
     }
 }

@@ -12,16 +12,16 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
-import userinterface.CFRAdminRole.CFRAdminWorkAreaJPanel;
+import userinterface.CFRAdminRole.CFRStrategistWorkAreaJPanel;
 
 /**
  *
  * @author nikhi
  */
-public class CFRAdminRole extends Role{
+public class CFRStrategistRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CFRAdminWorkAreaJPanel(userProcessContainer, enterprise);
+        return new CFRStrategistWorkAreaJPanel(userProcessContainer, enterprise, organization, business);
     }
 }

@@ -9,7 +9,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Organization.AppointmentManager;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -27,14 +30,14 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private AppointmentManager organization;
     private OrganizationDirectory organizationDir;
-    private Enterprise enterprise;
+    private HospitalEnterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem system;
     public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AppointmentManager organization, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
-        this.enterprise = enterprise;
+        this.enterprise = (HospitalEnterprise)enterprise;
         this.userAccount = account;
         this.system=system;
         valueLabel.setText(enterprise.getName());
@@ -52,14 +55,17 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnManagePatient = new javax.swing.JButton();
-        btnBookAppointment = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnBookAppointment = new javax.swing.JButton();
 
         valueLabel.setText("<Value>");
 
+        jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("Organization:");
 
+        btnManagePatient.setBackground(new java.awt.Color(255, 102, 102));
         btnManagePatient.setText("Manage Patient");
         btnManagePatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,17 +73,19 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBookAppointment.setText("Book Appointment");
-        btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBookAppointmentActionPerformed(evt);
-            }
-        });
-
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setText("Request Blood");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnBookAppointment.setBackground(new java.awt.Color(255, 102, 102));
+        btnBookAppointment.setText("Book Appointment");
+        btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookAppointmentActionPerformed(evt);
             }
         });
 
@@ -93,9 +101,9 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(84, 84, 84)
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnBookAppointment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBookAppointment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                        .addComponent(btnManagePatient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnManagePatient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
                 .addContainerGap(376, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,20 +115,21 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(75, 75, 75)
                 .addComponent(btnManagePatient)
-                .addGap(39, 39, 39)
+                .addGap(48, 48, 48)
                 .addComponent(btnBookAppointment)
-                .addGap(47, 47, 47)
+                .addGap(38, 38, 38)
                 .addComponent(jButton1)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer , (HospitalEnterprise)enterprise));
+        userProcessContainer.add("CreateNewPatientJPanel", new CreateNewPatientJPanel(userProcessContainer , enterprise));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManagePatientActionPerformed
+                                                 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -130,8 +139,18 @@ public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
-        // TODO add your handling code here:
+       DoctorOrganization doctorOrganization = new DoctorOrganization();
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if(org instanceof  DoctorOrganization) {
+                doctorOrganization = (DoctorOrganization)org;
+                break;
+            }
+        }
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("BookAppointmentJPanel", new BookAppointmentJPanel(userProcessContainer, userAccount , doctorOrganization,enterprise));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

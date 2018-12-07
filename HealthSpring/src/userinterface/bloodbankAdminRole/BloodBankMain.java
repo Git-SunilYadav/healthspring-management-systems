@@ -38,7 +38,7 @@ public class BloodBankMain extends javax.swing.JPanel {
         this.BloodOrg=organization;
         this.account=account;
     
-        this.business=business;
+       this.business=business;
        
        //this.bg=new BloodGroup();
     }
@@ -126,6 +126,10 @@ public class BloodBankMain extends javax.swing.JPanel {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

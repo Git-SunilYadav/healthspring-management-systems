@@ -6,12 +6,15 @@ package Business.Organization;
 
 import Business.Role.DoctorRole;
 import Business.Role.Role;
+import Business.WorkQueue.Appointment;
 import java.util.ArrayList;
 
 public class DoctorOrganization extends Organization{
-
+    private ArrayList<Appointment> appointmentList;
+    
     public DoctorOrganization() {
         super(Organization.Type.Doctor.getValue());
+        this.appointmentList = new ArrayList<Appointment>();
     }
     
     @Override

@@ -7,23 +7,23 @@ package Business.Organization.SocialCrowdFunding;
 
 import Business.Organization.Organization;
 import Business.Role.Role;
-import Business.Role.SocialCrowdFunding.CFRAdminRole;
+import Business.Role.SocialCrowdFunding.CFRStrategistRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author nikhi
  */
-public class CFRAdminOrganization extends Organization{
+public class CFRStrategistOrganization extends Organization{
 
-    public CFRAdminOrganization() {
-        super(Type.CFRAdmin.getValue());
+    public CFRStrategistOrganization() {
+        super(Type.CFRStrategist.getValue());
     }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
             ArrayList<Role> roles = new ArrayList();
-        roles.add(new CFRAdminRole());
+        roles.add(new CFRStrategistRole());
         return roles;
      }
     

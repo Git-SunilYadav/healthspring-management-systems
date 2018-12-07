@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Blood.BloodDirectory;
+import Business.CrowdFunding.CFRFundingOrgsDirectory;
 import Business.Blood.BloodGroup;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
@@ -27,6 +28,8 @@ public abstract class Organization {
     private PatientDirectory patientDirectory;
     private BloodDirectory blddir;
     private BloodGroup bldgrp;
+   // added for Funding Orgs data
+    private CFRFundingOrgsDirectory cfrFundingDir;
     
     private int organizationID;
     private static int counter=0;
@@ -40,11 +43,13 @@ public abstract class Organization {
         VaccineAdmin("Vaccine Centre Admin"),
         BloodBankStaff("BloodBankStaff"),
         VaccineManager("Vaccine Organization"),
-        CFRAdmin("CFR Admin Organization"), 
+       // CFRAdmin("CFR Admin Organization"), 
         CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), 
         TerminalCasesManager("Terminal Cases Organization"),
-        AppointmentManager("Manage Patient Appointments ");
+        AppointmentManager("Manage Patient Appointments"),
+        CFRStrategist("CFR Strategist Organization"),
+        MakeADifference("Make A Diff Organization");
         
         private String value;
         private Type(String value) {
@@ -62,6 +67,7 @@ public abstract class Organization {
         userAccountDirectory = new UserAccountDirectory();
         patientDirectory = new PatientDirectory();
          bldgrp=new BloodGroup();
+         cfrFundingDir = new CFRFundingOrgsDirectory ();
          blddir=new BloodDirectory();
         organizationID = counter;
         ++counter;
@@ -76,6 +82,11 @@ public abstract class Organization {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
+
+    public CFRFundingOrgsDirectory getCfrFundingDir() {
+        return cfrFundingDir;
+    }
+    
     
 
     public int getOrganizationID() {

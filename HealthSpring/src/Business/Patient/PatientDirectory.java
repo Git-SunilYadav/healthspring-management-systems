@@ -13,12 +13,11 @@ import java.util.ArrayList;
  * @author nikhi
  */
 public class PatientDirectory {
- 
     
     private ArrayList<Patient> patientList;
 
     public PatientDirectory() {
-        patientList = new ArrayList<Patient>();
+        this.patientList = new ArrayList<Patient>();
     }
 
     public ArrayList<Patient> getpatientList() {

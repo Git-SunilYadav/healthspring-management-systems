@@ -4,21 +4,33 @@
  */
 package Business.WorkQueue;
 
+import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
+import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import java.util.ArrayList;
 
-/**
- *
- * @author raunak
- */
 public class WorkQueue {
     
     private ArrayList<WorkRequest> workRequestList;
-
-    public WorkQueue() {
+    private ArrayList<CFRCaseWorkRequest> CFRCaseWorkRequestList;
+    private ArrayList<CFRFinanceFellowWorkRequest> CFRFinFellowWorkRequestList;
+     public WorkQueue() {
         workRequestList = new ArrayList();
+        CFRCaseWorkRequestList = new ArrayList();
+        CFRFinFellowWorkRequestList = new ArrayList();
     }
 
     public ArrayList<WorkRequest> getWorkRequestList() {
         return workRequestList;
+        
     }
+
+    public ArrayList<CFRCaseWorkRequest> getCFRCaseWorkRequestList() {
+        return CFRCaseWorkRequestList;
+    }
+
+    public ArrayList<CFRFinanceFellowWorkRequest> getCFRFinFellowWorkRequestList() {
+        return CFRFinFellowWorkRequestList;
+    }
+    
+    
 }

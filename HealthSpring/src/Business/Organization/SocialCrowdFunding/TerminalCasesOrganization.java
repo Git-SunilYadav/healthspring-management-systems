@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class TerminalCasesOrganization extends Organization{
 
+   
     public TerminalCasesOrganization() {
         super(Type.TerminalCasesManager.getValue());
     }
