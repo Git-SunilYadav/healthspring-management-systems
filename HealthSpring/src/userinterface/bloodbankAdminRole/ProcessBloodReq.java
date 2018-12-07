@@ -5,8 +5,11 @@
  */
 package userinterface.bloodbankAdminRole;
 
+import Business.Blood.BloodGroup;
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
+import Business.Organization.BloodBankStaffOrganization;
 import Business.WorkQueue.LabTestWorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -16,14 +19,18 @@ import javax.swing.JPanel;
 public class ProcessBloodReq extends javax.swing.JPanel {
  private JPanel userProcessContainer;
  private BloodbankWorkRequest request;
+ private BloodBankStaffOrganization bldorg;
     /**
     /**
      * Creates new form ProcessBloodReq
      */
-    public ProcessBloodReq(JPanel userProcessContainer,BloodbankWorkRequest request) {
+    public ProcessBloodReq(JPanel userProcessContainer,BloodbankWorkRequest request,BloodBankStaffOrganization bldorg) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.request=request;
+        this.bldorg=bldorg;
+        jTextField1.setText(request.getBloodGroup());
+        jTextField2.setText(String.valueOf(request.getVolume()));
     }
 
     /**
@@ -35,19 +42,195 @@ public class ProcessBloodReq extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        jLabel1.setText("Respond to Blood Request ");
+
+        jLabel3.setText("Volume");
+
+        jLabel4.setText("Blood Group");
+
+        jTextField1.setColumns(7);
+        jTextField1.setEnabled(false);
+
+        jTextField2.setColumns(7);
+
+        jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String bg=jTextField1.getText();
+        int v= Integer.parseInt(jTextField2.getText());
+        if(bg.equals("A+ve")){
+            if(v<bldorg.getBldgrp().getApositive())
+                {
+                 int a=  bldorg.getBldgrp().getApositive();
+                 a=a-v;
+                 bldorg.getBldgrp().setApositive(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+         if(bg.equals("A-ve")){
+            if(v<bldorg.getBldgrp().getAnegative())
+                {
+                 int a=  bldorg.getBldgrp().getAnegative();
+                 a=a-v;
+                 bldorg.getBldgrp().setAnegative(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+        if(bg.equals("B+ve")){
+            if(v<bldorg.getBldgrp().getBpositive())
+                {
+                 int a=  bldorg.getBldgrp().getBpositive();
+                 a=a-v;
+                 bldorg.getBldgrp().setBpositive(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+        if(bg.equals("B-ve")){
+            if(v<bldorg.getBldgrp().getBnegative())
+                {
+                 int a=  bldorg.getBldgrp().getBnegative();
+                 a=a-v;
+                 bldorg.getBldgrp().setBnegative(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+        if(bg.equals("AB+ve")){
+            if(v<bldorg.getBldgrp().getABpositive())
+                {
+                 int a=  bldorg.getBldgrp().getABpositive();
+                 a=a-v;
+                 bldorg.getBldgrp().setABpositive(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+         if(bg.equals("AB-ve")){
+            if(v<bldorg.getBldgrp().getAbnegative())
+                {
+                 int a=  bldorg.getBldgrp().getAbnegative();
+                 a=a-v;
+                 bldorg.getBldgrp().setAbnegative(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+       
+         if(bg.equals("O-ve")){
+            if(v<bldorg.getBldgrp().getOnegative())
+                {
+                 int a=  bldorg.getBldgrp().getOnegative();
+                 a=a-v;
+                 bldorg.getBldgrp().setOnegative(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+          if(bg.equals("O+ve")){
+            if(v<bldorg.getBldgrp().getOpositive())
+                {
+                 int a=  bldorg.getBldgrp().getOpositive();
+                 a=a-v;
+                 bldorg.getBldgrp().setOpositive(a);
+                 request.setStatus(" approved");
+                 request.setMessage("Request approved and dispatched");
+                }
+            else{request.setMessage("The mentioned blood sample is not availble");}
+        }
+         
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+  userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ package userinterface.bloodbankAdminRole;
 import Business.Blood.BloodDirectory;
 import Business.Blood.BloodGroup;
 import Business.Blood.BloodSpecs;
+import Business.Organization.BloodBankStaffOrganization;
 import java.awt.CardLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
@@ -19,19 +20,22 @@ import javax.swing.JPanel;
 public class BloodDonation extends javax.swing.JPanel {
  private ButtonGroup bg1= new ButtonGroup();
  private int opt;
+ private String Bloodgroup;
   JPanel userProcessContainer;
-  private BloodGroup bldgrp;
+  private BloodBankStaffOrganization organization;
+ /* private BloodGroup bldgrp;
   private BloodSpecs bldsps;
-  private BloodDirectory BldDir;
+  private BloodDirectory BldDir;*/
     /**
      * Creates new form BloodDonation
      */
-    public BloodDonation(JPanel userProcessContainer, BloodDirectory blooddir,BloodGroup bg) {
+    public BloodDonation(JPanel userProcessContainer, BloodBankStaffOrganization organization) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.bldgrp=bg ;
+        this.organization=organization;
+        /*this.bldgrp=bg ;
         bldsps=new BloodSpecs();
-       this.BldDir=blooddir;
+       this.BldDir=blooddir;*/
         groupbutton();
     }
 
@@ -216,66 +220,66 @@ public class BloodDonation extends javax.swing.JPanel {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         String Name=nametxt.getText();
         int vol=Integer.parseInt(volTxt.getText());
-        bldsps.setDonorName(Name);
-        bldsps.setVolume(vol);
+        
         //..............adding blood to stocks..................
         if(AjRadioButton2.isSelected()){
            
-            int a=bldgrp.getApositive();
+            int a=organization.getBldgrp().getApositive();
             a=a+vol;
-            bldgrp.setApositive(a);
-            bldsps.setBloodGroup("A+ve");
+            organization.getBldgrp().setApositive(a);
+            Bloodgroup="A+ve";
            }
         if(_AjRadioButton1.isSelected()){
            
-            int a=bldgrp.getAnegative();
+            int a=organization.getBldgrp().getAnegative();
             a=a+vol;
-            bldgrp.setAnegative(a);
-             bldsps.setBloodGroup("A-ve");
+            organization.getBldgrp().setAnegative(a);
+             Bloodgroup="A-ve";
            }
          if(_BjRadioButton3.isSelected()){
            
-            int a=bldgrp.getBnegative();
+            int a=organization.getBldgrp().getBnegative();
             a=a+vol;
-            bldgrp.setBnegative(a);
-             bldsps.setBloodGroup("B-ve");
+            organization.getBldgrp().setBnegative(a);
+            Bloodgroup="B-ve";
            }
          if(BjRadioButton4.isSelected()){
            
-            int a=bldgrp.getBpositive();
+            int a=organization.getBldgrp().getBpositive();
             a=a+vol;
-            bldgrp.setBpositive(a);
-             bldsps.setBloodGroup("B+ve");
+            organization.getBldgrp().setBpositive(a);
+         Bloodgroup="B+ve";
            }
          if(_OjRadioButton5.isSelected()){
            
-            int a=bldgrp.getOnegative();
+            int a=organization.getBldgrp().getOnegative();
             a=a+vol;
-            bldgrp.setOnegative(a);
-             bldsps.setBloodGroup("O-ve");
+            organization.getBldgrp().setOnegative(a);
+             Bloodgroup="O-ve";
            }
            if(OjRadioButton6.isSelected()){
            
-            int a=bldgrp.getOpositive();
+            int a=organization.getBldgrp().getOpositive();
             a=a+vol;
-            bldgrp.setOpositive(a);
-             bldsps.setBloodGroup("O-ve");
+            organization.getBldgrp().setOpositive(a);
+             Bloodgroup="O-ve";
            }
           if(_ABjRadioButton7.isSelected()){
            
-            int a=bldgrp.getAbnegative();
+            int a=organization.getBldgrp().getAbnegative();
             a=a+vol;
-            bldgrp.setAbnegative(a);
-             bldsps.setBloodGroup("AB-ve");
+            organization.getBldgrp().setAbnegative(a);
+             Bloodgroup="AB-ve";
            }
             if(ABjRadioButton8.isSelected()){
            
-            int a=bldgrp.getABpositive();
+            int a=organization.getBldgrp().getABpositive();
             a=a+vol;
-            bldgrp.setABpositive(a);
-             bldsps.setBloodGroup("AB+ve");}
+            organization.getBldgrp().setABpositive(a);
+             Bloodgroup="AB+ve";
+            }
             
-              BldDir.CreateBloodSpec( Name, bldsps.getBloodGroup(), vol);
+              organization.getBlddir().CreateBloodSpec(Name, Bloodgroup, vol);
               
            
         

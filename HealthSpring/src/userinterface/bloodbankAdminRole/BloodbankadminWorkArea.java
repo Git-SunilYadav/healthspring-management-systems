@@ -5,6 +5,7 @@
  */
 package userinterface.bloodbankAdminRole;
 
+import Business.Blood.BloodGroup;
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -29,15 +30,17 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
     private BloodBankStaffOrganization bldorg;
       private EcoSystem business;
     private UserAccount userAccount;
+
     /**
      * Creates new form BloodbankadminWorkArea
      */
-    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
-        this.bldorg=(BloodBankStaffOrganization)organization;
+        this.bldorg=organization;
         this.business = business;
         this.userAccount=account;
+        
        populateTable();
      
     }
@@ -70,17 +73,17 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Blood Group", "Volume", "Status", "Receiver"
+                "Blood Group", "Volume", "Status", "Receiver", "Messege"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, true
+                true, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -164,7 +167,7 @@ public void populateTable(){
                  for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()){
                     if (organization instanceof BloodBankStaffOrganization){
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             BloodbankWorkRequest bld=(BloodbankWorkRequest)request;
                          System.out.println(bld);
             row[0] = bld;
@@ -173,6 +176,7 @@ public void populateTable(){
             row[1] = vol;
             row[2] =request.getStatus();
             row[3]=request.getReceiver();
+            row[4]=request.getMessage();
             model.addRow(row);
         }
                     
@@ -195,7 +199,7 @@ public void populateTable(){
      
         request.setStatus("Processing");
         
-        ProcessBloodReq ProcessBloodReq = new ProcessBloodReq(userProcessContainer, request);
+        ProcessBloodReq ProcessBloodReq = new ProcessBloodReq(userProcessContainer, request, bldorg);
         userProcessContainer.add("ProcessBloodReq", ProcessBloodReq);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);        // TODO add your handling code here:

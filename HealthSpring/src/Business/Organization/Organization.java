@@ -4,6 +4,8 @@
  */
 package Business.Organization;
 
+import Business.Blood.BloodDirectory;
+import Business.Blood.BloodGroup;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
 import Business.Role.AppointmentManagerRole;
@@ -23,6 +25,8 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private PatientDirectory patientDirectory;
+    private BloodDirectory blddir;
+    private BloodGroup bldgrp;
     
     private int organizationID;
     private static int counter=0;
@@ -57,6 +61,8 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         patientDirectory = new PatientDirectory();
+         bldgrp=new BloodGroup();
+         blddir=new BloodDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -94,6 +100,22 @@ public abstract class Organization {
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public BloodDirectory getBlddir() {
+        return blddir;
+    }
+
+    public void setBlddir(BloodDirectory blddir) {
+        this.blddir = blddir;
+    }
+
+    public BloodGroup getBldgrp() {
+        return bldgrp;
+    }
+
+    public void setBldgrp(BloodGroup bldgrp) {
+        this.bldgrp = bldgrp;
     }
 
     @Override

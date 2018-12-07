@@ -7,6 +7,7 @@ package userinterface.bloodbankAdminRole;
 
 import Business.Blood.BloodGroup;
 import Business.Blood.BloodSpecs;
+import Business.Organization.BloodBankStaffOrganization;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -17,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Stock extends javax.swing.JPanel {
      private JPanel userProcessContainer;
-     private BloodGroup bg;
+     private  BloodBankStaffOrganization org;
     /**
      * Creates new form BloodBankProcessWorkRequest
      */
-    public Stock(  JPanel userProcessContainer, BloodGroup BloodGroup) {
+    public Stock(  JPanel userProcessContainer,  BloodBankStaffOrganization org) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.bg=BloodGroup;
+        this.org=org;
     populateTable();
     }
 
@@ -118,14 +119,14 @@ public class Stock extends javax.swing.JPanel {
             
             
 
-            tm.setValueAt( String.valueOf(bg.getApositive()), 0, 1);
-            tm.setValueAt( String.valueOf(bg.getAnegative()), 1, 1);
-            tm.setValueAt( String.valueOf(bg.getBpositive()), 2, 1);
-            tm.setValueAt( String.valueOf(bg.getBnegative()), 3, 1);
-            tm.setValueAt( String.valueOf(bg.getOpositive()), 4, 1);
-            tm.setValueAt( String.valueOf(bg.getOnegative()), 5, 1);
-            tm.setValueAt( String.valueOf(bg.getABpositive()), 6, 1);
-            tm.setValueAt( String.valueOf(bg.getAbnegative()), 7, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getApositive()), 0, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getAnegative()), 1, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getBpositive()), 2, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getBnegative()), 3, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getOpositive()), 4, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getOnegative()), 5, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getABpositive()), 6, 1);
+            tm.setValueAt( String.valueOf(org.getBldgrp().getAbnegative()), 7, 1);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         userProcessContainer.remove(this);

@@ -22,24 +22,25 @@ import javax.swing.JPanel;
 public class BloodBankMain extends javax.swing.JPanel {
     private  JPanel userProcessContainer;
  
-    private BloodDirectory blooddir;
-    private BloodGroup bg;
+    
+   // private BloodGroup bg;
     private BloodBankStaffOrganization BloodOrg;
     private UserAccount account;
-    private Organization organization;
+ 
     private EcoSystem business;
+    
     /**
      * Creates new form BloodBankMain
      */
-    public BloodBankMain(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public BloodBankMain(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.BloodOrg=(BloodBankStaffOrganization)organization;
+        this.BloodOrg=organization;
         this.account=account;
-        this.organization=organization;
+    
         this.business=business;
-       this.blooddir=new BloodDirectory();
-       this.bg=new BloodGroup();
+       
+       //this.bg=new BloodGroup();
     }
 
     /**
@@ -132,25 +133,25 @@ public class BloodBankMain extends javax.swing.JPanel {
 
     private void addDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonationActionPerformed
           CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BloodDonation", new BloodDonation(userProcessContainer,blooddir,bg));
+        userProcessContainer.add("BloodDonation", new BloodDonation(userProcessContainer,BloodOrg));
         layout.next(userProcessContainer);        // TODO add your handling code here:
     }//GEN-LAST:event_addDonationActionPerformed
 
     private void reservesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservesActionPerformed
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("Stock", new Stock(userProcessContainer,bg));
+        userProcessContainer.add("Stock", new Stock(userProcessContainer,BloodOrg));
         layout.next(userProcessContainer);     // TODO add your handling code here:
     }//GEN-LAST:event_reservesActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,organization,business));
+        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,BloodOrg,business));
         layout.next(userProcessContainer);    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void donorRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donorRecordsActionPerformed
          CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("DonorRecords", new DonorRecords(userProcessContainer,blooddir));
+        userProcessContainer.add("DonorRecords", new DonorRecords(userProcessContainer,BloodOrg));
         layout.next(userProcessContainer);  
         // TODO add your handling code here:
     }//GEN-LAST:event_donorRecordsActionPerformed

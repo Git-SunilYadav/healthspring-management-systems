@@ -56,20 +56,20 @@ public class RequestBlood extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Blood Group", "Volume", "Status"
+                "Blood Group", "Volume", "Status", "Messege"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,7 +136,7 @@ public class RequestBlood extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             String bld=((BloodbankWorkRequest)request).getBloodGroup();
                          
             row[0] = bld;
@@ -144,6 +144,7 @@ public class RequestBlood extends javax.swing.JPanel {
          
             row[1] = vol;
             row[2] =request.getStatus();
+            row[3]=request.getMessage();
             
             model.addRow(row);
         }
