@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AppointmentManagerRole;
+package userinterface.ManagerRole;
 
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.EcoSystem;

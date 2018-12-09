@@ -63,8 +63,8 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         // create Appointment manager 
-        else if (type.getValue().equals(Type.AppointmentManager.getValue())){
-            organization = new AppointmentManager();
+        else if (type.getValue().equals(Type.Manager.getValue())){
+            organization = new Manager();
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.VaccineManager.getValue())){

@@ -23,6 +23,7 @@ public class BloodDonation extends javax.swing.JPanel {
  private int opt;
  private String Bloodgroup;
   JPanel userProcessContainer;
+  private  Boolean b;
   private BloodBankStaffOrganization organization;
  /* private BloodGroup bldgrp;
   private BloodSpecs bldsps;
@@ -34,6 +35,7 @@ public class BloodDonation extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.organization=organization;
+          this.b=true;
         /*this.bldgrp=bg ;
         bldsps=new BloodSpecs();
        this.BldDir=blooddir;*/
@@ -70,7 +72,6 @@ public class BloodDonation extends javax.swing.JPanel {
         submitBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         bl = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -88,6 +89,11 @@ public class BloodDonation extends javax.swing.JPanel {
 
         _AjRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         _AjRadioButton1.setText("-A");
+        _AjRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _AjRadioButton1MouseClicked(evt);
+            }
+        });
         _AjRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _AjRadioButton1ActionPerformed(evt);
@@ -96,6 +102,11 @@ public class BloodDonation extends javax.swing.JPanel {
 
         AjRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         AjRadioButton2.setText("+A");
+        AjRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AjRadioButton2MouseClicked(evt);
+            }
+        });
         AjRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AjRadioButton2ActionPerformed(evt);
@@ -104,30 +115,70 @@ public class BloodDonation extends javax.swing.JPanel {
 
         _BjRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         _BjRadioButton3.setText("-B");
+        _BjRadioButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _BjRadioButton3MouseClicked(evt);
+            }
+        });
 
         BjRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         BjRadioButton4.setText("+B");
+        BjRadioButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BjRadioButton4MouseClicked(evt);
+            }
+        });
 
         _OjRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         _OjRadioButton5.setText("-O");
+        _OjRadioButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _OjRadioButton5MouseClicked(evt);
+            }
+        });
 
         OjRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         OjRadioButton6.setText("+O");
+        OjRadioButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OjRadioButton6MouseClicked(evt);
+            }
+        });
 
         _ABjRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         _ABjRadioButton7.setText("-AB");
+        _ABjRadioButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _ABjRadioButton7MouseClicked(evt);
+            }
+        });
 
         ABjRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ABjRadioButton8.setText("+AB");
+        ABjRadioButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ABjRadioButton8MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Volume:");
 
         nametxt.setColumns(15);
         nametxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nametxtKeyReleased(evt);
+            }
+        });
 
         volTxt.setColumns(7);
         volTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        volTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                volTxtKeyReleased(evt);
+            }
+        });
 
         submitBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         submitBtn.setText("Submit");
@@ -147,8 +198,6 @@ public class BloodDonation extends javax.swing.JPanel {
 
         jLabel5.setText("1 Unit=(350ml)");
 
-        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
-
         bl.setForeground(new java.awt.Color(255, 51, 51));
 
         jLabel8.setForeground(new java.awt.Color(255, 51, 51));
@@ -165,56 +214,49 @@ public class BloodDonation extends javax.swing.JPanel {
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(87, 87, 87)
-                                        .addComponent(submitBtn))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(35, 35, 35)
-                                                .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(39, 39, 39)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(bl, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton2)
+                                .addGap(87, 87, 87)
+                                .addComponent(submitBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(35, 35, 35)
+                                .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bl, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(_AjRadioButton1)
                                     .addComponent(_OjRadioButton5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(OjRadioButton6)
-                                        .addGap(18, 18, 18)
+                                        .addGap(35, 35, 35)
                                         .addComponent(_ABjRadioButton7))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(AjRadioButton2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(_BjRadioButton3)))
-                                .addGap(18, 18, 18)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(_BjRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BjRadioButton4)
-                                    .addComponent(ABjRadioButton8))))))
-                .addGap(108, 255, Short.MAX_VALUE))
+                                    .addComponent(ABjRadioButton8)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(378, 448, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,43 +264,40 @@ public class BloodDonation extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(_AjRadioButton1)
-                            .addComponent(AjRadioButton2)
-                            .addComponent(_BjRadioButton3)
-                            .addComponent(BjRadioButton4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(OjRadioButton6)
-                            .addComponent(_ABjRadioButton7)
-                            .addComponent(ABjRadioButton8)
-                            .addComponent(_OjRadioButton5)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
                     .addComponent(bl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(_AjRadioButton1)
+                    .addComponent(AjRadioButton2)
+                    .addComponent(_BjRadioButton3)
+                    .addComponent(BjRadioButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OjRadioButton6)
+                    .addComponent(_ABjRadioButton7)
+                    .addComponent(ABjRadioButton8)
+                    .addComponent(_OjRadioButton5))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitBtn)
                     .addComponent(jButton2))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -282,10 +321,10 @@ public class BloodDonation extends javax.swing.JPanel {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
      jLabel8.setText("");
      bl.setText("");
-     jLabel6.setText("");
      jLabel9.setText("");
+     b=true;
    
-        Boolean b=true;
+    
           if(bg1.getSelection()==null){bl.setText("Select a bloodgroup");
           b=false;
      }
@@ -293,15 +332,16 @@ public class BloodDonation extends javax.swing.JPanel {
         if(nametxt.getText().trim().isEmpty()){
        jLabel9.setText(" Name field is empty");
         b=false;;}
-         if(volTxt.getText().trim().isEmpty()){
-           jLabel8.setText("Volume field is empty");
-         b=false;}
+         
          try{int x=Integer.parseInt(volTxt.getText());
          }
          catch(NumberFormatException e){
-             jLabel6.setText("Enter valid number");
+             jLabel8.setText("Enter valid number");
              b=false;
          }
+         if(volTxt.getText().trim().isEmpty()){
+           jLabel8.setText("Volume field is empty");
+         b=false;}
        if(b){
         int vol=Integer.parseInt(volTxt.getText());
         
@@ -387,6 +427,59 @@ public class BloodDonation extends javax.swing.JPanel {
     //    CreateBloodSpec(Name, BloodGroup,vol);
         // TODO add your handling code here:
     }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void nametxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nametxtKeyReleased
+         jLabel9.setText("");
+        if(nametxt.getText().trim().isEmpty()){
+       jLabel9.setText(" Name field is empty");
+        b=false;;} // TODO add your handling code here:
+    }//GEN-LAST:event_nametxtKeyReleased
+
+    private void volTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_volTxtKeyReleased
+        jLabel8.setText(""); 
+        try{int x=Integer.parseInt(volTxt.getText());
+         }
+         catch(NumberFormatException e){
+             jLabel8.setText("Enter valid number");
+             b=false;
+         }
+             if(volTxt.getText().trim().isEmpty()){
+           jLabel8.setText("Volume field is empty");
+         b=false;}
+// TODO add your handling code here:
+    }//GEN-LAST:event_volTxtKeyReleased
+
+    private void _BjRadioButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__BjRadioButton3MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event__BjRadioButton3MouseClicked
+
+    private void _AjRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__AjRadioButton1MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event__AjRadioButton1MouseClicked
+
+    private void AjRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjRadioButton2MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_AjRadioButton2MouseClicked
+
+    private void BjRadioButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BjRadioButton4MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_BjRadioButton4MouseClicked
+
+    private void _OjRadioButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__OjRadioButton5MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event__OjRadioButton5MouseClicked
+
+    private void OjRadioButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OjRadioButton6MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_OjRadioButton6MouseClicked
+
+    private void _ABjRadioButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__ABjRadioButton7MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event__ABjRadioButton7MouseClicked
+
+    private void ABjRadioButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABjRadioButton8MouseClicked
+ bl.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_ABjRadioButton8MouseClicked
 public void groupbutton(){
    // ButtonGroup bg1= new ButtonGroup();
         ABjRadioButton8.setActionCommand("ABjRadioButton8");
@@ -434,7 +527,6 @@ public void groupbutton(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nametxt;

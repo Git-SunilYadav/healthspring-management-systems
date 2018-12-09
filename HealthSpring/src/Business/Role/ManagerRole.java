@@ -7,21 +7,20 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.AppointmentManager;
+import Business.Organization.Manager;
 //import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
-import static Business.Organization.Organization.Type.AppointmentManager;
+import static Business.Organization.Organization.Type.Manager;
 import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.AppointmentManagerRole.AppointmentManagerWorkAreaJPanel;
+import userinterface.ManagerRole.ManagerWorkAreaJPanel;
 //import userinterface.DoctorRole.DoctorWorkAreaJPanel;
-
 /**
  *
  * @author nikhi
  */
-public class AppointmentManagerRole extends Role {
+public class ManagerRole extends Role {
  /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -30,7 +29,7 @@ public class AppointmentManagerRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new AppointmentManagerWorkAreaJPanel(userProcessContainer, account, (AppointmentManager) organization, enterprise,business);
+        return new ManagerWorkAreaJPanel(userProcessContainer, account, (Manager) organization, enterprise,business);
     }
     
     

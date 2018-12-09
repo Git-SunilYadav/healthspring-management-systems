@@ -19,6 +19,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+//import org.jfree.data.category.DefaultCategoryDataset;
 
 import userinterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
 
@@ -30,6 +31,7 @@ public class ProcessBloodReq extends javax.swing.JPanel {
  private JPanel userProcessContainer;
  private BloodbankWorkRequest request;
  private BloodBankStaffOrganization bldorg;
+ private  Boolean w;
     /**
     /**
      * Creates new form ProcessBloodReq
@@ -41,6 +43,7 @@ public class ProcessBloodReq extends javax.swing.JPanel {
         this.bldorg=bldorg;
         jTextField1.setText(request.getBloodGroup());
         jTextField2.setText(String.valueOf(request.getVolume()));
+        this.w=true;
     }
 
     /**
@@ -62,6 +65,8 @@ public class ProcessBloodReq extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        MsgLbl = new javax.swing.JLabel();
+        volLbl = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Respond to Blood Request ");
@@ -78,6 +83,19 @@ public class ProcessBloodReq extends javax.swing.JPanel {
 
         jTextField2.setColumns(7);
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Submit");
@@ -105,9 +123,19 @@ public class ProcessBloodReq extends javax.swing.JPanel {
 
         jTextField3.setColumns(7);
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Messege");
+
+        MsgLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        volLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        volLbl.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,9 +164,14 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3))
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                                        .addComponent(jButton3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(volLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(MsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,33 +179,53 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton3)))
+                    .addComponent(volLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(MsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Boolean w=true;
+         w=true;
+      int vol=0;
+        if(jTextField2.getText().isEmpty()){volLbl.setText("Volume field is empty"); w=false;}
+          
+          
+          
         String bg=jTextField1.getText();
-        int v= Integer.parseInt(jTextField2.getText());
+        
+               try{int q=Integer.parseInt(jTextField2.getText());
+         }
+         catch(NumberFormatException e){
+             volLbl.setText("Enter valid number");
+             w=false;
+         }
+      
+        
         String msg=jTextField3.getText();
         if(bg.equals("A+ve")){
-            if(v<bldorg.getBldgrp().getApositive())
+            int v= Integer.parseInt(jTextField2.getText());
+            vol=v;
+            if(v<=bldorg.getBldgrp().getApositive())
                 {
                  int a=  bldorg.getBldgrp().getApositive();
                  a=a-v;
@@ -185,7 +238,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             }
         }
          if(bg.equals("A-ve")){
-            if(v<bldorg.getBldgrp().getAnegative())
+             int v= Integer.parseInt(jTextField2.getText());
+             vol=v;
+            if(v<=bldorg.getBldgrp().getAnegative())
                 {
                  int a=  bldorg.getBldgrp().getAnegative();
                  a=a-v;
@@ -198,7 +253,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("B+ve")){
-            if(v<bldorg.getBldgrp().getBpositive())
+            int v= Integer.parseInt(jTextField2.getText());
+            vol=v;
+            if(v<=bldorg.getBldgrp().getBpositive())
                 {
                  int a=  bldorg.getBldgrp().getBpositive();
                  a=a-v;
@@ -211,7 +268,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("B-ve")){
-            if(v<bldorg.getBldgrp().getBnegative())
+            int v= Integer.parseInt(jTextField2.getText());
+            vol=v;
+            if(v<=bldorg.getBldgrp().getBnegative())
                 {
                  int a=  bldorg.getBldgrp().getBnegative();
                  a=a-v;
@@ -224,7 +283,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("AB+ve")){
-            if(v<bldorg.getBldgrp().getABpositive())
+            int v= Integer.parseInt(jTextField2.getText());
+            vol=v;
+            if(v<=bldorg.getBldgrp().getABpositive())
                 {
                  int a=  bldorg.getBldgrp().getABpositive();
                  a=a-v;
@@ -237,7 +298,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
          if(bg.equals("AB-ve")){
-            if(v<bldorg.getBldgrp().getAbnegative())
+             int v= Integer.parseInt(jTextField2.getText());
+             vol=v;
+            if(v<=bldorg.getBldgrp().getAbnegative())
                 {
                  int a=  bldorg.getBldgrp().getAbnegative();
                  a=a-v;
@@ -251,7 +314,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
         }
        
          if(bg.equals("O-ve")){
-            if(v<bldorg.getBldgrp().getOnegative())
+             int v= Integer.parseInt(jTextField2.getText());
+             vol=v;
+            if(v<=bldorg.getBldgrp().getOnegative())
                 {
                  int a=  bldorg.getBldgrp().getOnegative();
                  a=a-v;
@@ -264,7 +329,9 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             }
         }
           if(bg.equals("O+ve")){
-            if(v<bldorg.getBldgrp().getOpositive())
+              int v= Integer.parseInt(jTextField2.getText());
+              vol=v;
+            if(v<=bldorg.getBldgrp().getOpositive())
                 {
                  int a=  bldorg.getBldgrp().getOpositive();
                  a=a-v;
@@ -275,14 +342,16 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                 }
            else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
                jTextField3.setText("Value updated due to insufficient stock");
-               w=false;    
+               w=false;   
             }
-           
+            
         }
         if(w){
             request.setMessage(msg);
-            request.setVolume(v);
+            request.setVolume(vol);
             JOptionPane.showMessageDialog(null,"Successful!");
+             jButton1.setEnabled(false);
+            
             }  
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -318,8 +387,61 @@ public class ProcessBloodReq extends javax.swing.JPanel {
         chtfrm.setSize(500,400);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+      volLbl.setText(""); 
+      jButton1.setEnabled(true);
+        try{int x=Integer.parseInt(jTextField2.getText());
+         }
+         catch(NumberFormatException e){
+             volLbl.setText("Enter valid number");
+             w=false;
+             jButton1.setEnabled(false);
+         }
+             if(jTextField2.getText().trim().isEmpty()){
+           volLbl.setText("Volume field is empty");
+         w=false;
+             jButton1.setEnabled(false);} 
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+           volLbl.setText(""); 
+      jButton1.setEnabled(true);
+        try{int x=Integer.parseInt(jTextField2.getText());
+         }
+         catch(NumberFormatException e){
+             volLbl.setText("Enter valid number");
+             w=false;
+             jButton1.setEnabled(false);
+         }
+             if(jTextField2.getText().trim().isEmpty()){
+           volLbl.setText("Volume field is empty");
+         w=false;
+             jButton1.setEnabled(false);} // TODO   // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+            volLbl.setText(""); 
+      jButton1.setEnabled(true);
+        try{int x=Integer.parseInt(jTextField2.getText());
+         }
+         catch(NumberFormatException e){
+             volLbl.setText("Enter valid number");
+             w=false;
+             jButton1.setEnabled(false);
+         }
+             if(jTextField2.getText().trim().isEmpty()){
+           volLbl.setText("Volume field is empty");
+         w=false;
+             jButton1.setEnabled(false);}   // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2FocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MsgLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -330,5 +452,6 @@ public class ProcessBloodReq extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel volLbl;
     // End of variables declaration//GEN-END:variables
 }

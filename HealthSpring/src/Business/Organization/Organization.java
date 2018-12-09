@@ -11,7 +11,7 @@ import Business.Blood.BloodGroup;
 import Business.CrowdFunding.CFRPartnerBanksDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
-import Business.Role.AppointmentManagerRole;
+import Business.Role.ManagerRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.Vaccine.VaccineDetailsDirectory;
@@ -55,7 +55,7 @@ public abstract class Organization {
         CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), 
         TerminalCasesManager("Terminal Cases Organization"),
-        AppointmentManager("Manage Patient Appointments"),
+        Manager("Manager"),
         CFRStrategist("CFR Strategist Organization"),
         MakeADifference("Make A Diff Organization");
        // VaccineManager("Vaccine Manager"),
