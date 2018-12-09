@@ -4,8 +4,10 @@
  */
 package Business.Organization;
 
+import Business.Blood.BloodDirectory;
 import Business.CrowdFunding.CFRFundingOrgsDirectory;
 import Business.CrowdFunding.CFRFundsReceivedDirectory;
+import Business.Blood.BloodGroup;
 import Business.CrowdFunding.CFRPartnerBanksDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
@@ -28,6 +30,8 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private PatientDirectory patientDirectory;
+    private BloodDirectory blddir;
+    private BloodGroup bldgrp;
    // added for Funding Orgs data
     private CFRFundingOrgsDirectory cfrFundingDir;
     private CFRFundsReceivedDirectory cfrFundsReceivedDir;
@@ -74,8 +78,10 @@ public abstract class Organization {
          employeeDirectory = new EmployeeDirectory();
          userAccountDirectory = new UserAccountDirectory();
          patientDirectory = new PatientDirectory();
+         bldgrp=new BloodGroup();
          cfrFundingDir = new CFRFundingOrgsDirectory ();
          cfrFundsReceivedDir = new CFRFundsReceivedDirectory();
+         blddir=new BloodDirectory();
          cfrPartnerBanksDir = new CFRPartnerBanksDirectory();
          organizationID = counter;
          vaccineDetailsDir = new VaccineDetailsDirectory();
@@ -143,6 +149,22 @@ public abstract class Organization {
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public BloodDirectory getBlddir() {
+        return blddir;
+    }
+
+    public void setBlddir(BloodDirectory blddir) {
+        this.blddir = blddir;
+    }
+
+    public BloodGroup getBldgrp() {
+        return bldgrp;
+    }
+
+    public void setBldgrp(BloodGroup bldgrp) {
+        this.bldgrp = bldgrp;
     }
 
     @Override

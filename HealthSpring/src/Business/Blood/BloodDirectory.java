@@ -18,7 +18,6 @@ public class BloodDirectory {
      private BloodGroup bloodgroup;
      public BloodDirectory() {
         BloodList = new ArrayList();
-        bloodgroup=new BloodGroup();
     }
 
     public ArrayList<BloodSpecs> getBloodList() {
@@ -32,7 +31,6 @@ public class BloodDirectory {
         blood.setVolume(Volume);
         BloodList.add(blood);
      
-        
         return blood;
 }
 

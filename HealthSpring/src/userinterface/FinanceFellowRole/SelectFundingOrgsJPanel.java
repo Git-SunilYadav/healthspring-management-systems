@@ -9,6 +9,7 @@ import Business.CrowdFunding.CFRFundingOrgs;
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.EcoSystem;
 import Business.EmailNotify.EmailSender;
+//import Business.EmailNotify.EmailSender;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;

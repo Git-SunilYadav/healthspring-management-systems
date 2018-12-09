@@ -12,7 +12,7 @@ import Business.CrowdFunding.CFRPartnerBanks;
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.CrowdFundingWorkQueue.CFRFundsReceivedWorkRequest;
 import Business.EcoSystem;
-import Business.EmailNotify.EmailSender;
+//import Business.EmailNotify.EmailSender;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;

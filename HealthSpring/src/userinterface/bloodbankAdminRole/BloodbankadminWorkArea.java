@@ -5,6 +5,7 @@
  */
 package userinterface.bloodbankAdminRole;
 
+import Business.Blood.BloodGroup;
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -14,6 +15,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.AdministrativeRole.ManageEmployeeJPanel;
@@ -29,15 +31,20 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
     private BloodBankStaffOrganization bldorg;
       private EcoSystem business;
     private UserAccount userAccount;
+    private Enterprise enterprise;
+
     /**
      * Creates new form BloodbankadminWorkArea
      */
-    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
+    public BloodbankadminWorkArea(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business, Enterprise enterprise) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.bldorg=organization;
         this.business = business;
         this.userAccount=account;
+        this.enterprise=enterprise;
+       enterpriseLabel.setText(enterprise.getName());
+        
        populateTable();
      
     }
@@ -53,34 +60,34 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         request = new javax.swing.JButton();
         assign = new javax.swing.JButton();
+        enterpriseLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
 
+        enterpriseLabel.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("Blood Bank :");
-
-        valueLabel.setText("<value>");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Blood Group", "Volume", "Status", "Receiver"
+                "Blood Group", "Sender", "Status", "Volume", "Receiver", "Messege"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, true
+                true, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -89,6 +96,7 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +104,7 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             }
         });
 
+        request.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         request.setText("Respond to request");
         request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +112,16 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             }
         });
 
+        assign.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         assign.setText("Assign to me");
         assign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignActionPerformed(evt);
             }
         });
+
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel1.setText("Blood Bank :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,42 +130,46 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(jButton1)
                         .addGap(29, 29, 29)
                         .addComponent(assign)
                         .addGap(77, 77, 77)
-                        .addComponent(request)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addComponent(request))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel))
-                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(enterpriseLabel1)
+                        .addGap(34, 34, 34)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(request)
                     .addComponent(assign))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 public void populateTable(){
@@ -164,15 +181,17 @@ public void populateTable(){
                  for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()){
                     if (organization instanceof BloodBankStaffOrganization){
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[6];
             BloodbankWorkRequest bld=(BloodbankWorkRequest)request;
                          System.out.println(bld);
             row[0] = bld;
             String vol=String.valueOf(((BloodbankWorkRequest)request).getVolume());
                          System.out.println(vol);
-            row[1] = vol;
+            row[3] = vol;
             row[2] =request.getStatus();
-            row[3]=request.getReceiver();
+            row[4]=request.getReceiver();
+            row[5]=request.getMessage();
+            row[1]=request.getSender();
             model.addRow(row);
         }
                     
@@ -190,15 +209,19 @@ public void populateTable(){
         if (selectedRow < 0){
             return;
         }
-        
+       
         BloodbankWorkRequest request = (BloodbankWorkRequest)jTable1.getValueAt(selectedRow, 0);
-     
+        
+      if(request.getReceiver()== userAccount && (request.getStatus().equalsIgnoreCase("Pending") || request.getStatus().equalsIgnoreCase("Processing"))){
         request.setStatus("Processing");
         
-        ProcessBloodReq ProcessBloodReq = new ProcessBloodReq(userProcessContainer, request);
+        ProcessBloodReq ProcessBloodReq = new ProcessBloodReq(userProcessContainer, request, bldorg);
         userProcessContainer.add("ProcessBloodReq", ProcessBloodReq);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);        // TODO add your handling code here:
+        layout.next(userProcessContainer);   
+      }
+      else{
+      JOptionPane.showMessageDialog(null, "You are not authorized to access this request or this request is already completed");}// TODO add your handling code here:
     }//GEN-LAST:event_requestActionPerformed
 
     private void assignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignActionPerformed
@@ -209,9 +232,14 @@ public void populateTable(){
         }
         
         WorkRequest request = (WorkRequest)jTable1.getValueAt(selectedRow, 0);
+      if(request.getStatus().equalsIgnoreCase("New Request"))
+      {
         request.setReceiver(userAccount);
         request.setStatus("Pending");
         populateTable();
+      }
+      else{
+      JOptionPane.showMessageDialog(null, "This request is already assigned");}
                 // TODO add your handling code here:
     }//GEN-LAST:event_assignActionPerformed
 
@@ -219,11 +247,11 @@ public void populateTable(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assign;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton request;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

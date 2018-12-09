@@ -7,6 +7,7 @@ package userinterface.bloodbankAdminRole;
 
 import Business.Blood.BloodDirectory;
 import Business.Blood.BloodSpecs;
+import Business.Organization.BloodBankStaffOrganization;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -17,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DonorRecords extends javax.swing.JPanel {
   private JPanel userProcessContainer;
-  private BloodDirectory blddir;
+  private BloodBankStaffOrganization org;
     /**
      * Creates new form DonorRecords
      */
-    public DonorRecords(JPanel userProcessContainer,BloodDirectory blooddir) {
+    public DonorRecords(JPanel userProcessContainer,BloodBankStaffOrganization org) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.blddir=blooddir;
+        this.org=org;
         populateTable();
     }
 
@@ -41,6 +42,8 @@ public class DonorRecords extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,8 +66,10 @@ public class DonorRecords extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Donor Records");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +103,7 @@ public class DonorRecords extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton1)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     private void populateTable(){
@@ -108,7 +113,7 @@ public class DonorRecords extends javax.swing.JPanel {
             model.removeRow(i); 
         }
         
-        for(BloodSpecs b : blddir.getBloodList()) {
+        for(BloodSpecs b : org.getBlddir().getBloodList()) {
             Object row[] = new Object[3];
             row[0] = b;
             row[1] = b.getBloodGroup();

@@ -10,15 +10,25 @@ package Business.Blood;
  * @author mihir
  */
 public class BloodGroup {
-    private static int Apositive=0;
-    private static int Anegative=0;
-    private static int Bpositive=0;
-    private static int Bnegative=0;
-    private static int Opositive=0;
-    private static int Onegative=0;
-    private static int ABpositive=0;
-    private static int Abnegative=0;
+    private  int Apositive;
+    private  int Anegative;
+    private  int Bpositive;
+    private  int Bnegative;
+    private  int Opositive;
+    private  int Onegative;
+    private  int ABpositive;
+    private  int Abnegative;
 
+    public void BloodGroup(){
+        this.Anegative=0;
+        this.Bpositive=0;
+        this.Bnegative=0;
+        this.Opositive=0;
+        this.Onegative=0;
+        this.ABpositive=0;
+        this.Abnegative=0;
+    }
+ 
     public int getBnegative() {
         return Bnegative;
     }

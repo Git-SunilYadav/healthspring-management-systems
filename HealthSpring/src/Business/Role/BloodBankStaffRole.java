@@ -23,7 +23,7 @@ public class BloodBankStaffRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new BloodBankMain(userProcessContainer, account,(BloodBankStaffOrganization)organization,business);
+        return new BloodBankMain(userProcessContainer, account,(BloodBankStaffOrganization)organization,business,enterprise);
     }
     
 }
