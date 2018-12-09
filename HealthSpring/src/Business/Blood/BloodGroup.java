@@ -10,7 +10,7 @@ package Business.Blood;
  * @author mihir
  */
 public class BloodGroup {
-     private static int Apositive=0;
+    private static int Apositive=0;
     private static int Anegative=0;
     private static int Bpositive=0;
     private static int Bnegative=0;

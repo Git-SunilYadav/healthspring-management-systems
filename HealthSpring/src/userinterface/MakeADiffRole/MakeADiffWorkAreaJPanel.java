@@ -58,16 +58,29 @@ public class MakeADiffWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
+        awfundsjCheckBox1 = new javax.swing.JCheckBox();
+        fundsrecjCheckBox2 = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        searchtxt = new javax.swing.JTextField();
+        txtsearch = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        vaccineReqbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestTestJButton.setBackground(new java.awt.Color(255, 102, 102));
-        requestTestJButton.setText("REQUEST FUNDING");
+        requestTestJButton.setText("NEW FUNDING REQUEST");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 271, -1, 30));
 
         refreshTestJButton.setBackground(new java.awt.Color(255, 102, 102));
         refreshTestJButton.setText("Refresh");
@@ -76,10 +89,14 @@ public class MakeADiffWorkAreaJPanel extends javax.swing.JPanel {
                 refreshTestJButtonActionPerformed(evt);
             }
         });
+        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("MAKE A DIFFERENCE WORK AREA");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 16, 217, 21));
 
+        workRequestJTable.setForeground(new java.awt.Color(0, 0, 102));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -108,39 +125,86 @@ public class MakeADiffWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(workRequestJTable);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(requestTestJButton)
-                .addGap(144, 144, 144))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(refreshTestJButton)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(refreshTestJButton)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(requestTestJButton)
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 636, 125));
+
+        awfundsjCheckBox1.setForeground(new java.awt.Color(255, 102, 102));
+        awfundsjCheckBox1.setText("AWAITING FUNDS");
+        awfundsjCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                awfundsjCheckBox1MouseClicked(evt);
+            }
+        });
+        add(awfundsjCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+
+        fundsrecjCheckBox2.setForeground(new java.awt.Color(255, 102, 102));
+        fundsrecjCheckBox2.setText("FUNDING RECEIVED");
+        fundsrecjCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fundsrecjCheckBox2MouseClicked(evt);
+            }
+        });
+        add(fundsrecjCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 92, 136, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "VACCINE NAME", "VACCINE TYPE", "QUANTITY"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 636, 116));
+
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel2.setText("CFR FUNDING REQUEST");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 157, 25));
+
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel3.setText("VACCINE STOCK REQUEST");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 176, 25));
+
+        jCheckBox3.setForeground(new java.awt.Color(255, 102, 102));
+        jCheckBox3.setText("AWAITING STOCK");
+        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 148, -1));
+
+        searchtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchtxtKeyReleased(evt);
+            }
+        });
+        add(searchtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 140, -1));
+        add(txtsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 150, 30));
+
+        jCheckBox1.setText("STOCK RECEIVED");
+        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 140, -1));
+
+        vaccineReqbtn.setText("VACCINE STOCK REQUEST");
+        vaccineReqbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vaccineReqbtnActionPerformed(evt);
+            }
+        });
+        add(vaccineReqbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
@@ -148,14 +212,14 @@ public void populateRequestTable(){
         model.setRowCount(0);
         for (CFRCaseWorkRequest request : userAccount.getWorkQueue().getCFRCaseWorkRequestList()){
             
-            Object[] row = new Object[7];
-            row[0] = request;
-            row[4] = request.getSender().getEmployee().getName();
-            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[6] = request.getStatus();
-            row[2] = request.getCategory();
-            row[1] = request.getPatient();
-            row[3] = request.getCost();
+            Object[] row = new Object[6];
+            //row[0] = request;
+            row[3] = request.getSender().getEmployee().getName();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[5] = request.getStatus();
+            row[1] = request.getCategory();
+            row[0] = request.getPatient();
+            row[2] = request.getCost();
             
             model.addRow(row);
         }
@@ -176,12 +240,64 @@ public void populateRequestTable(){
 
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
+    private void searchtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchtxtKeyReleased
+DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        for (CFRCaseWorkRequest request : userAccount.getWorkQueue().getCFRCaseWorkRequestList()){
+             if (request.getPatient().contains(searchtxt.getText()))
+           {
+            Object[] row = new Object[6];
+            row[3] = request.getSender().getEmployee().getName();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[5] = request.getStatus();
+            row[1] = request.getCategory();
+            row[0] = request.getPatient();
+            row[2] = request.getCost();
+            
+            model.addRow(row);
+        }
+        }
+        
+    }//GEN-LAST:event_searchtxtKeyReleased
+
+    private void awfundsjCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_awfundsjCheckBox1MouseClicked
+
+        populateRequestTable();
+    }//GEN-LAST:event_awfundsjCheckBox1MouseClicked
+
+    private void fundsrecjCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fundsrecjCheckBox2MouseClicked
+
+       populateRequestTable();
+    }//GEN-LAST:event_fundsrecjCheckBox2MouseClicked
+
+    private void vaccineReqbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineReqbtnActionPerformed
+
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("RequestVaccineJPanel", new RequestVaccineJPanel(userProcessContainer, userAccount, enterprise, organization, business));
+        layout.next(userProcessContainer);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_vaccineReqbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox awfundsjCheckBox1;
+    private javax.swing.JCheckBox fundsrecjCheckBox2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JTextField searchtxt;
+    private javax.swing.JTextField txtsearch;
+    private javax.swing.JButton vaccineReqbtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

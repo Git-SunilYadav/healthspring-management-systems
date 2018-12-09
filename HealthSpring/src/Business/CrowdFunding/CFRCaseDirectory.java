@@ -24,7 +24,7 @@ public class CFRCaseDirectory {
     }
     
     
-      public CFRCaseSpecs CreateCaseSpec(int case_id, String Patient_name, String Category, String bName, int cost, long acc_num){
+      public CFRCaseSpecs CreateCaseSpec( String Patient_name, String Category, String bName, int cost, long acc_num){
         CFRCaseSpecs Cfrcase = new CFRCaseSpecs();
         Cfrcase.setPatient_name(Patient_name);
         Cfrcase.setCategory(Category);

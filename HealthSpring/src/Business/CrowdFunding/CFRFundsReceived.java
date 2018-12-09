@@ -5,6 +5,8 @@
  */
 package Business.CrowdFunding;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,7 +23,18 @@ public class CFRFundsReceived {
     private String fund_org_name, email ;
     private long mb_num;
     private int fund_org_id;
+    private int refnum;
+    private long cfr_rec_account;
+    
+    
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
 
+    public CFRFundsReceived() {
+        this.creation_date = date;
+    }
+    
+    
     public String getPatient_name() {
         return Patient_name;
     }
@@ -30,9 +43,27 @@ public class CFRFundsReceived {
         this.Patient_name = Patient_name;
     }
 
+    public long getCfr_rec_account() {
+        return cfr_rec_account;
+    }
+
+    public void setCfr_rec_account(long cfr_rec_account) {
+        this.cfr_rec_account = cfr_rec_account;
+    }
+
+    
     public String getCategory() {
         return Category;
     }
+
+    public int getRefnum() {
+        return refnum;
+    }
+
+    public void setRefnum(int refnum) {
+        this.refnum = refnum;
+    }
+    
 
     public void setCategory(String Category) {
         this.Category = Category;
@@ -74,9 +105,7 @@ public class CFRFundsReceived {
         return creation_date;
     }
 
-    public void setCreation_date(Date creation_date) {
-        this.creation_date = creation_date;
-    }
+    
 
     public String getFund_org_name() {
         return fund_org_name;
@@ -110,6 +139,10 @@ public class CFRFundsReceived {
         this.fund_org_id = fund_org_id;
     }
 
+     @Override
+    public String toString() {
+        return String.valueOf(refnum);
+    }
     
 
     

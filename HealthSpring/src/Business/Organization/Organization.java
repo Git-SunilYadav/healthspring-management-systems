@@ -5,11 +5,15 @@
 package Business.Organization;
 
 import Business.CrowdFunding.CFRFundingOrgsDirectory;
+import Business.CrowdFunding.CFRFundsReceivedDirectory;
+import Business.CrowdFunding.CFRPartnerBanksDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Patient.PatientDirectory;
 import Business.Role.AppointmentManagerRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
+import Business.Vaccine.VaccineDetailsDirectory;
+import Business.Vaccine.VaccineInventoryDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
@@ -26,6 +30,10 @@ public abstract class Organization {
     private PatientDirectory patientDirectory;
    // added for Funding Orgs data
     private CFRFundingOrgsDirectory cfrFundingDir;
+    private CFRFundsReceivedDirectory cfrFundsReceivedDir;
+    private CFRPartnerBanksDirectory cfrPartnerBanksDir;
+    private VaccineDetailsDirectory vaccineDetailsDir;
+    private VaccineInventoryDirectory vaccineInvDir;
     
     private int organizationID;
     private static int counter=0;
@@ -36,7 +44,7 @@ public abstract class Organization {
         Doctor("Doctor Organization"), 
         Lab("Lab Organization"),
         Patient("Patient Organization"), 
-        VaccineAdmin("Vaccine Centre Admin"),
+       // VaccineAdmin("Vaccine Centre Admin"),
         BloodBankStaff("BloodBankStaff"),
         VaccineManager("Vaccine Organization"),
        // CFRAdmin("CFR Admin Organization"), 
@@ -45,7 +53,11 @@ public abstract class Organization {
         TerminalCasesManager("Terminal Cases Organization"),
         AppointmentManager("Manage Patient Appointments"),
         CFRStrategist("CFR Strategist Organization"),
-        MakeADifference("Make A Diff Organization");
+        MakeADifference("Make A Diff Organization"),
+       // VaccineManager("Vaccine Manager"),
+        VaccineLogisticsManager("Vaccine Logistics"),
+        VaccineInventoryManager("Vaccine Inventory ");
+        
         
         private String value;
         private Type(String value) {
@@ -57,13 +69,17 @@ public abstract class Organization {
     }
 
     public Organization(String name) {
-        this.name = name;
-        workQueue = new WorkQueue();
-        employeeDirectory = new EmployeeDirectory();
-        userAccountDirectory = new UserAccountDirectory();
-        patientDirectory = new PatientDirectory();
+         this.name = name;
+         workQueue = new WorkQueue();
+         employeeDirectory = new EmployeeDirectory();
+         userAccountDirectory = new UserAccountDirectory();
+         patientDirectory = new PatientDirectory();
          cfrFundingDir = new CFRFundingOrgsDirectory ();
-        organizationID = counter;
+         cfrFundsReceivedDir = new CFRFundsReceivedDirectory();
+         cfrPartnerBanksDir = new CFRPartnerBanksDirectory();
+         organizationID = counter;
+         vaccineDetailsDir = new VaccineDetailsDirectory();
+         vaccineInvDir = new VaccineInventoryDirectory();
         ++counter;
     }
 
@@ -72,7 +88,20 @@ public abstract class Organization {
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     
+        
     }
+
+    public VaccineInventoryDirectory getVaccineInvDir() {
+        return vaccineInvDir;
+    }
+    
+    
+
+    public VaccineDetailsDirectory getVaccineDetailsDir() {
+        return vaccineDetailsDir;
+    }
+    
+    
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
@@ -80,6 +109,15 @@ public abstract class Organization {
     public CFRFundingOrgsDirectory getCfrFundingDir() {
         return cfrFundingDir;
     }
+
+    public CFRFundsReceivedDirectory getCfrFundsReceivedDir() {
+        return cfrFundsReceivedDir;
+    }
+
+    public CFRPartnerBanksDirectory getCfrPartnerBanksDir() {
+        return cfrPartnerBanksDir;
+    }
+    
     
     
 
