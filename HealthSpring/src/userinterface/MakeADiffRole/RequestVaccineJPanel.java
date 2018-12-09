@@ -5,13 +5,14 @@
  */
 package userinterface.MakeADiffRole;
 
+import Business.CrowdFunding.CFRFundingOrgs;
 import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;
 import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
-import Business.Organization.VaccinationCentre.VaccineInventoryOrganization;
 import Business.Organization.VaccinationCentre.VaccineOrganization;
 import Business.UserAccount.UserAccount;
 import Business.Vaccine.VaccineDetails;
@@ -36,8 +37,9 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private EcoSystem business;
     private int quantity;
-    private Network sel_network;
+    //private Network sel_network;
     private VaccineDetailsDirectory VaccDetailsDir;
+    private boolean isvalid = false;
    
     public RequestVaccineJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, Organization organization, EcoSystem business) {
         initComponents();
@@ -46,8 +48,11 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.business = business;
         this.VaccDetailsDir = organization.getVaccineDetailsDir();
-        populateVTypeCombo();
+       // populateVTypeCombo();
         populateComboBox();
+        this.isvalid = true;
+        msgtxt.setVisible(false);
+        jLabel6.setVisible(false);
             }
     // VaccineTypeCombo
 
@@ -81,36 +86,49 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         currstocktxt = new javax.swing.JTextField();
         errormsg = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        msgtxt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("VACCINE STOCK REQUEST");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 20, 205, 26));
 
         VaccineTypeCombo.setForeground(new java.awt.Color(255, 102, 102));
-        VaccineTypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        VaccineTypeCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                VaccineTypeComboItemStateChanged(evt);
+            }
+        });
         VaccineTypeCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VaccineTypeComboActionPerformed(evt);
             }
         });
+        add(VaccineTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 104, 184, 29));
 
         jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("VACCINE TYPE");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 104, 108, 29));
 
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("VACCINE NAME");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 183, 136, 23));
 
         VNamejComboBox1.setForeground(new java.awt.Color(255, 102, 102));
-        VNamejComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         VNamejComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VNamejComboBox1ActionPerformed(evt);
             }
         });
+        add(VNamejComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 178, 175, 33));
 
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("QUANTITY REQUIRED");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 332, 113, 26));
 
         QtyJSlider1.setBackground(new java.awt.Color(204, 204, 255));
         QtyJSlider1.setForeground(new java.awt.Color(0, 0, 51));
@@ -125,9 +143,12 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
                 QtyJSlider1StateChanged(evt);
             }
         });
+        add(QtyJSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 313, 418, -1));
 
         selectedQtyjLabel.setBackground(new java.awt.Color(204, 204, 204));
+        selectedQtyjLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         selectedQtyjLabel.setForeground(new java.awt.Color(255, 51, 51));
+        add(selectedQtyjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 90, 37));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,17 +158,32 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 128, 33));
 
-        networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        networkJComboBox.setForeground(new java.awt.Color(255, 102, 102));
+        networkJComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                networkJComboBoxItemStateChanged(evt);
+            }
+        });
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
             }
         });
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 104, 175, 29));
 
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
         jLabel7.setText("CHOOSE NETWORK");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 104, 118, 29));
 
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("VACCINE STOCK AVAILABLE");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 257, 146, 26));
+        add(currstocktxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 255, 173, 31));
+
+        errormsg.setForeground(new java.awt.Color(255, 51, 51));
+        add(errormsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 709, 33));
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setText("BACK");
@@ -156,90 +192,12 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, -1, -1));
+        add(msgtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 409, 520, 33));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(QtyJSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(VaccineTypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(VNamejComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(selectedQtyjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(currstocktxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(errormsg, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton2)))
-                .addGap(41, 41, 41)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(505, 505, 505)
-                        .addComponent(errormsg, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(networkJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VaccineTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                                .addComponent(VNamejComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(currstocktxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(QtyJSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(selectedQtyjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
-        );
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel6.setText("MESSAGE");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 409, 113, 33));
     }// </editor-fold>//GEN-END:initComponents
 
     private void QtyJSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_QtyJSlider1StateChanged
@@ -259,23 +217,25 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
      }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
+       String Network = String.valueOf(networkJComboBox.getSelectedItem());
         String VType = String.valueOf(VaccineTypeCombo.getSelectedItem());
         String VaccName =  String.valueOf(VNamejComboBox1.getSelectedItem());   //categorytxt.getText();
         int Vacc_qty = quantity;
 
-        if (Vacc_qty == Integer.parseInt(currstocktxt.getText()))
+        if (Vacc_qty <= Integer.parseInt(currstocktxt.getText()))
         {
         VaccineWorkRequest request = new VaccineWorkRequest();
         request.setVaccineType(VType);
         request.setVaccineName(VaccName);
         request.setQty(Vacc_qty);
+        request.setNetwork(Network);
         request.setSender(userAccount);
         request.setStatus("Vaccine Request Sent");
+        request.setMessage(msgtxt.getText());
 
         Organization org = null;
       
-       sel_network  = (Network)networkJComboBox.getSelectedItem();
+       Network sel_network  = (Network) networkJComboBox.getSelectedItem();
         //for (Network network: business.getNetworkList()){
             for (Enterprise enterprise : sel_network.getEnterpriseDirectory().getEnterpriseList()){
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
@@ -296,21 +256,24 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         else 
         {
         //dialog box 
-            errormsg.setText("not enough quanity , try different netwrk");
+            msgtxt.setVisible(true);
+            jLabel6.setVisible(true);
+            errormsg.setText("Inventory is low on quantity , please try from different netwrk or enter additional quanityt in message field");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void VNamejComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VNamejComboBox1ActionPerformed
 
+        if (isvalid) {
               Organization org = null;
      
-            sel_network  = (Network)networkJComboBox.getSelectedItem();
+          Network  sel_network  = (Network) networkJComboBox.getSelectedItem();
         //for (Network network: business.getNetworkList()){
             for (Enterprise enterprise : sel_network.getEnterpriseDirectory().getEnterpriseList()){
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
 
-                    if (organization instanceof VaccineInventoryOrganization){
+                    if (organization instanceof VaccineOrganization){
                         org = organization;
                         break;
                     }
@@ -325,23 +288,75 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
                    }}
                        }
        
-        
+        }
     }//GEN-LAST:event_VNamejComboBox1ActionPerformed
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
+     
+        
+        
+       if (isvalid)
+       {
+        populateVTypeCombo();
+       /*    
+        Network sel_network  = (Network) networkJComboBox.getSelectedItem();
+         Organization org = null;
+     
+           // sel_network  = (Network) networkJComboBox.getSelectedItem();
+      // for (Network network: business.getNetworkList()){
+            for (Enterprise enterprise : sel_network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+
+                    if (organization instanceof VaccineOrganization){
+                        org = organization;
+                        break;
+                    }
+                }}
+        VaccineTypeCombo.removeAllItems();
+                if (org!=null){
+                    //org.getWorkQueue().getWorkRequestList().add(request);
+                   for (VaccineInventory vaccine : org.getVaccineInvDir().getVaccineStockList())
+                  // {    if(VaccineTypeCombo.getSelectedItem().equals(vaccine.getVaccineType())) 
+                   {
+                       
+                      VaccineTypeCombo.addItem(vaccine.getVaccineType());
+                   }}
+         */              
+       }
         // TODO add your handling code here:
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void VaccineTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineTypeComboActionPerformed
-
-        for (VaccineDetails vaccine : VaccDetailsDir.getVaccinerequestList())
+              
+         
+        if(isvalid)
         {
-            if (VaccineTypeCombo.getSelectedItem().equals(vaccine.getVaccineType()))
-            {
-        VNamejComboBox1.addItem(vaccine);
-        }
+            VNamejComboBox1.removeAllItems();
+         Organization org = null;
+     
+           Network sel_network  = (Network) networkJComboBox.getSelectedItem();
+       //for (Network network: business.getNetworkList()){
+            for (Enterprise enterpris : sel_network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Organization organization : enterpris.getOrganizationDirectory().getOrganizationList()){
+
+                    if (organization instanceof VaccineOrganization){
+                        org = organization;
+                        break;
+                    }
+                }}
+        
+                if (org!=null){
+                    //org.getWorkQueue().getWorkRequestList().add(request);
+                   for (VaccineInventory vaccine : org.getVaccineInvDir().getVaccineStockList())
+                   {    if(String.valueOf(VaccineTypeCombo.getSelectedItem()).equals(vaccine.getVaccineType())) 
+                   {
+                      VNamejComboBox1.addItem(vaccine.getVaccineName());
+                   }}
+                       }
         }
         
+        
+       
 // TODO add your handling code here:
     }//GEN-LAST:event_VaccineTypeComboActionPerformed
 
@@ -351,11 +366,75 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         MakeADiffWorkAreaJPanel cmwjp = (MakeADiffWorkAreaJPanel) component;
         cmwjp.populateRequestTable();
-        //cmwjp.populateRequestTable();
+        cmwjp.populateVaccineRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void VaccineTypeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_VaccineTypeComboItemStateChanged
+        // TODO add your handling code here:
+        
+     /*   if(isvalid)
+        {
+         Organization org = null;
+     
+           Network sel_network  = (Network) networkJComboBox.getSelectedItem();
+       //for (Network network: business.getNetworkList()){
+            for (Enterprise enterpris : sel_network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Organization organization : enterpris.getOrganizationDirectory().getOrganizationList()){
+
+                    if (organization instanceof VaccineOrganization){
+                        org = organization;
+                        break;
+                    }
+                }}
+        
+                if (org!=null){
+                    //org.getWorkQueue().getWorkRequestList().add(request);
+                   for (VaccineInventory vaccine : org.getVaccineInvDir().getVaccineStockList())
+                   {    if(String.valueOf(VaccineTypeCombo.getSelectedItem()).equals(vaccine.getVaccineType())) 
+                   {
+                      VNamejComboBox1.addItem(vaccine.getVaccineName());
+                   }}
+        }               }
+       */
+        
+        
+       
+    }//GEN-LAST:event_VaccineTypeComboItemStateChanged
+
+    private void networkJComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_networkJComboBoxItemStateChanged
+   
+       // populateVTypeCombo();
+       if (isvalid)
+       {
+           
+        Network sel_network  = (Network) networkJComboBox.getSelectedItem();
+         Organization org = null;
+     
+           // sel_network  = (Network) networkJComboBox.getSelectedItem();
+      // for (Network network: business.getNetworkList()){
+            for (Enterprise enterprise : sel_network.getEnterpriseDirectory().getEnterpriseList()){
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+
+                    if (organization instanceof VaccineOrganization){
+                        org = organization;
+                        break;
+                    }
+                }}
+        VaccineTypeCombo.removeAllItems();
+                if (org!=null){
+                    //org.getWorkQueue().getWorkRequestList().add(request);
+                   for (VaccineInventory vaccine : org.getVaccineInvDir().getVaccineStockList())
+                  // {    if(VaccineTypeCombo.getSelectedItem().equals(vaccine.getVaccineType())) 
+                   {
+                      VaccineTypeCombo.addItem(vaccine.getVaccineType());
+                   }}
+                       
+       }
+             // TODO add your handling code here:
+    }//GEN-LAST:event_networkJComboBoxItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -371,7 +450,9 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField msgtxt;
     private javax.swing.JComboBox networkJComboBox;
     private javax.swing.JLabel selectedQtyjLabel;
     // End of variables declaration//GEN-END:variables

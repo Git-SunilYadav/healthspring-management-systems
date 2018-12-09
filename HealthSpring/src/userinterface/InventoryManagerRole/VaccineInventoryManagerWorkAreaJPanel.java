@@ -5,19 +5,15 @@
  */
 package userinterface.InventoryManagerRole;
 
-import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.VaccinationCentre.VaccineInventoryOrganization;
-import Business.Organization.VaccinationCentre.VaccineOrganization;
 import Business.UserAccount.UserAccount;
 import Business.Vaccine.VaccineInventory;
 import Business.Vaccine.VaccineInventoryDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.MakeADiffRole.RequestVaccineJPanel;
 
 /**
  *

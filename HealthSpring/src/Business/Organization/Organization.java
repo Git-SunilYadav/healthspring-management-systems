@@ -57,10 +57,10 @@ public abstract class Organization {
         TerminalCasesManager("Terminal Cases Organization"),
         AppointmentManager("Manage Patient Appointments"),
         CFRStrategist("CFR Strategist Organization"),
-        MakeADifference("Make A Diff Organization"),
+        MakeADifference("Make A Diff Organization");
        // VaccineManager("Vaccine Manager"),
-        VaccineLogisticsManager("Vaccine Logistics"),
-        VaccineInventoryManager("Vaccine Inventory ");
+        //VaccineLogisticsManager("Vaccine Logistics"),
+        //VaccineInventoryManager("Vaccine Inventory ");
         
         
         private String value;

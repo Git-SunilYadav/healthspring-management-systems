@@ -11,7 +11,8 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.VaccineManagerRole.VaccineManagerWorkAreaJPanel;
+import userinterface.VaccineManagerRole.VaccineMainJPanel;
+import userinterface.VaccineManagerRole.VaccineManagementJPanel;
 
 /**
  *
@@ -21,6 +22,6 @@ public class VaccineManagerRole extends Role{
      
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new VaccineManagerWorkAreaJPanel(userProcessContainer, account,organization, enterprise, business);
+        return new VaccineMainJPanel(userProcessContainer, account,organization, enterprise, business);
     }
 }
