@@ -190,14 +190,24 @@ public class VaccineAddInventory extends javax.swing.JPanel {
 
     private void VaccineTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineTypeComboActionPerformed
 
-        for (VaccineDetails vaccine : VaccDetailsDir.getVaccinerequestList())
+  /*      for (VaccineDetails vaccine : VaccDetailsDir.getVaccinerequestList())
         {
             if (VaccineTypeCombo.getSelectedItem().equals(vaccine.getVaccineType()))
             {
                 VNamejComboBox1.addItem(vaccine.getVaccineName());
             }
         }
-
+*/
+        VNamejComboBox1.removeAllItems();
+        
+                for (VaccineInventory vaccine : VaccInvDir.getVaccineStockList())
+        {
+            if (VaccineTypeCombo.getSelectedItem().equals(vaccine.getVaccineType()))
+            {
+                VNamejComboBox1.addItem(vaccine.getVaccineName());
+            }
+        }
+        
     }//GEN-LAST:event_VaccineTypeComboActionPerformed
 
     private void VNamejComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VNamejComboBox1ActionPerformed

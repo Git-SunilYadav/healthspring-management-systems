@@ -16,6 +16,7 @@ public class VaccineWorkRequest extends WorkRequest {
     private String VaccineName;
     private String VaccineType;
     private int Qty;
+    private String Network;
 
     public String getVaccineName() {
         return VaccineName;
@@ -41,6 +42,19 @@ public class VaccineWorkRequest extends WorkRequest {
         this.Qty = Qty;
     }
 
+    public String getNetwork() {
+        return Network;
+    }
+
+    public void setNetwork(String Network) {
+        this.Network = Network;
+    }
     
+    
+
+    @Override
+    public String toString() {
+        return VaccineName;
+    }   
     
 }

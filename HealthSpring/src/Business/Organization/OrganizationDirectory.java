@@ -9,8 +9,6 @@ import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;
 import Business.Organization.SocialCrowdFunding.CampaignOrganization;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
-import Business.Organization.VaccinationCentre.VaccineInventoryOrganization;
-import Business.Organization.VaccinationCentre.VaccineLogisticsOrganization;
 import Business.Organization.VaccinationCentre.VaccineOrganization;
 import java.util.ArrayList;
 
@@ -73,14 +71,7 @@ public class OrganizationDirectory {
             organization = new VaccineOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.VaccineLogisticsManager.getValue())){
-            organization = new VaccineLogisticsOrganization();
-            organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.VaccineInventoryManager.getValue())){
-            organization = new VaccineInventoryOrganization();
-            organizationList.add(organization);
-        }
+       
         return organization;
     }
     

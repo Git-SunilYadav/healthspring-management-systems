@@ -11,6 +11,7 @@ import Business.Organization.Organization;
 import Business.Organization.VaccinationCentre.VaccineOrganization;
 import Business.UserAccount.UserAccount;
 import Business.Vaccine.VaccineDetailsDirectory;
+import Business.Vaccine.VaccineInventoryDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -22,19 +23,21 @@ import javax.swing.JPanel;
 public class AddNewVaccineJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private VaccineOrganization organization;
+    private Organization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
     private VaccineDetailsDirectory VaccDetailsDir;
+    private VaccineInventoryDirectory VacInvDir;
   
     public AddNewVaccineJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.organization = (VaccineOrganization)organization;
-        this.enterprise = enterprise;
+        this.organization = organization;  // (VaccineOrganization)
+         this.enterprise = enterprise;
         this.userAccount = account;
         this.VaccDetailsDir = organization.getVaccineDetailsDir();
+        this.VacInvDir = organization.getVaccineInvDir();
            //   initComponents();
         populateVTypeCombo();
         
@@ -138,8 +141,10 @@ private void populateVTypeCombo(){
  String VType = String.valueOf(VaccineTypeCombo.getSelectedItem());
  String Vname = Vnametxt.getText();
  int TQty = Integer.parseInt(thresholdtxt.getText());
- int qty = 20;
+ int qty = 0;
 VaccDetailsDir.CreateVaccineSpec(Vname, VType , TQty, qty);
+VacInvDir.CreatevaccineStock(Vname, VType, TQty, qty);
+
 
 
     }//GEN-LAST:event_addVaccbtnActionPerformed
@@ -148,8 +153,8 @@ VaccDetailsDir.CreateVaccineSpec(Vname, VType , TQty, qty);
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        VaccineManagerWorkAreaJPanel cmwjp = (VaccineManagerWorkAreaJPanel) component;
-        //cmwjp.populateRequestTable();
+        VaccineManagementJPanel cmwjp = (VaccineManagementJPanel) component;
+        cmwjp.populateRequestTable();
         //cmwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
