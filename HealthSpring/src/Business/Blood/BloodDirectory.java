@@ -18,21 +18,20 @@ public class BloodDirectory {
      private BloodGroup bloodgroup;
      public BloodDirectory() {
         BloodList = new ArrayList();
-        bloodgroup=new BloodGroup();
     }
 
     public ArrayList<BloodSpecs> getBloodList() {
         return BloodList;
     }
    
-      public void CreateBloodSpec(String name, String BloodGroup, int Volume){
+      public BloodSpecs CreateBloodSpec(String name, String BloodGroup, int Volume){
         BloodSpecs blood = new BloodSpecs();
         blood.setDonorName(name);
         blood.setBloodGroup(BloodGroup);
         blood.setVolume(Volume);
         BloodList.add(blood);
      
-        //return blood;
+        return blood;
 }
 
 }

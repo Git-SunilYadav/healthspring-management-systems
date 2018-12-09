@@ -7,7 +7,7 @@ package userinterface.FinanceFellowRole;
 
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.EcoSystem;
-import Business.EmailNotify.EmailSender;
+//import Business.EmailNotify.EmailSender;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.UserAccount.UserAccount;
@@ -29,7 +29,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private CFRFinanceFellowWorkRequest request;
     private ButtonGroup bg1= new ButtonGroup();
-    private EmailSender emailSender;
+    //private EmailSender emailSender;
     private EcoSystem business;
     private UserAccount userAccount;
     private FinanceFellowOrganization FinanceFellowOrganization;
@@ -148,7 +148,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
         request.setReceiver(userAccount);
         request.setStatus("Email Sent for Funds");
         
-        emailSender = new EmailSender();
+    //    emailSender = new EmailSender();
         
     
         

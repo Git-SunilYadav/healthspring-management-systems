@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ 
 package Business.EmailNotify;
 import java.util.Properties;
 import javax.mail.Message; 
@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 /**
  *
  * @author nikhi
- */
+ 
 public class EmailSender {
  
     String to = "nikhilkohli1992@gmail.com"; // sender email 
@@ -54,3 +54,4 @@ catch (MessagingException mex)
 }
 }
 
+*/

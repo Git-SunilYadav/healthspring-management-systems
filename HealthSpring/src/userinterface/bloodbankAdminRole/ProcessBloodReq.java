@@ -10,7 +10,18 @@ import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.Organization.BloodBankStaffOrganization;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import userinterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
 
 /**
  *
@@ -49,18 +60,27 @@ public class ProcessBloodReq extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Respond to Blood Request ");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Volume");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Blood Group");
 
         jTextField1.setColumns(7);
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField1.setEnabled(false);
 
         jTextField2.setColumns(7);
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,12 +88,27 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton3.setText("Show Stocks");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setColumns(7);
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Messege");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,58 +117,73 @@ public class ProcessBloodReq extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel1))
+                        .addGap(105, 105, 105)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton3))
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(47, 47, 47)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(43, 43, 43)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Boolean w=true;
         String bg=jTextField1.getText();
         int v= Integer.parseInt(jTextField2.getText());
+        String msg=jTextField3.getText();
         if(bg.equals("A+ve")){
             if(v<bldorg.getBldgrp().getApositive())
                 {
                  int a=  bldorg.getBldgrp().getApositive();
                  a=a-v;
                  bldorg.getBldgrp().setApositive(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+            else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;
+            }
         }
          if(bg.equals("A-ve")){
             if(v<bldorg.getBldgrp().getAnegative())
@@ -141,10 +191,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getAnegative();
                  a=a-v;
                  bldorg.getBldgrp().setAnegative(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+                 
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+           else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("B+ve")){
             if(v<bldorg.getBldgrp().getBpositive())
@@ -152,10 +204,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getBpositive();
                  a=a-v;
                  bldorg.getBldgrp().setBpositive(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+               
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+           else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("B-ve")){
             if(v<bldorg.getBldgrp().getBnegative())
@@ -163,10 +217,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getBnegative();
                  a=a-v;
                  bldorg.getBldgrp().setBnegative(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+                
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+            else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
         if(bg.equals("AB+ve")){
             if(v<bldorg.getBldgrp().getABpositive())
@@ -174,10 +230,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getABpositive();
                  a=a-v;
                  bldorg.getBldgrp().setABpositive(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+                
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+       else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
          if(bg.equals("AB-ve")){
             if(v<bldorg.getBldgrp().getAbnegative())
@@ -185,10 +243,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getAbnegative();
                  a=a-v;
                  bldorg.getBldgrp().setAbnegative(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+               
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+             else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;}
         }
        
          if(bg.equals("O-ve")){
@@ -197,10 +257,12 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getOnegative();
                  a=a-v;
                  bldorg.getBldgrp().setOnegative(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+            else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+            jTextField3.setText("Value updated due to insufficient stock");w=false;
+            }
         }
           if(bg.equals("O+ve")){
             if(v<bldorg.getBldgrp().getOpositive())
@@ -208,29 +270,66 @@ public class ProcessBloodReq extends javax.swing.JPanel {
                  int a=  bldorg.getBldgrp().getOpositive();
                  a=a-v;
                  bldorg.getBldgrp().setOpositive(a);
-                 request.setStatus(" approved");
-                 request.setMessage("Request approved and dispatched");
+                 request.setStatus(" Approved");
+                 w=true;
+                 
                 }
-            else{request.setMessage("The mentioned blood sample is not availble");}
+           else{JOptionPane.showMessageDialog(null,"Insufficient Stocks");
+               jTextField3.setText("Value updated due to insufficient stock");
+               w=false;    
+            }
+           
         }
-         
+        if(w){
+            request.setMessage(msg);
+            request.setVolume(v);
+            JOptionPane.showMessageDialog(null,"Successful!");
+            }  
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
+          Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        BloodbankadminWorkArea dwjp = (BloodbankadminWorkArea) component;
+        dwjp.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+        dataset.setValue(bldorg.getBldgrp().getApositive(),"Volume","A+ve");
+         dataset.setValue(bldorg.getBldgrp().getAnegative(),"Volume","A-ve");
+          dataset.setValue(bldorg.getBldgrp().getBpositive(),"Volume","B+ve");
+           dataset.setValue(bldorg.getBldgrp().getBnegative(),"Volume","B-ve");
+        dataset.setValue(bldorg.getBldgrp().getABpositive(),"Volume","AB+ve");
+        dataset.setValue(bldorg.getBldgrp().getAbnegative(),"Volume","AB-ve");
+         dataset.setValue(bldorg.getBldgrp().getOpositive(),"Volume","O+ve");
+          dataset.setValue(bldorg.getBldgrp().getOnegative(),"Volume","O-ve");
+
+        
+
+        JFreeChart jchart= ChartFactory.createBarChart("Blood Stock", "Blood Groups", "Volume", dataset, PlotOrientation.VERTICAL, true, true, false);
+        CategoryPlot plot = jchart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.BLACK);
+        ChartFrame chtfrm=new ChartFrame("Blood Stock",jchart,true);
+        chtfrm.setVisible(true);
+        chtfrm.setSize(500,400);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

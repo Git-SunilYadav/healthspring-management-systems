@@ -26,21 +26,19 @@ public class BloodBankMain extends javax.swing.JPanel {
    // private BloodGroup bg;
     private BloodBankStaffOrganization BloodOrg;
     private UserAccount account;
- 
+ private Enterprise enterprise;
     private EcoSystem business;
     
     /**
      * Creates new form BloodBankMain
      */
-    public BloodBankMain(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business) {
+    public BloodBankMain(JPanel userProcessContainer, UserAccount account, BloodBankStaffOrganization organization, EcoSystem business, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.BloodOrg=organization;
+        this.BloodOrg= organization;
         this.account=account;
-    
-       this.business=business;
-       
-       //this.bg=new BloodGroup();
+        this.business=business;
+        this.enterprise=enterprise;
     }
 
     /**
@@ -57,9 +55,14 @@ public class BloodBankMain extends javax.swing.JPanel {
         reserves = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         donorRecords = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Blood Bank");
 
+        addDonation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addDonation.setText("Add Blood Donation");
         addDonation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +70,7 @@ public class BloodBankMain extends javax.swing.JPanel {
             }
         });
 
+        reserves.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         reserves.setText("Blood Bank Reserves");
         reserves.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,7 @@ public class BloodBankMain extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Blood Bank Work Request");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +86,7 @@ public class BloodBankMain extends javax.swing.JPanel {
             }
         });
 
+        donorRecords.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         donorRecords.setText("Donor Records");
         donorRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,42 +94,45 @@ public class BloodBankMain extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\mihir\\Desktop\\blood-icon-1.jpg")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(reserves)
-                            .addComponent(addDonation)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(donorRecords)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                            .addComponent(addDonation)
+                            .addComponent(jButton3)
+                            .addComponent(donorRecords)
+                            .addComponent(reserves))
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(55, 55, 55)
-                .addComponent(addDonation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(reserves)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(donorRecords)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(addDonation)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton3)
+                        .addGap(32, 32, 32)
+                        .addComponent(donorRecords)
+                        .addGap(37, 37, 37)
+                        .addComponent(reserves))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,7 +158,7 @@ public class BloodBankMain extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,BloodOrg,business));
+        userProcessContainer.add("BloodbankadminWorkArea", new BloodbankadminWorkArea( userProcessContainer, account,BloodOrg,business,enterprise));
         layout.next(userProcessContainer);    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -166,6 +175,7 @@ public class BloodBankMain extends javax.swing.JPanel {
     private javax.swing.JButton donorRecords;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton reserves;
     // End of variables declaration//GEN-END:variables
 }
