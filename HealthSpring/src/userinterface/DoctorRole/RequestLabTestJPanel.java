@@ -14,9 +14,9 @@ import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestRequest;
-import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -168,6 +168,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                     objLabTestRequest.setDoctorName(userAccount.getUsername());
                     objLabTestRequest.setObjPatient(objPatient);
                     objLabTestRequest.setReportGenerated(false);
+                    objLabTestRequest.setTestName(txtTestName.getText());
+                    objLabTestRequest.setRequestedDate(new Date());
                     
                     objLabOrganization.getObjLabTestRequestList().add(objLabTestRequest);
                     
@@ -200,7 +202,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     // Validate fields
     public boolean Validate(){
         boolean isValid = false;
-        if(!txtTestName.getText().trim().equals("")){
+        if(txtTestName.getText().trim().equals("")){
             errorTestName.setText("Please enter Test Name");
         }
         else{

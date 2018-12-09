@@ -1,4 +1,4 @@
-/*package Business.EmailNotify;
+package Business.EmailNotify;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -15,12 +15,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.swing.JOptionPane;
 /**
  *
  * @author nikhi
  */
-/*
+
 public class EmailSender {
  
     private String to; //  = "nikhilkohli1992@gmail.com"; // sender email 
@@ -46,14 +45,14 @@ public class EmailSender {
        
         defaultProps.setProperty("mail.smtp.port", "587");
         defaultProps.setProperty("mail.user", from);
-        defaultProps.setProperty("mail.password", "lifeisadream");
+        defaultProps.setProperty("mail.password", "States*2018");
         defaultProps.setProperty("mail.smtp.starttls.enable", "true");
         defaultProps.setProperty("mail.smtp.auth", "true");
 
 //Session session = Session.getDefaultInstance(props,null);
     Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("nikhilkohli1992@gmail.com", "lifeisadream");
+                return new PasswordAuthentication("kohli789n@gmail.com", "States*2018");
             }
         };
     Session session = Session.getDefaultInstance(defaultProps,auth); // default session // default session 
@@ -79,26 +78,26 @@ public class EmailSender {
         // Part two is attachment
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         //N:/healthspring-management-systems/HealthSpring/
-         String file = "N:/healthspring-management-systems/HealthSpring/file.txt";
+        
         String filename = "file.txt";
-        DataSource source = new FileDataSource(file);
+        DataSource source = new FileDataSource(filename);
         messageBodyPart.setDataHandler(new  DataHandler(source));
-        messageBodyPart.setFileName(file);
+        messageBodyPart.setFileName(filename);
         multipart.addBodyPart(textBodyPart);
 
         multipart.addBodyPart(messageBodyPart);
 
         // Send the complete message parts
-        message.setContent(multipart, "text/html");
+        message.setContent(multipart);
     // actual mail body
    // message.setContent(mail_body, "text/html; charset=utf-8");
     // Send message 
         
-        Transport transport = session.getTransport("smtp");
-    transport.connect(host, from, "lifeisadream");
+    Transport transport = session.getTransport("smtp");
+    transport.connect(host, to, "States*2018");
     transport.sendMessage(message, message.getAllRecipients()); 
     System.out.println("Email Sent successfully...."); 
-    transport.close();
+    //transport.close();
     } 
     catch (Exception e)
     { 

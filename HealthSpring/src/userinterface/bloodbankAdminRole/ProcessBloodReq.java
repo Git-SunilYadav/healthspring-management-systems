@@ -8,7 +8,6 @@ package userinterface.bloodbankAdminRole;
 import Business.Blood.BloodGroup;
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.Organization.BloodBankStaffOrganization;
-import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;

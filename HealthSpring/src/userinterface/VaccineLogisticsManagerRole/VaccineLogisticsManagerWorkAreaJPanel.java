@@ -147,7 +147,7 @@ public class VaccineLogisticsManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    userProcessContainer.add("VaccineConfirmDeliveryJPanel", new VaccineConfirmDeliveryJPanel(userProcessContainer, userAccount, enterprise, business));
+    //userProcessContainer.add("VaccineConfirmDeliveryJPanel", new VaccineConfirmDeliveryJPanel(userProcessContainer, userAccount, enterprise, business));
      layout.next(userProcessContainer);
 
     }//GEN-LAST:event_jButton1ActionPerformed

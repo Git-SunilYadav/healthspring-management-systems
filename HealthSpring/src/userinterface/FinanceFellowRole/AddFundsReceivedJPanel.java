@@ -19,7 +19,6 @@ import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;
 import Business.Organization.SocialCrowdFunding.CampaignOrganization;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Date;

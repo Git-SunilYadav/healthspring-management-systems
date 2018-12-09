@@ -9,7 +9,6 @@ import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestRequest;
-import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -46,12 +45,12 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(LabTestRequest testWorkRequest : labOrganization.getObjLabTestRequestList()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = testWorkRequest.getRequestedDate();
             row[1] = testWorkRequest.getObjPatient().getName();
             row[2] = testWorkRequest.getObjPatient().getAge();
             row[3] = testWorkRequest;
-            row[4] = testWorkRequest.isReportGenerated() ? "Done" : "";
+            row[4] = testWorkRequest.isReportGenerated() ? "Done" : "In Process";
             row[5] = testWorkRequest.getReportDetails();
             
             model.addRow(row);
@@ -96,7 +95,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblLabRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 800, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 840, 110));
 
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,8 +129,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        LabTestWorkRequest request = (LabTestWorkRequest)tblLabRequest.getValueAt(selectedRow, 0);
-        request.setStatus("Processing");
+        LabTestRequest request = (LabTestRequest)tblLabRequest.getValueAt(selectedRow, 3);
 
         ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);

@@ -18,6 +18,14 @@ public class LabTestRequest {
     private Date requestedDate;
     private String testName;
 
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
     public Patient getObjPatient() {
         return objPatient;
     }

@@ -347,23 +347,23 @@ public class CreateNewPatientJPanel extends javax.swing.JPanel {
             isValid = false;
         }
         else{
-            lblErrName.setText("");
+            lblErrAge.setText("");
         }
         
-        if(utils.tryParseInt(txtMobileNo.getText()) && txtMobileNo.getText().length() != 10){
-             lblErrMobNo.setText("Invalid");
-             isValid = false;
+        if(utils.tryParseLong(txtMobileNo.getText()) && txtMobileNo.getText().length() == 10){
+             lblErrMobNo.setText(""); 
         }
         else{
-            lblErrName.setText("");
+            lblErrMobNo.setText("Invalid");
+             isValid = false;
         }
         
-        if(utils.validateEmail(txtEmail.getText())){
+        if(!utils.validateEmail(txtEmail.getText())){
             lblErrEmail.setText("Invalid");
             isValid = false;
         }
         else{
-            lblErrName.setText("");
+            lblErrEmail.setText("");
         }
         return isValid;
         

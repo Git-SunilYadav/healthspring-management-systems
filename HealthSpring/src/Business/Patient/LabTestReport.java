@@ -17,9 +17,27 @@ public class LabTestReport {
     private Date requestDate;
     private Date completionDate;
     private String reportDetails;
+    private boolean reportGenerated;
+    private String testName;
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
 
     public String getPatientName() {
         return patientName;
+    }
+
+    public boolean isReportGenerated() {
+        return reportGenerated;
+    }
+
+    public void setReportGenerated(boolean reportGenerated) {
+        this.reportGenerated = reportGenerated;
     }
 
     public void setPatientName(String patientName) {
@@ -56,5 +74,10 @@ public class LabTestReport {
 
     public void setReportDetails(String reportDetails) {
         this.reportDetails = reportDetails;
+    }
+    
+    @Override
+    public String toString(){
+       return this.testName;
     }
 }

@@ -16,6 +16,14 @@ public class Patient {
     private String email;
     private int age;
     private String mobile_num;
+
+    public ArrayList<LabTestReport> getLabTestReportList() {
+        return labTestReportList;
+    }
+
+    public void setLabTestReportList(ArrayList<LabTestReport> labTestReportList) {
+        this.labTestReportList = labTestReportList;
+    }
     private ArrayList<AppointmentHistory> appointmentHistoryList;
     private ArrayList<LabTestReport> labTestReportList;
     

@@ -4,28 +4,40 @@
  */
 package userinterface.LabAssistantRole;
 
-import Business.WorkQueue.LabTestWorkRequest;
+import Business.Patient.LabTestReport;
+import Business.WorkQueue.LabTestRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author raunak
- */
+// Author: Sunil M. Yadav
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    LabTestWorkRequest request;
+    LabTestRequest labTestRequest;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestWorkRequest request) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestRequest labTestRequest) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.request = request;
+        this.labTestRequest = labTestRequest;
+        PopulateData();
     }
-
+    
+    // Populate Data
+    public void PopulateData(){
+        txtPatientName.setText(labTestRequest.getObjPatient().getName());
+        txtAge.setText(String.valueOf(labTestRequest.getObjPatient().getAge()));
+        txtDoctorName.setText(labTestRequest.getDoctorName());
+        if(labTestRequest.isReportGenerated()){
+            chkReportGenerated.setSelected(true);
+        }
+        
+        txtAge.setText(labTestRequest.getReportDetails());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,25 +47,25 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        submitJButton = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        chkReportGenerated = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtReportSummary = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         txtPatientName = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         txtDoctorName = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
 
-        submitJButton.setText("Submit Result & Send Email");
-        submitJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit Result & Send Email");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitJButtonActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -73,11 +85,16 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Doctor Name:");
 
-        jCheckBox2.setText(" Report Generated");
+        chkReportGenerated.setText(" Report Generated");
+        chkReportGenerated.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkReportGeneratedActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtReportSummary.setColumns(20);
+        txtReportSummary.setRows(5);
+        jScrollPane1.setViewportView(txtReportSummary);
 
         jLabel5.setText("Report Summury:");
 
@@ -111,7 +128,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(91, 91, 91)
-                        .addComponent(submitJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -121,7 +138,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel5))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkReportGenerated, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                             .addComponent(txtPatientName)
                             .addComponent(txtAge)
@@ -152,7 +169,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
-                .addComponent(jCheckBox2)
+                .addComponent(chkReportGenerated)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -163,7 +180,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                                 .addComponent(lblError)))
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(submitJButton)
+                            .addComponent(btnSubmit)
                             .addComponent(backJButton)))
                     .addComponent(jLabel5))
                 .addContainerGap(151, Short.MAX_VALUE))
@@ -175,34 +192,92 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        LabAssistantWorkAreaJPanel dwjp = (LabAssistantWorkAreaJPanel) component;
-        dwjp.populateTable();
+        LabAssistantWorkAreaJPanel labJPanel = (LabAssistantWorkAreaJPanel) component;
+        labJPanel.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-     
-    }//GEN-LAST:event_submitJButtonActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        if(chkReportGenerated.isSelected())
+        {
+            if(!txtReportSummary.getText().trim().equals("")){
+                labTestRequest.setReportDetails(txtReportSummary.getText());
+                labTestRequest.setReportGenerated(true);
+                
+                // add report to patient list
+                LabTestReport objLabTestReport = new LabTestReport();
+                
+                objLabTestReport.setTestName(labTestRequest.getTestName());
+                objLabTestReport.setCompletionDate(new Date());
+                objLabTestReport.setDoctorName(labTestRequest.getDoctorName());
+                objLabTestReport.setRequestDate(labTestRequest.getRequestedDate());
+                objLabTestReport.setReportGenerated(true);
+                objLabTestReport.setReportDetails(labTestRequest.getReportDetails());
+                
+                labTestRequest.getObjPatient().getLabTestReportList().add(objLabTestReport);
+                
+                JOptionPane.showMessageDialog(null, "Report generated successfully ");
+                if(SendMail(labTestRequest)){
+                    JOptionPane.showMessageDialog(null, "Email sent successfully !!");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please add report summary !!");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select report generated check box");
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPatientNameActionPerformed
 
+    private void chkReportGeneratedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReportGeneratedActionPerformed
+        if(chkReportGenerated.isSelected()){
+            txtReportSummary.setEditable(true);
+            txtReportSummary.setEnabled(true);
+            btnSubmit.setEnabled(true);
+        }
+        else{
+            txtReportSummary.setEditable(false);
+            txtReportSummary.setEnabled(false);
+            btnSubmit.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkReportGeneratedActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JCheckBox chkReportGenerated;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblError;
-    private javax.swing.JButton submitJButton;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtDoctorName;
     private javax.swing.JTextField txtPatientName;
+    private javax.swing.JTextArea txtReportSummary;
     // End of variables declaration//GEN-END:variables
+
+    // fucntion to send mail and report.
+    public boolean SendMail(LabTestRequest objLabTestRequest){
+        boolean isMailSend = false;
+        try {
+            String patientEmail = objLabTestRequest.getObjPatient().getEmail();
+            String mailSubject = "Your Lab Test Report";
+            
+            isMailSend = true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cant' send email to this time. Please try again");
+            e.printStackTrace();
+        }
+        
+        return isMailSend;
+    }
 }

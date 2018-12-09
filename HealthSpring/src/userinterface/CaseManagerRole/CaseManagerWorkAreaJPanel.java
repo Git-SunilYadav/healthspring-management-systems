@@ -14,7 +14,6 @@ import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
