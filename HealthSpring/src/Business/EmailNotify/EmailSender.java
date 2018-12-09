@@ -1,4 +1,4 @@
-package Business.EmailNotify;
+/*package Business.EmailNotify;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -16,11 +16,11 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author nikhi
  */
+/*
 public class EmailSender {
  
     private String to; //  = "nikhilkohli1992@gmail.com"; // sender email 

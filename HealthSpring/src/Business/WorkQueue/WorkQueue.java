@@ -19,7 +19,7 @@ public class WorkQueue {
      private ArrayList<VaccineWorkRequest> VaccineWorkRequestList;
             
     
-     public WorkQueue() {
+    public WorkQueue() {
         workRequestList = new ArrayList();
         CFRCaseWorkRequestList = new ArrayList();
         CFRFinFellowWorkRequestList = new ArrayList();

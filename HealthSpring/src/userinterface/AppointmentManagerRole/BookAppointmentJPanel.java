@@ -95,25 +95,17 @@ public class BookAppointmentJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Date", "Time", "Patient Name", "Booked"
+                "Date", "Time", "Patient Name", "Booked", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -263,11 +255,12 @@ public class BookAppointmentJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(AppointmentSlots appointmentSlots : appointment.getAppointmentSlots()){
              
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = appointment.getAppointmentDate();
             row[1] = appointmentSlots;
             row[2] = appointmentSlots.getPatient();
             row[3] = appointmentSlots.isIsBooked() ? "Booked" : "";
+            row[4] = appointmentSlots.isIsComplete() ? "Done" : "Waiting";
             model.addRow(row);
         }
     }
