@@ -7,7 +7,7 @@ package userinterface.FinanceFellowRole;
 
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.EcoSystem;
-import Business.EmailNotify.EmailSender;
+//import Business.EmailNotify.EmailSender;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;

@@ -7,6 +7,7 @@ package userinterface.DoctorRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Appointment;
 import Business.WorkQueue.AppointmentSlots;
@@ -72,11 +73,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(AppointmentSlots appointmentSlots : appointment.getAppointmentSlots()){
              
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = appointment.getAppointmentDate();
             row[1] = appointmentSlots;
             row[2] = appointmentSlots.getPatient();
             row[3] = appointmentSlots.isIsBooked() ? "Booked" : "";
+            row[4] = appointmentSlots.isIsComplete() ? "Done" : "Waiting";
             model.addRow(row);
         }
     }
@@ -99,27 +101,24 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         txtAppointmentDate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtGetAppointments = new javax.swing.JButton();
+        btnAddDetails = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Date", "Time", "Patient", "Booked"
+                "Date", "Time", "Patient", "Booked", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -127,14 +126,9 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(workRequestJTable);
-        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
-            workRequestJTable.getColumnModel().getColumn(0).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         requestTestJButton.setBackground(new java.awt.Color(255, 102, 102));
+        requestTestJButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         requestTestJButton.setText("Request Test");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +137,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         refreshTestJButton.setBackground(new java.awt.Color(255, 102, 102));
+        refreshTestJButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         refreshTestJButton.setText("Refresh");
         refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,12 +156,40 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Date:");
 
         txtGetAppointments.setBackground(new java.awt.Color(255, 102, 102));
+        txtGetAppointments.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtGetAppointments.setText("Get Appointments");
         txtGetAppointments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGetAppointmentsActionPerformed(evt);
             }
         });
+
+        btnAddDetails.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnAddDetails.setText("Add Details");
+        btnAddDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDetailsActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setText("(MM-dd-yyyy)");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Previous Lab Test Reports");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,25 +200,33 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
                 .addComponent(refreshTestJButton)
                 .addGap(132, 132, 132))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtGetAppointments, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(txtAppointmentDate))))
+                .addGap(67, 67, 67)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtGetAppointments, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(txtAppointmentDate))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(requestTestJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(165, 165, 165)
+                            .addComponent(btnAddDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)
+                            .addComponent(requestTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -210,23 +241,36 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAppointmentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(22, 22, 22)
                 .addComponent(txtGetAppointments)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(requestTestJButton)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddDetails)
+                    .addComponent(requestTestJButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        //userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
-        
+        int selectedRow = workRequestJTable.getSelectedRow();
+        if(selectedRow < 0){
+            JOptionPane.showMessageDialog(null,"Please select any row !!!");
+            return;
+        }
+        else{
+            Patient objPatient = (Patient)workRequestJTable.getValueAt(selectedRow, 2);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise,objPatient));
+            layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
@@ -237,10 +281,40 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         GetAppointmentDetails();
     }//GEN-LAST:event_txtGetAppointmentsActionPerformed
 
+    private void btnAddDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDetailsActionPerformed
+        // Open add details panel
+        try {
+             
+            int selectedRow = workRequestJTable.getSelectedRow();
+
+            if(selectedRow < 0 ){
+                JOptionPane.showMessageDialog(null, "Please select any slots");
+                return;
+            }
+            else{
+                Date appointmentDate = (Date)workRequestJTable.getValueAt(selectedRow, 0);
+                AppointmentSlots objAppointmentSlots = (AppointmentSlots)workRequestJTable.getValueAt(selectedRow, 1);
+                
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                userProcessContainer.add("UpdateAppointmentJPanel", new UpdateAppointmentJPanel(userProcessContainer, userAccount, appointmentDate,objAppointmentSlots));
+                layout.next(userProcessContainer);
+            }
+         }
+         catch (Exception e) {
+            JOptionPane.showMessageDialog(null, " Somthing went wrong. Please try again !!");
+            System.out.println("Exception " + e);
+        }
+    }//GEN-LAST:event_btnAddDetailsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddDetails;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JTextField txtAppointmentDate;

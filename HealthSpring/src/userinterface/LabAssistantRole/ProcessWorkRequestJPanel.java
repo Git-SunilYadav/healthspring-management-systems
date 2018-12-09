@@ -36,18 +36,26 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         submitJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        resultJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        txtPatientName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtDoctorName = new javax.swing.JTextField();
+        lblError = new javax.swing.JLabel();
 
-        submitJButton.setText("Submit Result");
+        submitJButton.setText("Submit Result & Send Email");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Result");
 
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -56,37 +64,109 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Update Report");
+
+        jLabel2.setText("Patient Name:");
+
+        jLabel3.setText("Age:");
+
+        jLabel4.setText("Doctor Name:");
+
+        jCheckBox2.setText(" Report Generated");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel5.setText("Report Summury:");
+
+        txtPatientName.setEditable(false);
+        txtPatientName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPatientName.setEnabled(false);
+        txtPatientName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPatientNameActionPerformed(evt);
+            }
+        });
+
+        txtAge.setEditable(false);
+        txtAge.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAge.setEnabled(false);
+
+        txtDoctorName.setEditable(false);
+        txtDoctorName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDoctorName.setEnabled(false);
+
+        lblError.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backJButton)
-                    .addComponent(jLabel1))
+                .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91)
+                        .addComponent(submitJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(submitJButton)
-                        .addGap(63, 63, 63))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(txtPatientName)
+                            .addComponent(txtAge)
+                            .addComponent(txtDoctorName))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitJButton)
-                    .addComponent(backJButton))
-                .addContainerGap(169, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(jCheckBox2)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(lblError)))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(submitJButton)
+                            .addComponent(backJButton)))
+                    .addComponent(jLabel5))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,14 +182,27 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        request.setTestResult(resultJTextField.getText());
-        request.setStatus("Completed");
+     
     }//GEN-LAST:event_submitJButtonActionPerformed
+
+    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientNameActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField resultJTextField;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblError;
     private javax.swing.JButton submitJButton;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtDoctorName;
+    private javax.swing.JTextField txtPatientName;
     // End of variables declaration//GEN-END:variables
 }

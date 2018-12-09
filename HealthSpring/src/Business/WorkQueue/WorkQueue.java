@@ -13,7 +13,7 @@ public class WorkQueue {
     private ArrayList<WorkRequest> workRequestList;
     private ArrayList<CFRCaseWorkRequest> CFRCaseWorkRequestList;
     private ArrayList<CFRFinanceFellowWorkRequest> CFRFinFellowWorkRequestList;
-     public WorkQueue() {
+    public WorkQueue() {
         workRequestList = new ArrayList();
         CFRCaseWorkRequestList = new ArrayList();
         CFRFinFellowWorkRequestList = new ArrayList();

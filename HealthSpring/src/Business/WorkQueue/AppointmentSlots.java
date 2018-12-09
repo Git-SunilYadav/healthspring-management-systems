@@ -15,6 +15,7 @@ public class AppointmentSlots {
     private int Id;
     private String slotTime;
     private Patient patient;
+    private boolean isComplete;
 
     public int getId() {
         return Id;
@@ -34,6 +35,14 @@ public class AppointmentSlots {
 
     public Patient getPatient() {
         return patient;
+    }
+
+    public boolean isIsComplete() {
+        return isComplete;
+    }
+
+    public void setIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
     }
 
     public void setPatient(Patient patient) {
