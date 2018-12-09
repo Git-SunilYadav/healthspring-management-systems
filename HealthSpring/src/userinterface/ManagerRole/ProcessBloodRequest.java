@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AppointmentManagerRole;
+package userinterface.ManagerRole;
 
 import Business.BloodBankWorkQueue.BloodbankWorkRequest;
 import Business.EcoSystem;
@@ -158,23 +158,20 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(_OjRadioButton5)
                                     .addComponent(_AjRadioButton1))
-                                .addGap(18, 18, 18)
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(2, 2, 2)
                                         .addComponent(OjRadioButton6))
                                     .addComponent(AjRadioButton2))
-                                .addGap(18, 18, 18)
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(_ABjRadioButton7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ABjRadioButton8))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(_BjRadioButton3)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(BjRadioButton4)
-                                        .addGap(12, 12, 12))))
+                                    .addComponent(_ABjRadioButton7)
+                                    .addComponent(_BjRadioButton3))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BjRadioButton4)
+                                    .addComponent(ABjRadioButton8)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(35, 35, 35)
@@ -190,7 +187,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel3)
-                .addGap(31, 31, 31)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bldLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -214,11 +211,11 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(volLabl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitBtn)
                     .addComponent(jButton2))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

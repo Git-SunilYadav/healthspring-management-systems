@@ -21,6 +21,6 @@ public class VaccineLogisticsManagerRole extends Role{
      
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new VaccineLogisticsManagerWorkAreaJPanel(userProcessContainer, account, enterprise, organization, business);
+        return null; //new VaccineLogisticsManagerWorkAreaJPanel(userProcessContainer, account, enterprise, organization, business);
     }
 }

@@ -73,6 +73,7 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         fdisJCheckBox2 = new javax.swing.JCheckBox();
         srchbyptxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -265,6 +266,9 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("SEARCH BY PATIENT");
 
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel6.setText("SEARCH BY REFERENCE NUMBER");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,7 +292,9 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(searchtxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(searchtxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(adisJCheckBox1)
                                 .addGap(18, 18, 18)
@@ -350,7 +356,8 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchtxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchtxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -461,6 +468,8 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
 
     private void searchtxt2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchtxt2KeyReleased
         // TODO add your handling code here:
+       try{int a=Integer.parseInt(searchtxt2.getText());}
+       catch(NumberFormatException e){jLabel6.setText("Enter only numbers");}
         DefaultTableModel model = (DefaultTableModel)CFRDisburseWorkReqJTable1.getModel();
         
        model.setRowCount(0);
@@ -714,6 +723,7 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JCheckBox najCheckBox1;

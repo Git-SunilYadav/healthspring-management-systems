@@ -8,6 +8,7 @@ package userinterface.FinanceFellowRole;
 import Business.CrowdFunding.CFRFundingOrgs;
 import Business.CrowdFundingWorkQueue.CFRFinanceFellowWorkRequest;
 import Business.EcoSystem;
+import Business.EmailNotify.EmailSender;
 //import Business.EmailNotify.EmailSender;
 //import Business.EmailNotify.EmailSender;
 import Business.Enterprise.Enterprise;
@@ -33,7 +34,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private CFRFinanceFellowWorkRequest request;
     private ButtonGroup bg1= new ButtonGroup();
-  //  private EmailSender emailSender;
+    private EmailSender emailSender;
     private EcoSystem business;
     private Enterprise enterprise;
     private UserAccount userAccount;

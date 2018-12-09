@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AppointmentManagerRole;
+package userinterface.ManagerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
-import Business.Organization.AppointmentManager;
+import Business.Organization.Manager;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -22,18 +22,18 @@ import userinterface.DoctorRole.RequestLabTestJPanel;
  *
  * @author yadav
  */
-public class AppointmentManagerWorkAreaJPanel extends javax.swing.JPanel {
+public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AppointmentManagerWorkAreaJPanel
      */
     private JPanel userProcessContainer;
-    private AppointmentManager organization;
+    private Manager organization;
     private OrganizationDirectory organizationDir;
     private HospitalEnterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem system;
-    public AppointmentManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AppointmentManager organization, Enterprise enterprise, EcoSystem system) {
+    public ManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Manager organization, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
