@@ -29,6 +29,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
     private UserAccount userAccount;
     private EcoSystem system;
     private ButtonGroup bg1=new ButtonGroup();
+    private Boolean b;
     
     /**
      * Creates new form ProcessBloodRequest
@@ -39,6 +40,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.system=system;
+        this.b=true;
       
         groupbutton();
        
@@ -110,6 +112,14 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
 
         volTxt.setColumns(7);
         volTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        volTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                volTxtKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                volTxtKeyReleased(evt);
+            }
+        });
 
         AjRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         AjRadioButton2.setText("+A");
@@ -224,13 +234,16 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
       bldLbl1.setText("");
       
         
-        Boolean b =true;
+       b =true;
         try{
             int v=Integer.parseInt(volTxt.getText());}
         catch(NumberFormatException e){
               b=false;
               volLabl.setText("Enter a valid integer");
             }
+          if(volTxt.getText().trim().isEmpty()){
+       volLabl.setText(" Volumefield is empty");
+        b=false;;}
         if(bg1.getSelection()==null){
           b=false;
               bldLbl1.setText("Select blood group");}
@@ -337,6 +350,23 @@ public void groupbutton(){
     private void AjRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AjRadioButton2ActionPerformed
+
+    private void volTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_volTxtKeyPressed
+     // TODO add your handling code here:
+    }//GEN-LAST:event_volTxtKeyPressed
+
+    private void volTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_volTxtKeyReleased
+     volLabl.setText(""); 
+        try{
+            int v=Integer.parseInt(volTxt.getText());}
+        catch(NumberFormatException e){
+              b=false;
+              volLabl.setText("Enter a valid integer");
+  if(volTxt.getText().trim().isEmpty()){
+       volLabl.setText(" Volumefield is empty");
+        b=false;;}
+            }    // TODO add your handling code here:
+    }//GEN-LAST:event_volTxtKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
