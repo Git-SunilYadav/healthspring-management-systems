@@ -186,6 +186,7 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         add(errormsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 709, 33));
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +231,7 @@ public class RequestVaccineJPanel extends javax.swing.JPanel {
         request.setQty(Vacc_qty);
         request.setNetwork(Network);
         request.setSender(userAccount);
-        request.setStatus("Vaccine Request Sent");
+        request.setStatus("New Vaccine Request");
         request.setMessage(msgtxt.getText());
 
         Organization org = null;

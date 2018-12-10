@@ -22,18 +22,19 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailSender {
  
-    private String to; //  = "nikhilkohli1992@gmail.com"; // sender email 
-    private String from; // = "nikhilkohli1992@gmail.com"; // receiver email 
+    private String to; //  =  sender email 
+    private String from = "kohli789n@gmail.com";   // receiver email 
     private String host = "smtp.gmail.com"; 
     private String subject_mail;
     MimeMessage message;
     private String mail_body;
-
-    public EmailSender(String fromMail, String toMail,String subject_mail, String mail_body) {
+    private String file_name;
+    public EmailSender( String toMail,String subject_mail, String mail_body, String file_name) {
         this.to = toMail;
-        this.from = fromMail;
+        //this.from = fromMail;
         this.subject_mail = subject_mail;
         this.mail_body = mail_body;
+        this.file_name = file_name;
        
 }
     
@@ -79,7 +80,7 @@ public class EmailSender {
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         //N:/healthspring-management-systems/HealthSpring/
         
-        String filename = "file.txt";
+        String filename = file_name;
         DataSource source = new FileDataSource(filename);
         messageBodyPart.setDataHandler(new  DataHandler(source));
         messageBodyPart.setFileName(filename);

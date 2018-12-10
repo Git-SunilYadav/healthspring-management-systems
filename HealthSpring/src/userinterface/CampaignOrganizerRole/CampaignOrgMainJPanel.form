@@ -27,10 +27,10 @@
               <EmptySpace pref="566" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="addbankbtn" min="-2" max="-2" attributes="0"/>
-                  <Component id="disbursebtn" min="-2" pref="159" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="disbursebtn" max="32767" attributes="0"/>
+                  <Component id="addbankbtn" pref="174" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel2" min="-2" pref="675" max="-2" attributes="0"/>

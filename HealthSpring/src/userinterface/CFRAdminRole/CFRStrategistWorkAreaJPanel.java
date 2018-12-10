@@ -54,19 +54,12 @@ public class CFRStrategistWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        piechartbtn = new javax.swing.JButton();
         viewbtn = new javax.swing.JButton();
         deletebtn = new javax.swing.JButton();
-        dailyrptbtn = new javax.swing.JButton();
         searchtxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         fundingOrgJTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,25 +80,6 @@ public class CFRStrategistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("FUNDING ORGANIZATION MANAGEMENT");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 23, 259, 23));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel2.setText("GENERATE REPORTS FOR DATA ANALYSIS");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 290, 24));
-
-        jCheckBox4.setForeground(new java.awt.Color(255, 102, 102));
-        jCheckBox4.setText("DAILY STATISTICS REPORT");
-        add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, -1, -1));
-
-        piechartbtn.setBackground(new java.awt.Color(255, 102, 102));
-        piechartbtn.setForeground(new java.awt.Color(255, 255, 255));
-        piechartbtn.setText("GENERATE PIE CHART");
-        piechartbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                piechartbtnActionPerformed(evt);
-            }
-        });
-        add(piechartbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, -1, 30));
-
         viewbtn.setBackground(new java.awt.Color(255, 102, 102));
         viewbtn.setForeground(new java.awt.Color(255, 255, 255));
         viewbtn.setText("VIEW");
@@ -125,16 +99,6 @@ public class CFRStrategistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(deletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 148, 100, 30));
-
-        dailyrptbtn.setBackground(new java.awt.Color(255, 102, 102));
-        dailyrptbtn.setForeground(new java.awt.Color(255, 255, 255));
-        dailyrptbtn.setText("SEND MONTHLY REPORT");
-        dailyrptbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dailyrptbtnActionPerformed(evt);
-            }
-        });
-        add(dailyrptbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, 172, 30));
 
         searchtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,18 +151,6 @@ public class CFRStrategistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("SEARCH BY NAME");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 96, 153, 29));
-
-        jRadioButton1.setForeground(new java.awt.Color(255, 102, 102));
-        jRadioButton1.setText("CATEGORY");
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, -1, -1));
-
-        jRadioButton2.setForeground(new java.awt.Color(255, 102, 102));
-        jRadioButton2.setText("FUNDING ORGANIZATION");
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, -1, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 102, 102));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 10, 140));
     }// </editor-fold>//GEN-END:initComponents
     public void populateRequestTable(){
   
@@ -219,11 +171,6 @@ DefaultTableModel model = (DefaultTableModel) fundingOrgJTable.getModel();
        
 }
     
-    private void piechartbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piechartbtnActionPerformed
-
-        
-    }//GEN-LAST:event_piechartbtnActionPerformed
-
     /*public static void writeStudentsListToExcel(List<Student> studentList){
 
         // Using XSSF for xlsx format, for xls use HSSF
@@ -388,25 +335,14 @@ DefaultTableModel model = (DefaultTableModel) fundingOrgJTable.getModel();
        }        // TODO add your handling code here:
     }//GEN-LAST:event_searchtxtKeyReleased
 
-    private void dailyrptbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyrptbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dailyrptbtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dailyrptbtn;
     private javax.swing.JButton deletebtn;
     private javax.swing.JTable fundingOrgJTable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton piechartbtn;
     private javax.swing.JTextField searchtxt;
     private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables

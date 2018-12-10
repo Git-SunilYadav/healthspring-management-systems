@@ -5,7 +5,6 @@
  */
 package userinterface.VaccineManagerRole;
 
-import userinterface.InventoryManagerRole.*;
 import Business.CrowdFundingWorkQueue.CFRCaseWorkRequest;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -185,21 +184,20 @@ public class VaccineInventoryJPanel extends javax.swing.JPanel {
                                         .addComponent(searchtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(79, 79, 79)
-                            .addComponent(jRadioButton1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(StockGrapgbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jRadioButton1)
+                        .addGap(80, 80, 80)
+                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(StockGrapgbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -222,9 +220,9 @@ public class VaccineInventoryJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1))
-                .addGap(42, 42, 42)
+                .addGap(57, 57, 57)
                 .addComponent(StockGrapgbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(69, 69, 69))
         );
@@ -260,31 +258,77 @@ public void groupbutton(){
     private void StockGrapgbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockGrapgbtnActionPerformed
         
         
-        DefaultCategoryDataset dataset=new DefaultCategoryDataset();
-  /*
-        if (jRadioButton1.isSelected())
+        
+          if (jRadioButton1.isSelected())
         {
-        for (VaccineInventory vaccine : VaccInvDir.getVaccineStockList())
+		int a = 0;
+                int b =0;
+                int c=0; 
+                int d=0;
+                int e=0;
+                int f=0;
+                DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+  
+         for (VaccineInventory vaccine : VaccInvDir.getVaccineStockList())
         {
-            String[] type = new String[3];
-            String[] Vtype = {"a","b","c"};
-          //  String Array[4]  =["q","w","d","d"];
-         for (Vaccine a:  VaccInvDir.getVaccineStockList() )
-         {}
-        dataset.setValue(vaccine.getInvStock(),"Quantity",vaccine.getVaccineName());
+     if (vaccine.getVaccineType().equals("Live-attenuated"))
+	 {
+	 a =a + vaccine.getInvStock();
+	    
+	 }
+	 if (vaccine.getVaccineType().equals("Inactivated"))
+	 {
+	 b =b + vaccine.getInvStock();
+	    
+	 }
+
+	 if (vaccine.getVaccineType().equals("Subunit"))
+	 {
+	 c =c + vaccine.getInvStock();
+	    
+	 }
+
+	 if (vaccine.getVaccineType().equals("Toxoid"))
+	 {
+	 d =d + vaccine.getInvStock();
+	    
+	 }
+
+	 if (vaccine.getVaccineType().equals("recombinant"))
+	 {
+	 e =e + vaccine.getInvStock();
+	    
+	 }
+if (vaccine.getVaccineType().equals("conjugate"))
+	 {
+	 f =f + vaccine.getInvStock();
+	    
+	 }
+
         
         }
-        JFreeChart jchart= ChartFactory.createBarChart("Stock", "Vaccines", "Quantity", dataset, PlotOrientation.VERTICAL, true, true, false);
+		dataset.setValue(a,"Quantity","Live-attenuated");
+		dataset.setValue(b,"Quantity","Inactivated");
+		dataset.setValue(c,"Quantity","Subunit");
+		dataset.setValue(d,"Quantity","Toxoid");
+		dataset.setValue(e,"Quantity","recombinant");
+		dataset.setValue(f,"Quantity","conjugate");
+		
+        JFreeChart jchart= ChartFactory.createBarChart("Vaccines Inventory", "Vaccine Types", "Quantity", dataset, PlotOrientation.VERTICAL, true, true, false);
         CategoryPlot plot = jchart.getCategoryPlot();
-        plot.setRangeGridlinePaint(Color.BLACK);
-        ChartFrame chtfrm=new ChartFrame("Stock",jchart,true);
+        plot.setRangeGridlinePaint(Color.CYAN);
+        ChartFrame chtfrm=new ChartFrame("Vaccines Inventory",jchart,true);
         chtfrm.setVisible(true);
-        chtfrm.setSize(1000,600);
-        // TODO add your handling code here:
+        chtfrm.setSize(1000,800);
+        
         }
-          */
+		
+	    
+  
         if (jRadioButton2.isSelected())
         {
+            DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+  
          for (VaccineInventory vaccine : VaccInvDir.getVaccineStockList())
         {
      

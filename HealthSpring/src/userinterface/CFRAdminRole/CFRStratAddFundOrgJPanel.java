@@ -236,7 +236,7 @@ emailLbl.setText("");
         b= true;
 
 
- if(utils.validateEmail(emailtxt.getText())){
+ if(!utils.validateEmail(emailtxt.getText())){
             emailLbl.setText("Invalid");
             b = false;
         }
@@ -245,7 +245,7 @@ emailLbl.setText("");
   if(categorytxt.getText().trim().isEmpty()){catLbl.setText("Category field is empty"); b=false;}
    if(emailtxt.getText().trim().isEmpty()){emailLbl.setText("Email-Id field is empty"); b=false;}
     if(mbtxt.getText().trim().isEmpty()){telLbl.setText("Phone Number field is empty"); b=false;}
- if(utils.validateEmail(emailtxt.getText())){
+ if(!utils.validateEmail(emailtxt.getText())){
             emailLbl.setText("Invalid");
             b = false;
         }

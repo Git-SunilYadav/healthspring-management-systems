@@ -77,6 +77,7 @@ public class MakeADiffWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestTestJButton.setBackground(new java.awt.Color(255, 102, 102));
+        requestTestJButton.setForeground(new java.awt.Color(255, 255, 255));
         requestTestJButton.setText("NEW FUNDING REQUEST");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,13 +224,15 @@ public class MakeADiffWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(VrecjCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 140, -1));
 
+        vaccineReqbtn.setBackground(new java.awt.Color(255, 102, 102));
+        vaccineReqbtn.setForeground(new java.awt.Color(255, 255, 255));
         vaccineReqbtn.setText("VACCINE STOCK REQUEST");
         vaccineReqbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaccineReqbtnActionPerformed(evt);
             }
         });
-        add(vaccineReqbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, 170, 30));
+        add(vaccineReqbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, 170, 30));
 
         NassignjCheckBox1.setForeground(new java.awt.Color(255, 102, 102));
         NassignjCheckBox1.setText("NOT ASSIGNED");

@@ -5,7 +5,6 @@
  */
 package userinterface.VaccineManagerRole;
 
-import userinterface.InventoryManagerRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;

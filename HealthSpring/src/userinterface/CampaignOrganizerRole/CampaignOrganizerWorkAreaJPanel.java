@@ -19,6 +19,7 @@ import java.awt.Component;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.CaseManagerRole.AddCasedetailsJPanel;
@@ -215,7 +216,7 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel5.setText("SEARCH BY BANK");
+        jLabel5.setText("SEARCH BY CFR Account");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -251,8 +252,8 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(adisbJCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
                                 .addComponent(searchAcctxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)))))
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -312,9 +313,6 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
                  
              }
-         else {
-         // dialog box asking to check the box first. 
-         }
       
     }//GEN-LAST:event_disbursebtnActionPerformed
     
@@ -366,7 +364,7 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
                 }
              }
           
-        if  ((nassJCheckBox1.isSelected()==false) && (adisbJCheckBox2.isSelected() == false) )
+        if  (nassJCheckBox1.isSelected()==false && adisbJCheckBox2.isSelected() == false )
         {
          for(CFRFundsReceivedWorkRequest request2 : campaignOrganization.getWorkQueue().getCFRFundsReceivedWorkRequestList()){
            row[0] = request2;
@@ -388,7 +386,7 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
     
      
      public void populateDisburseTable(){
-        DefaultTableModel model = (DefaultTableModel)CFRDisburseWorkQueueJTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)CFRDisburseWorkReqJTable2.getModel();
         
         model.setRowCount(0);
         
@@ -438,9 +436,8 @@ public class CampaignOrganizerWorkAreaJPanel extends javax.swing.JPanel {
         request.setStatus("Awaiting Disbursement");
         populateTable();
         }
-        else {
-        // show dialog saying its already assigned!
-        }
+        else{
+     JOptionPane.showMessageDialog(null, "This request is already assigned");}
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
