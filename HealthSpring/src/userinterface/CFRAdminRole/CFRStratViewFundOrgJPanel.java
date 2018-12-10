@@ -148,6 +148,7 @@ public class CFRStratViewFundOrgJPanel extends javax.swing.JPanel {
             }
         });
 
+        CategoryJComboBox1.setForeground(new java.awt.Color(255, 102, 102));
         CategoryJComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CategoryJComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

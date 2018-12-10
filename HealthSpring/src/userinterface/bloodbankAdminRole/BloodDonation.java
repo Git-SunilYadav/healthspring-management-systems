@@ -77,17 +77,22 @@ public class BloodDonation extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 102, 102));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("Blood Donation");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("Donor Name:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Select Blood Group:");
 
         _AjRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _AjRadioButton1.setForeground(new java.awt.Color(255, 102, 102));
         _AjRadioButton1.setText("-A");
         _AjRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,6 +106,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         AjRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        AjRadioButton2.setForeground(new java.awt.Color(255, 102, 102));
         AjRadioButton2.setText("+A");
         AjRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,6 +120,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         _BjRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _BjRadioButton3.setForeground(new java.awt.Color(255, 102, 102));
         _BjRadioButton3.setText("-B");
         _BjRadioButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,6 +129,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         BjRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BjRadioButton4.setForeground(new java.awt.Color(255, 102, 102));
         BjRadioButton4.setText("+B");
         BjRadioButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,6 +138,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         _OjRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _OjRadioButton5.setForeground(new java.awt.Color(255, 102, 102));
         _OjRadioButton5.setText("-O");
         _OjRadioButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,6 +147,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         OjRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        OjRadioButton6.setForeground(new java.awt.Color(255, 102, 102));
         OjRadioButton6.setText("+O");
         OjRadioButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,6 +156,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         _ABjRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _ABjRadioButton7.setForeground(new java.awt.Color(255, 102, 102));
         _ABjRadioButton7.setText("-AB");
         _ABjRadioButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,6 +165,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         ABjRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ABjRadioButton8.setForeground(new java.awt.Color(255, 102, 102));
         ABjRadioButton8.setText("+AB");
         ABjRadioButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,6 +174,7 @@ public class BloodDonation extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Volume:");
 
         nametxt.setColumns(15);
@@ -185,7 +198,9 @@ public class BloodDonation extends javax.swing.JPanel {
             }
         });
 
+        submitBtn.setBackground(new java.awt.Color(255, 102, 102));
         submitBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +208,9 @@ public class BloodDonation extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +327,7 @@ public class BloodDonation extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(submitBtn))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

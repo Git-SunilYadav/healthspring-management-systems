@@ -69,7 +69,8 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("My Work Area -Adminstrative Role");
 
         enterpriseLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -96,7 +97,9 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +107,9 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             }
         });
 
+        request.setBackground(new java.awt.Color(255, 102, 102));
         request.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        request.setForeground(new java.awt.Color(255, 255, 255));
         request.setText("Respond to request");
         request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +117,9 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             }
         });
 
+        assign.setBackground(new java.awt.Color(255, 102, 102));
         assign.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        assign.setForeground(new java.awt.Color(255, 255, 255));
         assign.setText("Assign to me");
         assign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +127,8 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
             }
         });
 
-        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setForeground(new java.awt.Color(255, 102, 102));
         enterpriseLabel1.setText("Blood Bank :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -165,7 +173,7 @@ public class BloodbankadminWorkArea extends javax.swing.JPanel {
                     .addComponent(jButton1)
                     .addComponent(request)
                     .addComponent(assign))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 public void populateTable(){
