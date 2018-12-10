@@ -21,9 +21,9 @@ public class CFRCaseSpecs {
     private Date creation_date;
 
     public CFRCaseSpecs() {
-        
-        case_id = count;
         count++;
+        case_id = count;
+        
     }
 
     public Date getCreation_date() {

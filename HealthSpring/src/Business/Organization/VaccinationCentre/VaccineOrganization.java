@@ -8,7 +8,7 @@ package Business.Organization.VaccinationCentre;
 import Business.Organization.Organization;
 import Business.Role.LabAssistantRole;
 import Business.Role.Role;
-import Business.Role.VaccineManagerRole;
+import Business.Role.VaccinationCentre.VaccineManagerRole;
 import java.util.ArrayList;
 
 /**

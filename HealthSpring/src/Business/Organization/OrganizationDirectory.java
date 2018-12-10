@@ -9,6 +9,7 @@ import Business.Organization.SocialCrowdFunding.CFRStrategistOrganization;
 import Business.Organization.SocialCrowdFunding.CampaignOrganization;
 import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
+import Business.Organization.VaccinationCentre.VaccineOrganization;
 import java.util.ArrayList;
 
 public class OrganizationDirectory {
@@ -31,10 +32,6 @@ public class OrganizationDirectory {
         }
         else if (type.getValue().equals(Type.Lab.getValue())){
             organization = new LabOrganization();
-            organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.Patient.getValue())){
-            organization = new PatientOrganization();
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
@@ -62,10 +59,15 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         // create Appointment manager 
-        else if (type.getValue().equals(Type.AppointmentManager.getValue())){
-            organization = new AppointmentManager();
+        else if (type.getValue().equals(Type.Manager.getValue())){
+            organization = new Manager();
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Type.VaccineManager.getValue())){
+            organization = new VaccineOrganization();
+            organizationList.add(organization);
+        }
+       
         return organization;
     }
     

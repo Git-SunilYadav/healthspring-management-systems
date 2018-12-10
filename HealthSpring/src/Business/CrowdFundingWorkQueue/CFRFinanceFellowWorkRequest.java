@@ -22,6 +22,7 @@ public class CFRFinanceFellowWorkRequest extends WorkRequest {
     private long acc_num;
     private String fund_org_name, email;
     private int fund_org_id;
+    private long cfr_rec_account;
     
     
     public CFRFinanceFellowWorkRequest() {
@@ -46,6 +47,14 @@ public class CFRFinanceFellowWorkRequest extends WorkRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public long getCfr_rec_account() {
+        return cfr_rec_account;
+    }
+
+    public void setCfr_rec_account(long cfr_rec_account) {
+        this.cfr_rec_account = cfr_rec_account;
     }
 
     public void setEmail(String email) {
@@ -102,6 +111,10 @@ public class CFRFinanceFellowWorkRequest extends WorkRequest {
         this.acc_num = acc_num;
     }
 
+     @Override
+    public String toString() {
+        return patient;
+    }
     
     
 }

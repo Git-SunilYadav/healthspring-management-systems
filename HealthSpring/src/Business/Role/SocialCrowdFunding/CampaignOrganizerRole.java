@@ -12,6 +12,7 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
+import userinterface.CampaignOrganizerRole.CampaignOrgMainJPanel;
 import userinterface.CampaignOrganizerRole.CampaignOrganizerWorkAreaJPanel;
 
 /**
@@ -22,6 +23,6 @@ public class CampaignOrganizerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CampaignOrganizerWorkAreaJPanel(userProcessContainer, enterprise);
+        return new CampaignOrgMainJPanel(userProcessContainer, enterprise , account, organization, business);
     }
 }

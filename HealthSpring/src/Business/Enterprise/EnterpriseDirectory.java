@@ -46,7 +46,7 @@ public class EnterpriseDirectory {
         }
         
         else if(type==Enterprise.EnterpriseType.SocialCrowdFundingZone){
-            enterprise=new VaccinationCentreEnterprise(name);
+            enterprise=new SocialCrowdFundingEnterprise(name);
             enterpriseList.add(enterprise);
         }
            return enterprise;

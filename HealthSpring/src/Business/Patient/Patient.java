@@ -5,10 +5,9 @@
  */
 package Business.Patient;
 
-/**
- *
- * @author nikhi
- */
+import java.util.ArrayList;
+
+// Author : Sunil M. Yadav
 public class Patient {
     
     private String name;
@@ -17,12 +16,31 @@ public class Patient {
     private String email;
     private int age;
     private String mobile_num;
-    
+
+    public ArrayList<LabTestReport> getLabTestReportList() {
+        return labTestReportList;
+    }
+
+    public void setLabTestReportList(ArrayList<LabTestReport> labTestReportList) {
+        this.labTestReportList = labTestReportList;
+    }
+    private ArrayList<AppointmentHistory> appointmentHistoryList;
+    private ArrayList<LabTestReport> labTestReportList;
     
 
     public Patient() {
         id = count;
         count++;
+        appointmentHistoryList = new ArrayList<AppointmentHistory>();
+        labTestReportList = new ArrayList<LabTestReport>();
+    }
+
+    public ArrayList<AppointmentHistory> getAppointmentHistoryList() {
+        return appointmentHistoryList;
+    }
+
+    public void setAppointmentHistoryList(ArrayList<AppointmentHistory> appointmentHistoryList) {
+        this.appointmentHistoryList = appointmentHistoryList;
     }
 
     public String getMobile_num() {

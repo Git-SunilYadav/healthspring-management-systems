@@ -19,6 +19,8 @@ public abstract class Role {
         BloodBankStaff("BloodBankStaff"),
         AppointmentManager("Appointment Manager"),
         VaccineManager("Vaccine Manager"),
+       // VaccineLogisticsManager("Vaccine Logistics Manager"),
+       // VaccineInventoryManager("VaccineInventoryManager "),
         CFRStrategist("CFR Strategist"),
         CampaignOrganizer("Campaign Organizer"),
         FinanceFellow("Finance Fellow"),

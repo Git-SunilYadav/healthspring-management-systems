@@ -18,13 +18,17 @@ public class CFRFundingOrgs {
     private int fund_org_id;
 
     public CFRFundingOrgs() {
-         fund_org_id = count;
-         count++;
-        
+        count++;
+        fund_org_id = count;
+                
     }
 
     public int getFund_org_id() {
         return fund_org_id;
+    }
+
+    public void setFund_org_id(int fund_org_id) {
+        this.fund_org_id = fund_org_id;
     }
     
     
@@ -65,7 +69,5 @@ public class CFRFundingOrgs {
     public String toString() {
         return fund_org_name;
     }
-    
-    
     
 }
