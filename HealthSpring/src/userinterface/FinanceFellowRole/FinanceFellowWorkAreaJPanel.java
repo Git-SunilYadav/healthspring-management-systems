@@ -400,18 +400,14 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable2.getValueAt(selectedRow, 0);
-          if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Orgs Notified for Funding") || request.getStatus().equalsIgnoreCase("Funding Locked") ))
-         {
-      
+       
         request.setStatus("Funding Locked");
 
         AddFundsReceivedJPanel AddFundsReceivedJPanel = new AddFundsReceivedJPanel(userProcessContainer,  userAccount,  org, business, request, enterprise);
         userProcessContainer.add("AddFundsReceivedJPanel", AddFundsReceivedJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-         } 
-          else{
-     JOptionPane.showMessageDialog(null, "This request is already processed by someone");}
+        
     }//GEN-LAST:event_addfundsbtnActionPerformed
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
