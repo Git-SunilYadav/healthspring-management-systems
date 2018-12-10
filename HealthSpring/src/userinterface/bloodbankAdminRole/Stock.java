@@ -177,9 +177,14 @@ public class Stock extends javax.swing.JPanel {
         JFreeChart jchart= ChartFactory.createBarChart("Blood Stock", "Blood Groups", "Volume", dataset, PlotOrientation.VERTICAL, true, true, false);
         CategoryPlot plot = jchart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.BLACK);
+        plot.getRenderer().setSeriesPaint(0, new Color(51, 204, 0));
+        plot.getRenderer().setBasePaint(Color.WHITE);
         ChartFrame chtfrm=new ChartFrame("Blood Stock",jchart,true);
         chtfrm.setVisible(true);
         chtfrm.setSize(1000,600);
+        
+       
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

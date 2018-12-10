@@ -29,7 +29,7 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private VaccineWorkRequest request;
     private VaccineInventoryDirectory VaccInvDir;
-  
+    private Boolean b;
     public ProcessVaccineRequestJPanel(JPanel userProcessContainer, VaccineWorkRequest request, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         
@@ -44,6 +44,7 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
         typetxt.setText(request.getVaccineType());
         qreqdtxt.setText(String.valueOf(request.getQty()));
         msgtxt.setText(request.getMessage());
+        this.b=true;
        
         for (VaccineInventory vaccine : VaccInvDir.getVaccineStockList())
         {
@@ -78,27 +79,52 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
         msgtxt = new javax.swing.JTextField();
         processBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("VACCINE STOCK REQUEST");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 32, 235, 24));
 
         jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("VACCINE TYPE");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 116, 124, 33));
+
+        typetxt.setEnabled(false);
+        add(typetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 116, 223, 33));
 
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("VACCINE NAME");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 175, 124, 33));
+
+        vnametxt.setEnabled(false);
+        add(vnametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 175, 223, 33));
 
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("QUANTITY REQUIRED");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 234, 124, 33));
+
+        qreqdtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                qreqdtxtKeyReleased(evt);
+            }
+        });
+        add(qreqdtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 234, 223, 33));
 
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("INVENTORY STOCK");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 300, 124, 33));
+
+        invstocktxt.setEnabled(false);
+        add(invstocktxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 300, 223, 33));
 
         jLabel6.setForeground(new java.awt.Color(255, 102, 102));
         jLabel6.setText("MESSAGE");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 367, 85, 33));
+        add(msgtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 367, 567, 33));
 
         processBtn.setBackground(new java.awt.Color(255, 102, 102));
         processBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,6 +134,7 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
                 processBtnActionPerformed(evt);
             }
         });
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 490, -1, 26));
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setText("BACK");
@@ -116,86 +143,20 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 490, 72, 26));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(296, 296, 296))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(invstocktxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(qreqdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(vnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(typetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(msgtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181)
-                .addComponent(processBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(typetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qreqdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(invstocktxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(msgtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 126, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
+b=true;
 
+ if(qreqdtxt.getText().trim().isEmpty()){
+       jLabel7.setText(" Quantity can't be empty");
+        b=false;;}
+
+    if(b){
        request.setMessage(msgtxt.getText());
        request.setQty(Integer.parseInt(qreqdtxt.getText()));
        request.setStatus("Stock Sent");
@@ -209,7 +170,7 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
 
         }
         }
-     
+    }
     }//GEN-LAST:event_processBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -223,6 +184,16 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void qreqdtxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qreqdtxtKeyReleased
+         jLabel7.setText(""); 
+        try{int x=Integer.parseInt(qreqdtxt.getText());
+         }
+         catch(NumberFormatException e){
+             jLabel7.setText("Enter valid number");
+             b=false;
+         }        // TODO add your handling code here:
+    }//GEN-LAST:event_qreqdtxtKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField invstocktxt;
@@ -233,6 +204,7 @@ public class ProcessVaccineRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField msgtxt;
     private javax.swing.JButton processBtn;
     private javax.swing.JTextField qreqdtxt;
