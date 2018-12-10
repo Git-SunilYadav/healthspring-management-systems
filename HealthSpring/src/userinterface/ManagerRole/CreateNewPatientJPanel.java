@@ -10,7 +10,6 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PatientOrganization;
 import Business.Patient.Patient;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
@@ -105,14 +104,14 @@ public class CreateNewPatientJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Name", "Age", "Mobile No", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -248,7 +247,7 @@ public class CreateNewPatientJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -259,14 +258,16 @@ public class CreateNewPatientJPanel extends javax.swing.JPanel {
         
         if(objPatientDirectory != null){
         for (Patient patient : objPatientDirectory.getpatientList()){
-            Object[] row = new Object[2];
+            Object[] row = new Object[5];
             row[0] = patient.getId();
             row[1] = patient.getName();
+            row[2] = patient.getAge();
+            row[3] = patient.getMobile_num();
+            row[4] = patient.getEmail();
             model.addRow(row);
         }
        }
     }
-    
     
     private void btnAddPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPatientActionPerformed
         try {

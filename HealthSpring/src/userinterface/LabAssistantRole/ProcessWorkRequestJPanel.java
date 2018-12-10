@@ -4,7 +4,12 @@
  */
 package userinterface.LabAssistantRole;
 
+import Business.EmailNotify.EmailSender;
 import Business.Patient.LabTestReport;
+import Business.Patient.Patient;
+import Business.Utility.LabMailTemplate;
+import Business.Utility.LabReportTemplate;
+import Business.Utility.PdfGenerator;
 import Business.WorkQueue.LabTestRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -36,7 +41,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             chkReportGenerated.setSelected(true);
         }
         
-        txtAge.setText(labTestRequest.getReportDetails());
+        txtReportSummary.setText(labTestRequest.getReportDetails());
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,7 +276,24 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         boolean isMailSend = false;
         try {
             String patientEmail = objLabTestRequest.getObjPatient().getEmail();
-            String mailSubject = "Your Lab Test Report";
+            String mailSubject = "Your Lab Test Reports are generated - Available Now(HealthSpring Labs)";
+            Patient p = objLabTestRequest.getObjPatient();
+            
+            // Lab pdf template
+            LabReportTemplate template = new LabReportTemplate();
+            String reportTemplate = template.getReportTemplate(p.getName(),p.getAge(),objLabTestRequest.getDoctorName(),objLabTestRequest.getRequestedDate(),objLabTestRequest.getTestName(),objLabTestRequest.getReportDetails());
+            
+            String fileName = p.getName() + "-" + (int)(Math.random()*1000)+".pdf";
+            
+            PdfGenerator pdfGenerator = new PdfGenerator();
+            pdfGenerator.GeneratePDF(reportTemplate, fileName);
+            
+            // Lab report email template
+            LabMailTemplate objLabMailTemplate = new LabMailTemplate();
+            String labMailTemplate = objLabMailTemplate.getMailTemplate(p.getName());
+            
+            EmailSender objEmailSender = new EmailSender(patientEmail, mailSubject, labMailTemplate, fileName);
+           objEmailSender.sendMail();
             
             isMailSend = true;
         } catch (Exception e) {

@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 // Author: Sunil M. Yadav
 public class PdfGenerator {
     
-    public void GeneratePDF(StringBuilder template , String fileName){
+    public void GeneratePDF(String template , String fileName){
         try {
              Document doc = new Document();
              PdfWriter.getInstance(doc, new FileOutputStream(fileName));
              doc.open();
-             doc.add( new Paragraph(template.toString()));
+             doc.add( new Paragraph(template));
              doc.close();
             
         } catch (Exception e) {

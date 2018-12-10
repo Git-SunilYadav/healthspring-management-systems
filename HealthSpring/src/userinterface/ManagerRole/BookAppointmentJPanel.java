@@ -8,7 +8,6 @@ package userinterface.ManagerRole;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Organization.DoctorOrganization;
-import Business.Organization.PatientOrganization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.Appointment;

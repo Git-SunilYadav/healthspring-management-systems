@@ -11,7 +11,6 @@ import Business.Organization.Manager;
 //import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import static Business.Organization.Organization.Type.Manager;
-import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.ManagerRole.ManagerWorkAreaJPanel;

@@ -11,6 +11,7 @@ import Business.Patient.AppointmentHistory;
 import Business.Patient.LabTestReport;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import Business.Utility.Utilities;
 import Business.WorkQueue.Appointment;
 import Business.WorkQueue.AppointmentSlots;
 import java.awt.CardLayout;
@@ -33,6 +34,7 @@ public class UpdateAppointmentJPanel extends javax.swing.JPanel {
     private String dateFormat = "MM-dd-yyyy";
     private AppointmentSlots objAppointmentSlot;
     Date appointmentDate;
+    Utilities utils;
     
     public UpdateAppointmentJPanel(JPanel userProcessContainer, UserAccount account, Date appointmentDate, AppointmentSlots objAppointmentSlot) {
         this.userProcessContainer = userProcessContainer;
@@ -41,6 +43,7 @@ public class UpdateAppointmentJPanel extends javax.swing.JPanel {
         this.appointmentDate = appointmentDate;
         initComponents();
         populateData();
+        utils = new Utilities();
     }
     
     public void populateData(){
@@ -290,17 +293,23 @@ public class UpdateAppointmentJPanel extends javax.swing.JPanel {
 
     private void btnAppointmentDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentDoneActionPerformed
         try {
-            Patient objPatient = objAppointmentSlot.getPatient();
-            AppointmentHistory objAppointmentHistory = new AppointmentHistory();
-            objAppointmentHistory.setDate(appointmentDate);
-            objAppointmentHistory.setDetails(txtDiagnosisReport.getText());
-            objAppointmentHistory.setDoctorName(userAccount.getUsername());
-            objAppointmentHistory.setTime(objAppointmentSlot.getSlotTime());
-            objPatient.getAppointmentHistoryList().add(objAppointmentHistory);
-            objAppointmentSlot.setIsComplete(true);
+            if(txtDiagnosisReport.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Please add diagnosis summary");
+            }
+            else{
+                Patient objPatient = objAppointmentSlot.getPatient();
+                AppointmentHistory objAppointmentHistory = new AppointmentHistory();
+                objAppointmentHistory.setDate(appointmentDate);
+                objAppointmentHistory.setDetails(txtDiagnosisReport.getText());
+                objAppointmentHistory.setDoctorName(userAccount.getUsername());
+                objAppointmentHistory.setTime(objAppointmentSlot.getSlotTime());
+                objPatient.getAppointmentHistoryList().add(objAppointmentHistory);
+                objAppointmentSlot.setIsComplete(true);
 
-            JOptionPane.showMessageDialog(null,"Details updated successfully !!");
-            populatePatientHistory(objPatient);
+                JOptionPane.showMessageDialog(null,"Details updated successfully !!");
+                populatePatientHistory(objPatient);
+            }
+
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Something went wrong. Please try again");

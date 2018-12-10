@@ -44,24 +44,20 @@ public abstract class Organization {
 
     
     public enum Type{
-        Admin("Admin Organization"), 
+        Admin("Admin Organization"),
+        
         Doctor("Doctor Organization"), 
         Lab("Lab Organization"),
-        Patient("Patient Organization"), 
-       // VaccineAdmin("Vaccine Centre Admin"),
+        Manager("Manager"),
+        
         BloodBankStaff("BloodBankStaff"),
+        
         VaccineManager("Vaccine Organization"),
-       // CFRAdmin("CFR Admin Organization"), 
         CampaignOrganizer("Campaign Organization"),
         FinanceFellow("Finance Fellow Organization"), 
         TerminalCasesManager("Terminal Cases Organization"),
-        Manager("Manager"),
         CFRStrategist("CFR Strategist Organization"),
         MakeADifference("Make A Diff Organization");
-       // VaccineManager("Vaccine Manager"),
-        //VaccineLogisticsManager("Vaccine Logistics"),
-        //VaccineInventoryManager("Vaccine Inventory ");
-        
         
         private String value;
         private Type(String value) {

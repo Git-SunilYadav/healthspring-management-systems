@@ -34,10 +34,6 @@ public class OrganizationDirectory {
             organization = new LabOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Patient.getValue())){
-            organization = new PatientOrganization();
-            organizationList.add(organization);
-        }
          else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
             organization = new BloodBankStaffOrganization();
             organizationList.add(organization);

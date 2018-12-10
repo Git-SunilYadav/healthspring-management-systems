@@ -10,7 +10,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PatientOrganization;
 import Business.Organization.VaccinationCentre.VaccineOrganization;
 import Business.UserAccount.UserAccount;
 import Business.Vaccine.VaccineDetails;
