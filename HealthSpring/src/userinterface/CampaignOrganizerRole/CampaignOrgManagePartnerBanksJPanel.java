@@ -290,7 +290,7 @@ populateRequestTable();
         DefaultTableModel model = (DefaultTableModel) partnerbanksJTable.getModel();
 
        model.setRowCount(0);
-       Object[] row = new Object[6];
+       Object[] row = new Object[7];
        
         
        for (CFRPartnerBanks partner_banks : campaignOrganization.getCfrPartnerBanksDir().getpartnerBankList()){

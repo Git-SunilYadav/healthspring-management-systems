@@ -66,20 +66,29 @@ private void populateVTypeCombo(){
         thresholdtxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 102, 102));
+
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("VACCINE TYPE");
 
+        VaccineTypeCombo.setForeground(new java.awt.Color(255, 102, 102));
         VaccineTypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("VACCINE NAME");
 
-        addVaccbtn.setText("jButton1");
+        addVaccbtn.setForeground(new java.awt.Color(255, 102, 102));
+        addVaccbtn.setText("ADD");
         addVaccbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addVaccbtnActionPerformed(evt);
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("THRESHOLD QTY");
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
@@ -89,6 +98,10 @@ private void populateVTypeCombo(){
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel4.setText("ADD NEW VACCINE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,13 +124,18 @@ private void populateVTypeCombo(){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(thresholdtxt)
                             .addComponent(VaccineTypeCombo, 0, 244, Short.MAX_VALUE)
-                            .addComponent(Vnametxt))))
+                            .addComponent(Vnametxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(261, 261, 261)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VaccineTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,6 +188,7 @@ VacInvDir.CreatevaccineStock(Vname, VType, TQty, qty);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField thresholdtxt;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,6 +41,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
     private FinanceFellowOrganization FinanceFellowOrganization;
     private String mail_body , mail_body2 , mail_body3;
     private String mail_subject="Make A Difference : Health Spring CFR Crowdfunding request";
+    private String file_name;
    
  
     public SelectFundingOrgsJPanel(JPanel userProcessContainer, UserAccount account, FinanceFellowOrganization organization, EcoSystem business, CFRFinanceFellowWorkRequest request, Enterprise enterprise) {
@@ -50,6 +51,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
         this.business = business;
         this.enterprise = enterprise;
         this.FinanceFellowOrganization = organization;
+        //file_name = "CFR_Make_A_Difference_cause.pdf";
         groupbutton();
         mail_body = "I hope that you’re doing well! \n" +
 "We are raising money for" +request.getPatient()  + " and we could really use your help. In order to help the individual, .\n" +
@@ -189,6 +191,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
 
         request.setReceiver(userAccount);
         request.setStatus("Orgs Notified for Funding");
+        file_name = attachmentTextField.getText();
          
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
@@ -209,7 +212,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
 "\n" ;
                 
         mail_body3 = mail_body2 + mailbodytxt.getText() ;
-        emailSender = new EmailSender("nikhilkohli1992@gmail.com", fundingOrg.getEmail(), mail_subject, mail_body3);
+        emailSender = new EmailSender( fundingOrg.getEmail(), mail_subject, mail_body3 , file_name);
         emailSender.sendMail();
        
             }
@@ -227,7 +230,7 @@ public class SelectFundingOrgsJPanel extends javax.swing.JPanel {
 "\n" ;
                 
         mail_body3 = mail_body2 + mailbodytxt.getText() ;
-        emailSender = new EmailSender("nikhilkohli1992@gmail.com", fundingOrg.getEmail(), mail_subject, mail_body3);
+        emailSender = new EmailSender( fundingOrg.getEmail(), mail_subject, mail_body3,file_name);
         emailSender.sendMail();
        
         }

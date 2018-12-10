@@ -14,6 +14,7 @@ import Business.Vaccine.VaccineDetailsDirectory;
 import Business.VaccineWorkQueue.VaccineWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -166,9 +167,9 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(asjCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Vacctxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -177,7 +178,7 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(assignJButton)
                             .addGap(52, 52, 52)
                             .addComponent(SendStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(67, 67, 67))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +210,10 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
         
          Object[] row = new Object[8];
            
-        // if (pcCheckBox1.isSelected() == true){
+         
+         if (VrecjCheckBox1.isSelected() == true){
          for(VaccineWorkRequest request : organization.getWorkQueue().getVaccineWorkRequestList()){
-          //  if (request.getStatus() == "CFR Case Assigned") {
+            if (request.getStatus().equalsIgnoreCase("New Vaccine Request")) {
            // row[0] = request;
           row[3] = request.getSender().getEmployee().getName();
             row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
@@ -225,39 +227,45 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
             model.addRow(row);
       //  }
          }
-    //}
-    /*
-          if (najCheckBox1.isSelected() == true){
-         for(CFRCaseWorkRequest request : CaseOrganization.getWorkQueue().getCFRCaseWorkRequestList()){
-            if (request.getStatus() == "Request Sent") {
+         }
+         }
+     if (asjCheckBox3.isSelected() == true){
+         for(VaccineWorkRequest request : organization.getWorkQueue().getVaccineWorkRequestList()){
+            if (request.getStatus().equalsIgnoreCase("Vaccine Request Assigned") || request.getStatus().equalsIgnoreCase("Vaccine Request Processing")) {
            // row[0] = request;
-           row[0] = request;
-            row[4] = request.getSender().getEmployee().getName();
-            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[6] = request.getStatus();
-            row[2] = request.getCategory();
-            row[1] = request.getCaseId();
-            row[3] = request.getCost();
-            
+          row[3] = request.getSender().getEmployee().getName();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[7] = request.getStatus();
+            row[0] = request;
+            row[5] = request.getMessage();
+            row[6] = request.getNetwork();
+            row[1] = request.getVaccineType();
+            row[2] = request.getQty();
+              
             model.addRow(row);
-        }
+      //  }
+         }
+         }
+     }
+    //} 
+     if (VrecjCheckBox1.isSelected() == false && asjCheckBox3.isSelected() == false){
+         for(VaccineWorkRequest request : organization.getWorkQueue().getVaccineWorkRequestList()){
+           // if (request.getStatus().equalsIgnoreCase("Request Sent")) {
+           // row[0] = request;
+          row[3] = request.getSender().getEmployee().getName();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[7] = request.getStatus();
+            row[0] = request;
+            row[5] = request.getMessage();
+            row[6] = request.getNetwork();
+            row[1] = request.getVaccineType();
+            row[2] = request.getQty();
+              
+            model.addRow(row);
+      //  }
+         
          }
     }
-          
-           if (pcCheckBox1.isSelected() == false && najCheckBox1.isSelected() == false){
-         for(CFRCaseWorkRequest request : CaseOrganization.getWorkQueue().getCFRCaseWorkRequestList()){
-          //  if (request.getStatus() == "Request Sent") {
-            row[0] = request;
-            row[4] = request.getSender().getEmployee().getName();
-            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[6] = request.getStatus();
-            row[2] = request.getCategory();
-            row[1] = request.getCaseId();
-            row[3] = request.getCost();
-            
-            model.addRow(row);
-        */
-        // }
     //}
    }
    
@@ -314,7 +322,7 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_VacctxtsearchKeyReleased
 
     private void SendStockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendStockBtnActionPerformed
-
+// Stock Sent
                int selectedRow = VaccineWRequestjTable1.getSelectedRow();
         
         if (selectedRow < 0){
@@ -323,18 +331,20 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         VaccineWorkRequest request = (VaccineWorkRequest)VaccineWRequestjTable1.getValueAt(selectedRow, 0);
      
-        request.setStatus("CFR Case Processing");
+        if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Vaccine Request Assigned") || request.getStatus().equalsIgnoreCase("Vaccine Request Processing")))
+         {
+         
+        request.setStatus("Vaccine Request Processing");
         
-    /*    ProcessVaccineRequestJPanel AddCasedetailsJPanel = new ProcessVaccineRequestJPanel(userProcessContainer, request, userAccount,organization, enterprise , business);
-        userProcessContainer.add("ProcessVaccineRequestJPanel", ProcessVaccineRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-       */
         
        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         userProcessContainer.add("ProcessVaccineRequestJPanel", new ProcessVaccineRequestJPanel(userProcessContainer, request, userAccount,organization, enterprise , business));;
         layout.next(userProcessContainer);
-
+         }
+         else 
+         {
+         JOptionPane.showMessageDialog(null, "This request is already processed");
+         }
               
     }//GEN-LAST:event_SendStockBtnActionPerformed
 
@@ -346,10 +356,18 @@ public class VaccineManagerWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
 
+        
         VaccineWorkRequest request = (VaccineWorkRequest)VaccineWRequestjTable1.getValueAt(selectedRow, 0);
+         if(request.getStatus().equalsIgnoreCase("New Vaccine Request"))
+         {
         request.setReceiver(userAccount);
         request.setStatus("Vaccine Request Assigned");
         populateTable();
+         }
+         else 
+         {
+         JOptionPane.showMessageDialog(null, "This request is already assigned");
+         }
     }//GEN-LAST:event_assignJButtonActionPerformed
 
 

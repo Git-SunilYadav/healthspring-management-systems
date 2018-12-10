@@ -14,6 +14,7 @@ import Business.Organization.SocialCrowdFunding.FinanceFellowOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -370,15 +371,18 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable2.getValueAt(selectedRow, 0);
-        
+        if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Finance Case Assigned") ))
+         {
+      
         // code for selecting the Funding Orgs
         
         SelectFundingOrgsJPanel SelectFundingOrgsJPanel = new SelectFundingOrgsJPanel( userProcessContainer,  userAccount,  FinanceFellowOrganization, business, request, enterprise);
         userProcessContainer.add("SelectFundingOrgsJPanel", SelectFundingOrgsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-
-        
+         }
+        else{
+     JOptionPane.showMessageDialog(null, "This request is already processed by someone");}
        // request.setReceiver(userAccount);
         //request.setStatus("Email Sent for Funds");
         //populateTable();
@@ -396,13 +400,18 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable2.getValueAt(selectedRow, 0);
+          if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Orgs Notified for Funding") || request.getStatus().equalsIgnoreCase("Funding Locked") ))
+         {
+      
         request.setStatus("Funding Locked");
 
         AddFundsReceivedJPanel AddFundsReceivedJPanel = new AddFundsReceivedJPanel(userProcessContainer,  userAccount,  org, business, request, enterprise);
         userProcessContainer.add("AddFundsReceivedJPanel", AddFundsReceivedJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-
+         } 
+          else{
+     JOptionPane.showMessageDialog(null, "This request is already processed by someone");}
     }//GEN-LAST:event_addfundsbtnActionPerformed
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -414,9 +423,15 @@ public class FinanceFellowWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         CFRFinanceFellowWorkRequest request = (CFRFinanceFellowWorkRequest)CFRFinanceWorkQueueJTable2.getValueAt(selectedRow, 0);
+        
+         if(request.getStatus().equalsIgnoreCase("Awaiting for Finance Team"))
+     {
         request.setReceiver(userAccount);
         request.setStatus("Finance Case Assigned");
         populateTable();
+         }
+     else{
+     JOptionPane.showMessageDialog(null, "This request is already assigned");}
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void pcCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcCheckBox1ActionPerformed

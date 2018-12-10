@@ -16,6 +16,7 @@ import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.LabAssistantRole.ProcessWorkRequestJPanel;
@@ -68,7 +69,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
            
          if (pcCheckBox1.isSelected() == true){
          for(CFRCaseWorkRequest request : CaseOrganization.getWorkQueue().getCFRCaseWorkRequestList()){
-            if (request.getStatus() == "CFR Case Assigned") {
+            if (request.getStatus().equalsIgnoreCase("CFR Case Assigned")) {
            // row[0] = request;
            row[0] = request;
             row[4] = request.getSender().getEmployee().getName();
@@ -84,7 +85,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
     }
           if (najCheckBox1.isSelected() == true){
          for(CFRCaseWorkRequest request : CaseOrganization.getWorkQueue().getCFRCaseWorkRequestList()){
-            if (request.getStatus() == "Request Sent") {
+            if (request.getStatus().equalsIgnoreCase("Request Sent")) {
            // row[0] = request;
            row[0] = request;
             row[4] = request.getSender().getEmployee().getName();
@@ -399,14 +400,19 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         CFRCaseWorkRequest request = (CFRCaseWorkRequest)CFRCaseWorkQueueJTable1.getValueAt(selectedRow, 0);
      
+          if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Vaccine Request Assigned") || request.getStatus().equalsIgnoreCase("CFR Case Processing")))
+         {
+      
         request.setStatus("CFR Case Processing");
         
         AddCasedetailsJPanel AddCasedetailsJPanel = new AddCasedetailsJPanel(userProcessContainer, request, userAccount,enterprise , cfrCaseDir);
         userProcessContainer.add("AddCasedetailsJPanel", AddCasedetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-       
+         }
+          else{
+    JOptionPane.showMessageDialog(null, "This request is already processed by someone");
+          }   
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -419,10 +425,16 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         CFRCaseWorkRequest request = (CFRCaseWorkRequest)CFRCaseWorkQueueJTable1.getValueAt(selectedRow, 0);
+        
+        if(request.getStatus().equalsIgnoreCase("Request Sent"))
+        {
         request.setReceiver(userAccount);
         request.setStatus("CFR Case Assigned");
         populateTable();
-
+        }
+        else{
+     JOptionPane.showMessageDialog(null, "This request is already assigned");
+        }
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
