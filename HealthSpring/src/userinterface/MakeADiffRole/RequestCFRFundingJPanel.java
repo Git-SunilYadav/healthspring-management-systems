@@ -12,8 +12,10 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.SocialCrowdFunding.TerminalCasesOrganization;
 import Business.UserAccount.UserAccount;
+import Business.Utility.Utilities;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.CaseManagerRole.CaseManagerWorkAreaJPanel;
 
@@ -30,6 +32,7 @@ public class RequestCFRFundingJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem business;
+    private Utilities utils;
     
     public RequestCFRFundingJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem business) {
         initComponents();
@@ -37,6 +40,7 @@ public class RequestCFRFundingJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.business = business;
+        this.utils = new Utilities();
         populateCategoryCombo();
             }
 
@@ -184,9 +188,22 @@ public class RequestCFRFundingJPanel extends javax.swing.JPanel {
 
        // String message = messageJTextField.getText();
         String patient = patienttxt.getText();
+        if(patient.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Patient name should not be blank");
+            return;
+        }
+        
         String catebgory =  String.valueOf(CategoryJComboBox1.getSelectedItem());   //categorytxt.getText();
-        int cost = Integer.parseInt(costtxt.getText());
-
+        int cost = 0;
+        if(!utils.tryParseInt(costtxt.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter proper cost value");
+            return;
+             
+        }
+        else{
+            cost= Integer.parseInt(costtxt.getText());
+        }
+        
         CFRCaseWorkRequest request = new CFRCaseWorkRequest();
         request.setPatient(patient);
         request.setCategory(catebgory);
@@ -216,6 +233,10 @@ public class RequestCFRFundingJPanel extends javax.swing.JPanel {
                     org.getWorkQueue().getCFRCaseWorkRequestList().add(request);
                    // userAccount.getWorkQueue().getWorkRequestList().add(request);
                      userAccount.getWorkQueue().getCFRCaseWorkRequestList().add(request);
+                     JOptionPane.showMessageDialog(null, "Request has been created successfully !!");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Terminal case organization does not exist !!");
                 }
 
     }//GEN-LAST:event_jButton1ActionPerformed

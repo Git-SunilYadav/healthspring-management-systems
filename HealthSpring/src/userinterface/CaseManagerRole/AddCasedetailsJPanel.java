@@ -18,6 +18,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Locale.Category;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
 
@@ -284,6 +285,7 @@ public class AddCasedetailsJPanel extends javax.swing.JPanel {
         if (org!=null){
             org.getWorkQueue().getCFRFinFellowWorkRequestList().add(request_sec);
             userAccount.getWorkQueue().getCFRFinFellowWorkRequestList().add(request_sec);
+            JOptionPane.showMessageDialog(null, "Case deatils has been updated successfully !!");
         }
        }
             }//GEN-LAST:event_submitbtnActionPerformed

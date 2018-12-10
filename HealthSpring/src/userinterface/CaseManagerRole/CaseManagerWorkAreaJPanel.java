@@ -400,7 +400,7 @@ public class CaseManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         CFRCaseWorkRequest request = (CFRCaseWorkRequest)CFRCaseWorkQueueJTable1.getValueAt(selectedRow, 0);
      
-          if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("Vaccine Request Assigned") || request.getStatus().equalsIgnoreCase("CFR Case Processing")))
+          if(request.getReceiver() == userAccount && (request.getStatus().equalsIgnoreCase("CFR Case Assigned") || request.getStatus().equalsIgnoreCase("CFR Case Processing")))
          {
       
         request.setStatus("CFR Case Processing");

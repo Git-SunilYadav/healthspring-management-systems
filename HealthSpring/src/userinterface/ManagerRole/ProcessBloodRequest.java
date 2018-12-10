@@ -268,7 +268,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
             req.setBloodGroup("O-ve");
         }
         if(OjRadioButton6.isSelected()){
-        req.setBloodGroup("O-ve");
+        req.setBloodGroup("O+ve");
         }
         if(_ABjRadioButton7.isSelected()){
         req.setBloodGroup("AB-ve");
