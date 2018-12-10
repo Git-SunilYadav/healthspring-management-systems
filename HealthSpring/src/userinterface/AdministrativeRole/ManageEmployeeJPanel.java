@@ -115,6 +115,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         }
 
         addJButton.setBackground(new java.awt.Color(255, 102, 102));
+        addJButton.setForeground(new java.awt.Color(255, 255, 255));
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +123,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        organizationJComboBox.setForeground(new java.awt.Color(255, 102, 102));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +134,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel1.setText("Organization");
 
         backJButton.setBackground(new java.awt.Color(255, 102, 102));
+        backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText(" Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,8 +142,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("Name");
 
+        organizationEmpJComboBox.setForeground(new java.awt.Color(255, 102, 102));
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +153,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Organization");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

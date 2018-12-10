@@ -146,7 +146,7 @@ public class DisburseMoneyJPanel extends javax.swing.JPanel {
         });
 
         disbursebtn.setBackground(new java.awt.Color(255, 102, 102));
-        disbursebtn.setForeground(new java.awt.Color(255, 255, 255));
+        disbursebtn.setForeground(new java.awt.Color(255, 102, 102));
         disbursebtn.setText("DISBURSE FUNDS");
         disbursebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,8 +175,10 @@ public class DisburseMoneyJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 102, 102));
         jLabel6.setText("BANK EMAIL");
 
+        DisAllFundsjRadioButton1.setForeground(new java.awt.Color(255, 102, 102));
         DisAllFundsjRadioButton1.setText("DISBURSE ALL PENDING FUNDS(IRRESPECTIVE OF THE ACCOUNT)");
 
+        DisResplFundsjRadioButton1.setForeground(new java.awt.Color(255, 102, 102));
         DisResplFundsjRadioButton1.setText("DISBURSE ONLY RESPECTIVE ACCOUNT FUNDS");
 
         jLabel9.setForeground(new java.awt.Color(255, 102, 102));

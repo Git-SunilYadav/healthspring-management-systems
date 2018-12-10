@@ -23,6 +23,10 @@ public class VaccineDetailsDirectory {
         return vaccinerequestList;
     }
 
+    public void removeFOrg (VaccineDetails forg)
+    {
+       vaccinerequestList.remove(forg);
+    }
     
       public VaccineDetails CreateVaccineSpec( String Vaccine_name, String type,int thresQty, int quantity){
         VaccineDetails Vcase = new VaccineDetails();

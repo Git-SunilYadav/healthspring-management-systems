@@ -142,6 +142,7 @@ public class CampaignOrgManagePartnerBanksJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("SEARCH BY BANK NAME");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

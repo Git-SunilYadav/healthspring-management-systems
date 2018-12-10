@@ -42,7 +42,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.business = business;
         this.objPatient = objPatient;
-        valueLabel.setText(enterprise.getName());
+       // valueLabel.setText(enterprise.getName());
         PopulateData();
     }
     
@@ -73,8 +73,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         backJButton = new javax.swing.JButton();
-        valueLabel = new javax.swing.JLabel();
-        enterpriseLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -90,6 +88,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        backJButton.setBackground(new java.awt.Color(255, 102, 102));
+        backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,26 +98,28 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
-
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Request Lab Test");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel1.setText("REQUEST LAB TEST");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 220, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("Patient Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 120, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Age:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Test Name:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("Lab Name:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
 
@@ -130,10 +132,13 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 220, -1));
         add(txtTestName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 220, -1));
 
+        drpdnLabOranisation.setForeground(new java.awt.Color(255, 102, 102));
         drpdnLabOranisation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(drpdnLabOranisation, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 220, 30));
 
-        btnRequestTest.setText("Request For Test");
+        btnRequestTest.setBackground(new java.awt.Color(255, 102, 102));
+        btnRequestTest.setForeground(new java.awt.Color(255, 255, 255));
+        btnRequestTest.setText("REQUEST FOR TEST");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestTestActionPerformed(evt);
@@ -186,7 +191,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnRequestTest;
     private javax.swing.JComboBox drpdnLabOranisation;
-    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel errorTestName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -196,7 +200,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtPatientName;
     private javax.swing.JTextField txtTestName;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 
     // Validate fields

@@ -75,23 +75,30 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
         setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Volume:");
 
         ABjRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ABjRadioButton8.setForeground(new java.awt.Color(255, 102, 102));
         ABjRadioButton8.setText("+AB");
 
         _ABjRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _ABjRadioButton7.setForeground(new java.awt.Color(255, 102, 102));
         _ABjRadioButton7.setText("-AB");
 
+        submitBtn.setBackground(new java.awt.Color(255, 102, 102));
         submitBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        submitBtn.setText("Submit");
+        submitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        submitBtn.setText("SUBMIT");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,10 +106,12 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Select Blood Group:");
 
         _AjRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _AjRadioButton1.setForeground(new java.awt.Color(255, 102, 102));
         _AjRadioButton1.setText("-A");
         _AjRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +131,7 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
         });
 
         AjRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        AjRadioButton2.setForeground(new java.awt.Color(255, 102, 102));
         AjRadioButton2.setText("+A");
         AjRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,15 +140,19 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
         });
 
         _BjRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _BjRadioButton3.setForeground(new java.awt.Color(255, 102, 102));
         _BjRadioButton3.setText("-B");
 
         BjRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BjRadioButton4.setForeground(new java.awt.Color(255, 102, 102));
         BjRadioButton4.setText("+B");
 
         _OjRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        _OjRadioButton5.setForeground(new java.awt.Color(255, 102, 102));
         _OjRadioButton5.setText("-O");
 
         OjRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        OjRadioButton6.setForeground(new java.awt.Color(255, 102, 102));
         OjRadioButton6.setText("+O");
 
         volLabl.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -221,11 +235,11 @@ public class ProcessBloodRequest extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(volTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(volLabl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitBtn)
                     .addComponent(jButton2))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

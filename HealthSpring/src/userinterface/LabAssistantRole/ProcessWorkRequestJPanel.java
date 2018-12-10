@@ -68,6 +68,11 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         txtDoctorName = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 102, 102));
+
+        btnSubmit.setBackground(new java.awt.Color(255, 102, 102));
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmit.setText("Submit Result & Send Email");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +80,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        backJButton.setBackground(new java.awt.Color(255, 102, 102));
+        backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,15 +89,20 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Update Report");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel1.setText("UPDATE REPORT");
 
+        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("Patient Name:");
 
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Age:");
 
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Doctor Name:");
 
+        chkReportGenerated.setForeground(new java.awt.Color(255, 102, 102));
         chkReportGenerated.setText(" Report Generated");
         chkReportGenerated.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +114,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         txtReportSummary.setRows(5);
         jScrollPane1.setViewportView(txtReportSummary);
 
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("Report Summury:");
 
         txtPatientName.setEditable(false);
@@ -189,7 +202,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                             .addComponent(btnSubmit)
                             .addComponent(backJButton)))
                     .addComponent(jLabel5))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
